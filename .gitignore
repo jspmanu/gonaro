@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+temporary screenshots/
+screenshot*.png
+.claude/settings.local.json
+*.pdf
