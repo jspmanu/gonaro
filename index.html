@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NĀRO — Meer omzet uit offertes die je al verstuurt</title>
+  <meta name="description" content="1 op de 3 prospects reageert wél op een follow-up. NĀRO Close doet dat automatisch, vanuit jouw naam. Nul extra werk.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230E7C66'/></svg>">
+
+  <!-- OG / Social -->
+  <meta property="og:title" content="NĀRO — Meer omzet uit offertes die je al verstuurt" />
+  <meta property="og:description" content="1 op de 3 prospects reageert wél op een follow-up. NĀRO Close doet dat automatisch, vanuit jouw naam." />
+  <meta property="og:url" content="https://gonaro.ai" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://gonaro.ai/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NĀRO — Meer omzet uit offertes die je al verstuurd" />
+  <meta name="twitter:description" content="Automatische offerte-opvolging vanuit jouw naam. Nul extra werk." />
+
+  <!-- Fonts -->
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900&f[]=neue-montreal@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --color-background: #F5F5F3;
+      --color-foreground: #0A0A0A;
+      --color-accent:     #0E7C66;
+      --color-hover:      #0A5C4D;
+      --color-neutral:    #94A3B8;
+      --color-sand:       #F3EEE7;
+      --color-surface:    #FFFFFF;
+      --color-line:       rgba(10,10,10,0.08);
+
+      --text-xs:   0.75rem;
+      --text-sm:   0.875rem;
+      --text-base: 1rem;
+      --text-lg:   1.125rem;
+      --text-xl:   1.25rem;
+      --text-2xl:  1.5rem;
+      --text-3xl:  1.875rem;
+      --text-4xl:  2.25rem;
+      --text-5xl:  3rem;
+      --text-6xl:  3.75rem;
+
+      --space-1:  8px;
+      --space-2:  16px;
+      --space-3:  24px;
+      --space-4:  32px;
+      --space-6:  48px;
+      --space-8:  64px;
+      --space-12: 96px;
+
+      --nav-h: 64px;
+      --max-w: 1200px;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--color-background);
+      color: var(--color-foreground);
+      font-family: 'Inter', sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { background: none; border: none; cursor: pointer; font: inherit; }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+    h1, h2, h3 {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--color-foreground);
+    }
+    h1 { font-weight: 900; }
+
+    /* ─── LAYOUT ─────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: var(--space-4);
+    }
+
+    /* ─── SECTION LABELS ─────────────────────────────────────── */
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-neutral);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+    .section-label::before { content: "— "; }
+    .section-label--accent { color: var(--color-accent); }
+    .section-heading {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    /* ─── BUTTONS ────────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+      text-decoration: none;
+    }
+    .btn--primary {
+      background: var(--color-accent);
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      transition: background 200ms ease-out, transform 200ms ease-out;
+    }
+    .btn--primary:hover { background: var(--color-hover); transform: translateY(-1px); }
+    .btn--primary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+    .btn--primary:active { background: var(--color-hover); }
+
+    .btn--primary-lg {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border-radius: 6px;
+      text-decoration: none;
+      background: var(--color-accent);
+      color: #FFFFFF;
+      padding: 18px 36px;
+      border: none;
+      font-size: var(--text-sm);
+      transition: background 200ms ease-out, transform 200ms ease-out;
+      cursor: pointer;
+    }
+    .btn--primary-lg:hover { background: var(--color-hover); transform: translateY(-1px); }
+    .btn--primary-lg:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+    .btn--primary-lg:active { background: var(--color-hover); }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--color-background);
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(10,10,10,0.06);
+      transition: border-color 200ms ease-out;
+    }
+    .nav--scrolled { border-bottom-color: var(--color-line); }
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .nav__logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+    }
+    .nav__links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-foreground);
+      transition: color 150ms ease-out;
+    }
+    .nav__links a:hover { color: var(--color-accent); }
+    .nav__links a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding-top: 120px;
+      padding-bottom: 100px;
+      background: var(--color-background);
+    }
+    .hero .container {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero__content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .hero__label-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hero__label-line {
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--color-accent);
+    }
+    .hero__heading {
+      font-size: min(7.5vw, 72px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+    }
+    .hero__sub {
+      font-family: 'Neue Montreal', sans-serif;
+      font-weight: 500;
+      font-size: var(--text-lg);
+      color: var(--color-neutral);
+      max-width: 560px;
+      line-height: 1.6;
+    }
+    .hero__scarcity {
+      display: block;
+      border-top: 1px solid var(--color-line);
+      border-bottom: 1px solid var(--color-line);
+      padding: var(--space-2) 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-neutral);
+      max-width: 480px;
+    }
+
+    /* ─── HERO MOCKUP ────────────────────────────────────────── */
+    .hero__mockup {
+      background: var(--color-surface);
+      border: 1px solid var(--color-line);
+      padding: 20px;
+      max-width: 360px;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(10,10,10,0.06), 0 4px 16px rgba(10,10,10,0.04);
+    }
+    .mockup__header {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-neutral);
+      margin-bottom: 16px;
+    }
+    .mockup__timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .mockup__timeline::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--color-line);
+    }
+    .mockup__row {
+      display: grid;
+      grid-template-columns: 20px 1fr auto;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-line);
+    }
+    .mockup__row:last-of-type { border-bottom: none; }
+    .mockup__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .mockup__dot--active { background: var(--color-accent); }
+    .mockup__dot--pending { background: var(--color-neutral); }
+    .mockup__info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .mockup__day {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-neutral);
+    }
+    .mockup__title {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--color-foreground);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mockup__email {
+      font-size: 11px;
+      color: var(--color-neutral);
+    }
+    .mockup__chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 7px;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      align-self: flex-start;
+      margin-top: 2px;
+    }
+    .mockup__chip--sent {
+      background: var(--color-accent);
+      color: #FFFFFF;
+    }
+    .mockup__chip--planned {
+      background: var(--color-sand);
+      color: var(--color-neutral);
+    }
+    .mockup__footer {
+      border-top: 1px solid var(--color-line);
+      padding-top: 12px;
+      margin-top: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent);
+    }
+
+    /* ─── STATS ──────────────────────────────────────────────── */
+    .stats {
+      background: var(--color-sand);
+      border-top: 1px solid var(--color-line);
+      border-bottom: 1px solid var(--color-line);
+      padding: var(--space-8) 0;
+    }
+    .stats .container {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr 1px 1fr;
+      align-items: start;
+    }
+    .stats__divider {
+      width: 1px;
+      height: 100%;
+      min-height: 80px;
+      background: var(--color-line);
+    }
+    .stat {
+      padding: 20px var(--space-6) 0;
+      text-align: center;
+      border-top: 2px solid var(--color-accent);
+    }
+    .stat:first-child { padding-left: 0; }
+    .stat:last-child { padding-right: 0; }
+    .stat__number {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 900;
+      font-size: clamp(52px, 6vw, 72px);
+      color: var(--color-foreground);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      display: block;
+      margin-bottom: var(--space-1);
+    }
+    .stat__label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-neutral);
+    }
+
+    /* ─── SHARED SECTION ─────────────────────────────────────── */
+    .section { padding: var(--space-12) 0; }
+    .section--sand { background: var(--color-sand); }
+    .section--bg { background: var(--color-background); }
+    .section--accent {
+      background: var(--color-accent);
+      color: #FFFFFF;
+    }
+    .section--footer {
+      background: var(--color-foreground);
+      color: #F5F5F3;
+    }
+    .section__intro {
+      margin-bottom: var(--space-8);
+      max-width: 600px;
+    }
+    .section__heading {
+      font-size: var(--text-4xl);
+      letter-spacing: -0.03em;
+      margin-top: var(--space-1);
+    }
+
+    /* ─── PROBLEM ────────────────────────────────────────────── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+    }
+    .problem-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-line);
+      border-radius: 2px;
+      padding: var(--space-4);
+      transition: border-color 200ms ease-out, transform 200ms ease-out;
+      cursor: pointer;
+    }
+    .problem-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .problem-card__title {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-xl);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-2);
+    }
+    .problem-card__body { font-size: var(--text-sm); color: var(--color-neutral); line-height: 1.7; }
+
+    /* ─── FEATURE ARTICLE ACCENT BORDERS ────────────────────── */
+    .problem-grid article,
+    .solution-grid article,
+    .wie-grid article {
+      border-left: 2px solid var(--color-accent);
+      padding-left: 20px;
+    }
+
+    /* ─── SOLUTION ───────────────────────────────────────────── */
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+    }
+    .solution-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-line);
+      border-radius: 2px;
+      padding: var(--space-6);
+      transition: border-color 200ms ease-out, transform 200ms ease-out;
+      cursor: pointer;
+    }
+    .solution-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .solution-card__number {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 900;
+      font-size: var(--text-4xl);
+      color: var(--color-accent);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+    .solution-card__title {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-xl);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-2);
+    }
+    .solution-card__body { font-size: var(--text-sm); color: var(--color-neutral); line-height: 1.7; }
+
+    /* ─── VOOR WIE ───────────────────────────────────────────── */
+    .wie-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+    }
+    .wie-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-line);
+      border-radius: 2px;
+      padding: var(--space-4);
+      transition: border-color 200ms ease-out, transform 200ms ease-out;
+      cursor: pointer;
+    }
+    .wie-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .wie-card__title {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-xl);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-2);
+    }
+    .wie-card__body { font-size: var(--text-sm); color: var(--color-neutral); line-height: 1.7; }
+    .wie-footnote {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-neutral);
+      margin-top: var(--space-6);
+    }
+
+    /* ─── HOW IT WORKS ───────────────────────────────────────── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+    .how-step {
+      padding: var(--space-6) 0;
+      border-top: 1px solid var(--color-line);
+      transition: border-color 200ms ease-out, transform 200ms ease-out;
+      cursor: pointer;
+    }
+    .how-step:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .how-step__label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+    .how-step__title {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-xl);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-2);
+    }
+    .how-step__body { font-size: var(--text-sm); color: var(--color-neutral); line-height: 1.7; }
+
+    /* ─── COMPARISON ─────────────────────────────────────────── */
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+    .comp-card {
+      border-radius: 2px;
+      padding: 24px;
+    }
+    .comp-card--manual {
+      background: rgba(10,10,10,0.03);
+      border: 1px solid var(--color-line);
+    }
+    .comp-card--accent {
+      border: 1px solid var(--color-accent);
+      background: rgba(14,124,102,0.04);
+    }
+    .comp-card__title {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-2xl);
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-4);
+    }
+    .comp-card--accent .comp-card__title { color: var(--color-accent); }
+    .comp-list { display: flex; flex-direction: column; gap: var(--space-2); }
+    .comp-list__item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }
+    .comp-list__item--no .comp-list__mark {
+      color: rgba(10,10,10,0.3);
+      flex-shrink: 0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .comp-list__item--no .comp-list__text { color: var(--color-neutral); }
+    .comp-list__item--yes .comp-list__mark {
+      color: var(--color-accent);
+      flex-shrink: 0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .comp-list__item--yes .comp-list__text { color: var(--color-foreground); }
+
+    /* ─── FOUNDER BLOCK ──────────────────────────────────────── */
+    .founder {
+      background: var(--color-background);
+    }
+    .founder__inner {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: var(--space-6);
+      align-items: flex-start;
+      max-width: 640px;
+    }
+    .founder__avatar {
+      width: 88px;
+      height: 88px;
+      background: var(--color-foreground);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #FFFFFF;
+    }
+    .founder__label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-neutral);
+      display: block;
+      margin-bottom: var(--space-1);
+    }
+    .founder__name {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-xl);
+      letter-spacing: -0.02em;
+      color: var(--color-foreground);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .founder__title {
+      font-size: var(--text-sm);
+      color: var(--color-neutral);
+      display: block;
+      margin-bottom: var(--space-3);
+    }
+    .founder__quote {
+      font-size: var(--text-base);
+      color: var(--color-foreground);
+      line-height: 1.7;
+      margin-bottom: var(--space-2);
+      border-left: 3px solid var(--color-accent);
+      padding-left: 20px;
+    }
+    .founder__location {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-neutral);
+      display: block;
+    }
+
+    /* ─── FAQ ────────────────────────────────────────────────── */
+    .faq { background: var(--color-background); }
+    .faq__list { max-width: 720px; }
+    .faq__item { border-bottom: 1px solid var(--color-line); }
+    .faq__q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      width: 100%;
+      padding: var(--space-4) 0;
+      text-align: left;
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-xl);
+      letter-spacing: -0.02em;
+      color: var(--color-foreground);
+      cursor: pointer;
+      transition: color 200ms ease-out;
+    }
+    .faq__q:hover { color: var(--color-accent); }
+    .faq__q:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    .faq__icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; }
+    .faq__icon::before,
+    .faq__icon::after {
+      content: '';
+      position: absolute;
+      background: var(--color-neutral);
+      transition: opacity 200ms ease-out, transform 200ms ease-out;
+    }
+    .faq__icon::before { width: 12px; height: 1px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .faq__icon::after { width: 1px; height: 12px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .faq__item.open .faq__icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+    .faq__a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms ease-out, padding-bottom 300ms ease-out;
+    }
+    .faq__item.open .faq__a { max-height: 300px; padding-bottom: var(--space-4); }
+    .faq__a p { font-size: var(--text-base); color: var(--color-neutral); line-height: 1.7; }
+
+    /* ─── EARLY ADOPTERS ─────────────────────────────────────── */
+    .early {
+      background: var(--color-sand);
+      border-top: 1px solid var(--color-line);
+    }
+    .early__content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      max-width: 560px;
+    }
+    .early__sub {
+      font-family: 'Neue Montreal', sans-serif;
+      font-weight: 500;
+      font-size: var(--text-lg);
+      color: var(--color-neutral);
+      line-height: 1.6;
+      max-width: 480px;
+    }
+    .early__commitment {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-neutral);
+    }
+
+    /* ─── CTA FINAL ──────────────────────────────────────────── */
+    .cta-final {
+      background: var(--color-accent);
+      padding: var(--space-12) 0;
+      text-align: center;
+    }
+    .cta-final .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+    }
+    .cta-final .section-label { color: rgba(255,255,255,0.65); }
+    .cta-final__heading {
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      max-width: 600px;
+      color: #FFFFFF;
+    }
+    .cta-final__sub {
+      font-size: var(--text-lg);
+      color: rgba(255,255,255,0.8);
+      max-width: 480px;
+      line-height: 1.6;
+    }
+    .cta-final__risk {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.75);
+    }
+    .btn--cta {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border-radius: 6px;
+      text-decoration: none;
+      background: #FFFFFF;
+      color: var(--color-accent);
+      padding: 18px 36px;
+      border: none;
+      cursor: pointer;
+      transition: background 200ms ease-out, transform 200ms ease-out;
+    }
+    .btn--cta:hover { background: var(--color-sand); color: var(--color-accent); transform: translateY(-1px); }
+    .btn--cta:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 3px; }
+
+    /* ─── EMAIL PREVIEW ──────────────────────────────────────── */
+    .email-preview__sub {
+      font-family: 'Neue Montreal', sans-serif;
+      font-weight: 500;
+      font-size: var(--text-base);
+      color: var(--color-neutral);
+      margin-top: var(--space-2);
+      line-height: 1.6;
+    }
+    .email-tabs {
+      display: flex;
+      margin-bottom: var(--space-6);
+      border-bottom: 1px solid var(--color-line);
+    }
+    .email-tab {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-neutral);
+      padding: var(--space-2) var(--space-4);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      cursor: pointer;
+      transition: color 150ms ease-out, border-color 150ms ease-out;
+    }
+    .email-tab:hover { color: var(--color-foreground); }
+    .email-tab.active { color: var(--color-foreground); border-bottom-color: var(--color-accent); }
+    .email-tab:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    .email-panel { display: none; }
+    .email-panel.active { display: block; }
+    .email-card {
+      max-width: 580px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-line);
+      border-radius: 2px;
+    }
+    .email-card__header {
+      background: var(--color-sand);
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--color-line);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .email-meta-row { font-size: var(--text-sm); line-height: 1.5; }
+    .email-meta-label { color: var(--color-neutral); margin-right: 6px; }
+    .email-meta-value { color: var(--color-foreground); }
+    .email-card__body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .email-card__body p { font-size: var(--text-base); color: var(--color-foreground); line-height: 1.7; }
+    .email-footer-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-neutral);
+      margin-top: var(--space-3);
+      max-width: 580px;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid rgba(10,10,10,0.10);
+      padding: var(--space-12) 0 var(--space-8);
+      background: var(--color-background);
+    }
+    .footer__main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-4);
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: var(--space-8);
+    }
+    .footer__logo {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-2xl);
+      color: var(--color-foreground);
+      text-decoration: none;
+      display: block;
+      margin-bottom: var(--space-3);
+      letter-spacing: -0.02em;
+    }
+    .footer__tagline {
+      font-size: var(--text-sm);
+      color: var(--color-neutral);
+      line-height: 1.6;
+    }
+    .footer__col-label {
+      display: block;
+      font-family: 'General Sans', sans-serif;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-foreground);
+      margin-bottom: var(--space-3);
+    }
+    .footer__nav-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .footer__nav-col a {
+      font-size: var(--text-sm);
+      color: var(--color-neutral);
+      text-decoration: none;
+      transition: color 200ms ease-out;
+    }
+    .footer__nav-col a:hover { color: var(--color-foreground); }
+    .footer__bottom {
+      max-width: 1200px;
+      margin: var(--space-8) auto 0;
+      padding: var(--space-4) var(--space-4) 0;
+      border-top: 1px solid rgba(10,10,10,0.06);
+      display: flex;
+      gap: var(--space-4);
+      font-size: var(--text-xs);
+      color: var(--color-neutral);
+      font-family: 'General Sans', sans-serif;
+      letter-spacing: 0.08em;
+    }
+    .footer__bottom a {
+      color: var(--color-neutral);
+      text-decoration: none;
+    }
+    .footer__social-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: var(--text-sm);
+      color: var(--color-neutral);
+      text-decoration: none;
+      transition: color 200ms ease-out;
+    }
+    .footer__social-link:hover { color: var(--color-accent); }
+    .footer__social-link svg { flex-shrink: 0; }
+
+    /* ─── WORDMARK FOOTER ────────────────────────────────────── */
+    .wordmark-footer {
+      overflow: hidden;
+      line-height: 0.82;
+      padding-top: var(--space-6);
+      user-select: none;
+      pointer-events: none;
+      background: var(--color-background);
+    }
+    .wordmark-footer span {
+      display: block;
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: clamp(140px, 24vw, 360px);
+      color: var(--color-foreground);
+      opacity: 0.055;
+      letter-spacing: -0.04em;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* ─── STICKY MOBILE CTA ──────────────────────────────────── */
+    .sticky-cta { display: none; }
+
+    /* ─── REDUCED MOTION ─────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .section { padding: 64px 0; }
+      .hero__heading { font-size: 3.25rem; }
+      .problem-grid { grid-template-columns: repeat(2, 1fr); }
+      .solution-grid { grid-template-columns: repeat(2, 1fr); }
+      .wie-grid { grid-template-columns: repeat(2, 1fr); }
+      .how-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__main { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 64px 0; }
+      .nav__links { display: none; }
+      .hero {
+        padding-top: 56px;
+        padding-bottom: 64px;
+      }
+      .hero .container {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .hero__heading { font-size: 2.5rem; }
+      .hero__sub { font-size: var(--text-base); }
+      .hero__mockup {
+        max-width: 100%;
+        margin-top: 32px;
+      }
+      .stats .container { grid-template-columns: 1fr; gap: 0; }
+      .stats__divider { display: none; }
+      .stat {
+        padding: 20px 0 var(--space-4);
+        text-align: left;
+        border-top: 2px solid var(--color-accent);
+        border-bottom: 1px solid var(--color-line);
+      }
+      .stat:last-child { border-bottom: none; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .solution-grid { grid-template-columns: 1fr; }
+      .wie-grid { grid-template-columns: 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
+      .comparison-grid { grid-template-columns: 1fr; }
+      .section__heading { font-size: var(--text-3xl); }
+      .cta-final__heading { font-size: var(--text-4xl); }
+      .footer__main { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+      .container { padding-inline: var(--space-3); }
+      .founder__inner { grid-template-columns: 1fr; }
+      .sticky-cta {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 200;
+        background: var(--color-background);
+        border-top: 1px solid var(--color-line);
+        padding: 12px 20px;
+        transition: opacity 200ms ease-out, transform 200ms ease-out;
+      }
+      .sticky-cta.hidden {
+        opacity: 0;
+        transform: translateY(100%);
+        pointer-events: none;
+      }
+      .sticky-cta__btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: var(--text-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        border-radius: 6px;
+        background: var(--color-accent);
+        color: #FFFFFF;
+        padding: 14px 20px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 200ms ease-out, transform 200ms ease-out;
+      }
+      .sticky-cta__btn:hover { background: var(--color-hover); transform: translateY(-1px); }
+      .sticky-cta__btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+    }
+
+    /* ─── SCROLL ANIMATIONS ──────────────────────────── */
+    section:not(.hero) {
+      transform: translateY(16px);
+      transition: transform 900ms ease-out;
+    }
+    section:not(.hero).animate-in {
+      transform: translateY(0);
+    }
+
+    /* ─── FEATURE DARK BLOCK ─────────────────────────── */
+    .feature-dark {
+      background: var(--color-foreground);
+      padding: var(--space-12) 0;
+    }
+    .feature-dark__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-4);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+    .email-frame {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .email-frame__bar {
+      background: rgba(255,255,255,0.06);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .email-frame__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .email-frame__content {
+      padding: 20px;
+    }
+    @media (max-width: 768px) {
+      .feature-dark__inner {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════ NAV ═══════════════════ -->
+  <nav class="nav" id="main-nav" role="navigation" aria-label="Hoofdnavigatie">
+    <div class="container">
+      <a class="nav__logo" href="/" aria-label="NĀRO — naar de homepage">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="18.20 -11.20 737.13 235.10" height="22" aria-hidden="true">
+          <g fill="#0A0A0A" fill-rule="evenodd">
+            <path d="M54.08 220L18.20 220L18.20 32.80L54.08 32.80L135.46 157.60L135.46 32.80L171.34 32.80L171.34 220L135.46 220L54.08 95.20L54.08 220Z"/>
+            <path d="M208.65 220L180.44 220L241.28 32.80L280.41 32.80L341.25 220L313.04 220L299.13 177.75L222.30 177.75L208.65 220ZM230.62 152.27L290.81 152.27L260.52 59.97L230.62 152.27Z"/>
+            <path d="M385.71 220L350.35 220L350.35 32.80L429.39 32.80Q432.12 32.80 436.74 33.00Q441.35 33.19 444.99 33.84Q461.76 36.44 472.49 44.89Q483.21 53.34 488.28 66.14Q493.35 78.95 493.35 94.68Q493.35 118.21 481.65 134.85Q474.37 145.25 462.15 150.71L495.95 220L455.91 220L425.10 156.56L385.71 156.56L385.71 220ZM385.71 65.82L385.71 123.54L427.83 123.54Q430.56 123.54 433.81 123.28Q437.06 123.02 439.79 122.24Q446.94 120.29 450.84 115.67Q454.74 111.06 456.24 105.41Q457.73 99.75 457.73 94.68Q457.73 89.61 456.24 83.95Q454.74 78.30 450.84 73.69Q446.94 69.07 439.79 67.12Q437.06 66.34 433.81 66.08Q430.56 65.82 427.83 65.82L385.71 65.82Z"/>
+            <path d="M590.59 223.90Q562.51 223.90 542.16 211.68Q521.82 199.46 510.83 177.49Q499.85 155.52 499.85 126.40Q499.85 97.28 510.83 75.31Q521.82 53.34 542.16 41.12Q562.51 28.90 590.59 28.90Q618.67 28.90 639.01 41.12Q659.36 53.34 670.35 75.31Q681.33 97.28 681.33 126.40Q681.33 155.52 670.35 177.49Q659.36 199.46 639.01 211.68Q618.67 223.90 590.59 223.90ZM590.59 190.62Q608.40 190.88 620.23 182.95Q632.06 175.02 637.97 160.46Q643.89 145.90 643.89 126.40Q643.89 106.90 637.97 92.60Q632.06 78.30 620.23 70.37Q608.40 62.44 590.59 62.18Q572.78 61.92 560.95 69.85Q549.12 77.78 543.20 92.34Q537.29 106.90 537.29 126.40Q537.29 145.90 543.20 160.20Q549.12 174.50 560.95 182.43Q572.78 190.36 590.59 190.62Z"/>
+          </g>
+          <rect x="180.44" y="-11.20" width="160.81" height="22" rx="3" fill="#0E7C66"/>
+          <circle cx="733.33" cy="198.00" r="22" fill="#0E7C66"/>
+        </svg>
+      </a>
+      <ul class="nav__links">
+        <li><a href="#hoe-het-werkt">Hoe het werkt</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="/prijzen/">Prijzen</a></li>
+        <li><a href="#contact">Over NĀRO</a></li>
+      </ul>
+      <a class="btn btn--primary" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer">
+        Boek een gratis check →
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__label-wrap">
+          <span class="hero__label-line" aria-hidden="true"></span>
+          <span class="hero__label section-label section-label--accent">NĀRO CLOSE</span>
+        </div>
+        <h1 class="hero__heading" id="hero-heading">
+          Jij verstuurt de offerte. NĀRO sluit hem.
+        </h1>
+        <p class="hero__sub">
+          Elke offerte die je verstuurt, wordt opgevolgd. Automatisch.
+        </p>
+        <div>
+          <a class="btn btn--primary-lg" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer">
+            Boek je gratis 15-minuten check →
+          </a>
+        </div>
+        <span class="hero__scarcity">
+          Nog 3 pilotplekken beschikbaar in mei — geen setup kosten.
+        </span>
+      </div>
+
+      <div class="hero__mockup" aria-hidden="true">
+        <div class="mockup__header">NĀRO CLOSE — ACTIEF</div>
+        <div class="mockup__timeline">
+
+          <div class="mockup__row">
+            <div class="mockup__dot mockup__dot--active"></div>
+            <div class="mockup__info">
+              <span class="mockup__day">DAG 3</span>
+              <span class="mockup__title">Offerte warmtepomp — vervolgvraag</span>
+              <span class="mockup__email">jan@devriesinstallatie.nl</span>
+            </div>
+            <span class="mockup__chip mockup__chip--sent">VERZONDEN</span>
+          </div>
+
+          <div class="mockup__row" style="opacity:0.55;">
+            <div class="mockup__dot mockup__dot--pending"></div>
+            <div class="mockup__info">
+              <span class="mockup__day">DAG 7</span>
+              <span class="mockup__title">Re: Offerte warmtepomp</span>
+              <span class="mockup__email">jan@devriesinstallatie.nl</span>
+            </div>
+            <span class="mockup__chip mockup__chip--planned">GEPLAND</span>
+          </div>
+
+          <div class="mockup__row" style="opacity:0.35;">
+            <div class="mockup__dot mockup__dot--pending"></div>
+            <div class="mockup__info">
+              <span class="mockup__day">DAG 14</span>
+              <span class="mockup__title">Re: Offerte warmtepomp — laatste bericht</span>
+              <span class="mockup__email">jan@devriesinstallatie.nl</span>
+            </div>
+            <span class="mockup__chip mockup__chip--planned">GEPLAND</span>
+          </div>
+
+        </div>
+        <div class="mockup__footer">✓ Stopt automatisch bij reactie</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ STATS ═══════════════════ -->
+  <section class="stats" aria-label="Kerncijfers" data-motion="up">
+    <div class="container">
+      <div class="stat">
+        <span class="stat__number">1 op 3</span>
+        <span class="stat__label">Prospects reageert op een follow-up</span>
+      </div>
+      <div class="stats__divider" aria-hidden="true"></div>
+      <div class="stat">
+        <span class="stat__number">Dag 3 · 7 · 14</span>
+        <span class="stat__label">Automatische opvolging op het juiste moment</span>
+      </div>
+      <div class="stats__divider" aria-hidden="true"></div>
+      <div class="stat">
+        <span class="stat__number">0 min</span>
+        <span class="stat__label">Extra werk voor jou per offerte</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ PROBLEEM ═══════════════════ -->
+  <section class="section section--bg problem" aria-labelledby="problem-heading" data-motion="left">
+    <div class="container">
+      <div class="section__intro">
+        <span class="section-label">HET PROBLEEM</span>
+        <h2 class="section-heading section__heading" id="problem-heading">
+          Jij verstuurt de offerte. Dan wordt het stil.
+        </h2>
+      </div>
+      <div class="problem-grid">
+        <article class="problem-card">
+          <h3 class="problem-card__title">Jij verstuurt</h3>
+          <p class="problem-card__body">Je schrijft een zorgvuldige offerte. Je verstuurt hem. En dan wacht je af.</p>
+        </article>
+        <article class="problem-card">
+          <h3 class="problem-card__title">Dan stilte</h3>
+          <p class="problem-card__body">Geen reactie. Geen bevestiging. Alleen onzekerheid — en een vol werkschema.</p>
+        </article>
+        <article class="problem-card">
+          <h3 class="problem-card__title">Concurrent belt</h3>
+          <p class="problem-card__body">Terwijl jij wacht, belt de concurrent wél. En pakt de deal die jij had verdiend.</p>
+        </article>
+        <article class="problem-card">
+          <h3 class="problem-card__title">Uren kwijt</h3>
+          <p class="problem-card__body">Of je belt zelf drie keer — en voelt je opdringerig. Dit kost tijd die je niet hebt.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ OPLOSSING ═══════════════════ -->
+  <section class="section section--sand solution" aria-labelledby="solution-heading" data-motion="up">
+    <div class="container">
+      <div class="section__intro">
+        <span class="section-label">DE OPLOSSING</span>
+        <h2 class="section-heading section__heading" id="solution-heading">
+          Terwijl jij werkt, volgt NĀRO op.
+        </h2>
+      </div>
+      <div class="solution-grid">
+        <article class="solution-card">
+          <span class="solution-card__number">01</span>
+          <h3 class="solution-card__title">Automatische opvolging</h3>
+          <p class="solution-card__body">Elke offerte die je verstuurt, wordt automatisch opgepakt. Geen handmatige actie nodig.</p>
+        </article>
+        <article class="solution-card">
+          <span class="solution-card__number">02</span>
+          <h3 class="solution-card__title">Klinkt als jij</h3>
+          <p class="solution-card__body">De follow-ups komen vanuit jouw naam en jouw e-mailadres. De klant ziet geen verschil.</p>
+        </article>
+        <article class="solution-card">
+          <span class="solution-card__number">03</span>
+          <h3 class="solution-card__title">Stopt bij reactie</h3>
+          <p class="solution-card__body">Zodra de prospect reageert, stopt NĀRO automatisch. Nooit opdringerig. Altijd op tijd.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FEATURE DARK ═══════════════ -->
+  <section class="feature-dark" data-motion="up">
+    <div class="feature-dark__inner">
+      <div class="feature-dark__copy">
+        <span class="section-label" style="color: var(--color-accent);">ZO ZIET HET ERUIT</span>
+        <h2 style="color: #ffffff; font-size: var(--text-4xl); font-family: 'Satoshi', sans-serif; font-weight: 700; margin: var(--space-3) 0; line-height: 1.2;">Jouw naam.<br>Jouw stijl.<br>Automatisch verstuurd.</h2>
+        <p style="color: rgba(255,255,255,0.6); font-size: var(--text-base); line-height: 1.7; max-width: 380px;">De klant ontvangt een e-mail vanuit jouw eigen adres — geschreven in jouw toon. Geen generiek bericht. Geen robot. Gewoon jij, op het juiste moment.</p>
+        <div style="margin-top: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2);">
+          <div style="display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.8); font-size: var(--text-sm);">
+            <span style="color: var(--color-accent); font-weight: 700;">✓</span> Verstuurd vanuit jouw eigen e-mailadres
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.8); font-size: var(--text-sm);">
+            <span style="color: var(--color-accent); font-weight: 700;">✓</span> Stopt automatisch zodra de prospect reageert
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.8); font-size: var(--text-sm);">
+            <span style="color: var(--color-accent); font-weight: 700;">✓</span> Op dag 3, 7 en 14 — nooit opdringerig
+          </div>
+        </div>
+      </div>
+      <div class="feature-dark__visual">
+        <div class="email-frame">
+          <div class="email-frame__bar">
+            <span class="email-frame__dot" style="background:#ff5f57"></span>
+            <span class="email-frame__dot" style="background:#ffbd2e"></span>
+            <span class="email-frame__dot" style="background:#28c840"></span>
+            <span style="color:rgba(255,255,255,0.3); font-size:11px; margin-left:8px; font-family: 'General Sans', sans-serif;">Gmail</span>
+          </div>
+          <div class="email-frame__content">
+            <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
+              <div style="font-size: 11px; color: rgba(255,255,255,0.4); font-family: 'General Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">DAG 3 — AUTOMATISCH VERSTUURD</div>
+              <div style="font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 3px;">Re: Offerte warmtepomp — even een korte vraag</div>
+              <div style="font-size: 12px; color: rgba(255,255,255,0.4);">jan@devriesinstallatie.nl → p.bakker@projectbv.nl</div>
+            </div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.7;">
+              <p style="margin: 0 0 10px;">Hoi Peter,</p>
+              <p style="margin: 0 0 10px;">Ik stuurde je vorige week een offerte voor de warmtepomp installatie. Ik wilde even checken of je nog vragen hebt of dat er iets niet duidelijk was.</p>
+              <p style="margin: 0 0 10px;">Geen druk — ik hoor graag als je meer tijd nodig hebt.</p>
+              <p style="margin: 0;">Met vriendelijke groet,<br><strong style="color:rgba(255,255,255,0.9);">Jan de Vries</strong><br><span style="color:rgba(255,255,255,0.4);">De Vries Installatie · 06-12345678</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ VOOR WIE ═══════════════════ -->
+  <section class="section section--bg voor-wie" aria-labelledby="voor-wie-heading" data-motion="scale">
+    <div class="container">
+      <div class="section__intro">
+        <span class="section-label">VOOR WIE</span>
+        <h2 class="section-heading section__heading" id="voor-wie-heading">
+          Voor installateurs die genoeg hebben van stilte na een offerte.
+        </h2>
+      </div>
+      <div class="wie-grid">
+        <article class="wie-card">
+          <h3 class="wie-card__title">CV &amp; Klimaat</h3>
+          <p class="wie-card__body">Je installeert cv-ketels, warmtepompen en airco's. Je werkt op projectbasis — elke offerte telt.</p>
+        </article>
+        <article class="wie-card">
+          <h3 class="wie-card__title">Elektro &amp; Installatie</h3>
+          <p class="wie-card__body">Je bent elektricien of loodgieter. Druk, weinig tijd voor admin — maar elke deal telt.</p>
+        </article>
+        <article class="wie-card">
+          <h3 class="wie-card__title">Aannemerij</h3>
+          <p class="wie-card__body">Je werkt projectmatig met meerdere offertes tegelijk. Een gemiste reactie is een maand werk die wegvloeit.</p>
+        </article>
+        <article class="wie-card">
+          <h3 class="wie-card__title">Installatiebedrijf 5–50 man</h3>
+          <p class="wie-card__body">Je hebt een team, maar geen capaciteit voor systematische opvolging. NĀRO neemt dat structureel van je over.</p>
+        </article>
+      </div>
+      <p class="wie-footnote">
+        Voor installatie- en HVAC-bedrijven door heel Nederland met minimaal 20 offertes per maand.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ HOE HET WERKT ═══════════════════ -->
+  <section class="section section--sand how" id="hoe-het-werkt" aria-labelledby="how-heading">
+    <div class="container">
+      <div class="section__intro">
+        <span class="section-label">HOE HET WERKT</span>
+        <h2 class="section-heading section__heading" id="how-heading">
+          Drie stappen. Nul extra werk.
+        </h2>
+      </div>
+      <div class="how-grid">
+        <div class="how-step">
+          <span class="how-step__label">STAP 01</span>
+          <h3 class="how-step__title">Voeg één BCC-adres toe</h3>
+          <p class="how-step__body">Zet het NĀRO BCC-adres op je offerte. Dat is de enige aanpassing die je ooit maakt.</p>
+        </div>
+        <div class="how-step">
+          <span class="how-step__label">STAP 02</span>
+          <h3 class="how-step__title">NĀRO volgt automatisch op</h3>
+          <p class="how-step__body">Op dag 3, 7 en 14 stuurt NĀRO een follow-up — vanuit jouw naam, in jouw stijl.</p>
+        </div>
+        <div class="how-step">
+          <span class="how-step__label">STAP 03</span>
+          <h3 class="how-step__title">Jij sluit de deal</h3>
+          <p class="how-step__body">De klant reageert. Jij pakt de telefoon. NĀRO heeft het voorwerk al gedaan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ EMAIL PREVIEW ═══════════════════ -->
+  <section class="section section--bg email-preview" aria-labelledby="email-preview-heading" data-motion="right">
+    <div class="container">
+      <div class="section__intro">
+        <span class="section-label">ZO KLINKT EEN NĀRO FOLLOW-UP</span>
+        <h2 class="section-heading section__heading" id="email-preview-heading">
+          Jouw naam. Jouw stijl. Automatisch verstuurd.
+        </h2>
+        <p class="email-preview__sub">De klant ziet geen verschil — omdat er geen verschil is.</p>
+      </div>
+
+      <div class="email-tabs" role="tablist" aria-label="E-mail voorbeelden">
+        <button class="email-tab active" role="tab" aria-selected="true" aria-controls="panel-dag3" data-tab="dag3">Dag 3</button>
+        <button class="email-tab" role="tab" aria-selected="false" aria-controls="panel-dag7" data-tab="dag7">Dag 7</button>
+        <button class="email-tab" role="tab" aria-selected="false" aria-controls="panel-dag14" data-tab="dag14">Dag 14</button>
+      </div>
+
+      <div class="email-panel active" id="panel-dag3" role="tabpanel">
+        <div class="email-card">
+          <div class="email-card__header">
+            <div class="email-meta-row"><span class="email-meta-label">Van:</span><span class="email-meta-value">Jan de Vries &lt;jan@devriesinstallatie.nl&gt;</span></div>
+            <div class="email-meta-row"><span class="email-meta-label">Aan:</span><span class="email-meta-value">p.bakker@projectbv.nl</span></div>
+            <div class="email-meta-row"><span class="email-meta-label">Onderwerp:</span><span class="email-meta-value">Re: Offerte warmtepomp — even een korte vraag</span></div>
+          </div>
+          <div class="email-card__body">
+            <p>Hoi Peter,</p>
+            <p>Ik stuurde je vorige week een offerte voor de warmtepomp installatie. Ik wilde even checken of je nog vragen hebt of dat er iets niet duidelijk was.</p>
+            <p>Geen druk — ik hoor graag als je meer tijd nodig hebt.</p>
+            <p>Met vriendelijke groet,<br>Jan de Vries<br>De Vries Installatie | 06-12345678</p>
+          </div>
+        </div>
+        <p class="email-footer-note">VERSTUURD OP DAG 3 — AUTOMATISCH — VANUIT JANS EIGEN E-MAILADRES</p>
+      </div>
+
+      <div class="email-panel" id="panel-dag7" role="tabpanel">
+        <div class="email-card">
+          <div class="email-card__header">
+            <div class="email-meta-row"><span class="email-meta-label">Van:</span><span class="email-meta-value">Jan de Vries &lt;jan@devriesinstallatie.nl&gt;</span></div>
+            <div class="email-meta-row"><span class="email-meta-label">Aan:</span><span class="email-meta-value">p.bakker@projectbv.nl</span></div>
+            <div class="email-meta-row"><span class="email-meta-label">Onderwerp:</span><span class="email-meta-value">Re: Offerte warmtepomp — al een beslissing?</span></div>
+          </div>
+          <div class="email-card__body">
+            <p>Hoi Peter,</p>
+            <p>Ik wil je niet te veel belasten, maar ik vroeg me af of je al een beslissing hebt kunnen nemen over de offerte.</p>
+            <p>Als er iets in de weg staat of als je meer informatie nodig hebt, laat het gerust weten.</p>
+            <p>Met vriendelijke groet,<br>Jan de Vries<br>De Vries Installatie | 06-12345678</p>
+          </div>
+        </div>
+        <p class="email-footer-note">VERSTUURD OP DAG 7 — AUTOMATISCH — VANUIT JANS EIGEN E-MAILADRES</p>
+      </div>
+
+      <div class="email-panel" id="panel-dag14" role="tabpanel">
+        <div class="email-card">
+          <div class="email-card__header">
+            <div class="email-meta-row"><span class="email-meta-label">Van:</span><span class="email-meta-value">Jan de Vries &lt;jan@devriesinstallatie.nl&gt;</span></div>
+            <div class="email-meta-row"><span class="email-meta-label">Aan:</span><span class="email-meta-value">p.bakker@projectbv.nl</span></div>
+            <div class="email-meta-row"><span class="email-meta-label">Onderwerp:</span><span class="email-meta-value">Re: Offerte warmtepomp — afronden of bewaren?</span></div>
+          </div>
+          <div class="email-card__body">
+            <p>Hoi Peter,</p>
+            <p>Dit is mijn laatste berichtje over de offerte. Als je de opdracht ergens anders hebt neergelegd of het project heeft vertraging, dat begrijp ik volledig.</p>
+            <p>Mocht je in de toekomst iets nodig hebben — je weet me te vinden.</p>
+            <p>Met vriendelijke groet,<br>Jan de Vries<br>De Vries Installatie | 06-12345678</p>
+          </div>
+        </div>
+        <p class="email-footer-note">VERSTUURD OP DAG 14 — AUTOMATISCH — VANUIT JANS EIGEN E-MAILADRES</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ VERGELIJKING ═══════════════════ -->
+  <section class="section section--sand comparison" aria-labelledby="comparison-heading" data-motion="up">
+    <div class="container">
+      <div class="section__intro">
+        <span class="section-label">WAAROM NĀRO</span>
+        <h2 class="section-heading section__heading" id="comparison-heading">
+          Handmatig opvolgen vs. NĀRO Close.
+        </h2>
+      </div>
+      <div class="comparison-grid">
+        <div class="comp-card comp-card--manual">
+          <h3 class="comp-card__title">Handmatig</h3>
+          <ul class="comp-list">
+            <li class="comp-list__item comp-list__item--no">
+              <span class="comp-list__mark">×</span>
+              <span class="comp-list__text">Vergeet je een follow-up te sturen</span>
+            </li>
+            <li class="comp-list__item comp-list__item--no">
+              <span class="comp-list__mark">×</span>
+              <span class="comp-list__text">Voelt opdringerig om drie keer te bellen</span>
+            </li>
+            <li class="comp-list__item comp-list__item--no">
+              <span class="comp-list__mark">×</span>
+              <span class="comp-list__text">Kost uren die je niet hebt</span>
+            </li>
+            <li class="comp-list__item comp-list__item--no">
+              <span class="comp-list__mark">×</span>
+              <span class="comp-list__text">Inconsistent: elke offerte anders</span>
+            </li>
+          </ul>
+        </div>
+        <div class="comp-card comp-card--accent">
+          <h3 class="comp-card__title">NĀRO Close</h3>
+          <ul class="comp-list">
+            <li class="comp-list__item comp-list__item--yes">
+              <span class="comp-list__mark">✓</span>
+              <span class="comp-list__text">Volgt altijd op, nooit vergeten</span>
+            </li>
+            <li class="comp-list__item comp-list__item--yes">
+              <span class="comp-list__mark">✓</span>
+              <span class="comp-list__text">Stopt automatisch bij reactie — nooit opdringerig</span>
+            </li>
+            <li class="comp-list__item comp-list__item--yes">
+              <span class="comp-list__mark">✓</span>
+              <span class="comp-list__text">Nul extra werk per offerte</span>
+            </li>
+            <li class="comp-list__item comp-list__item--yes">
+              <span class="comp-list__mark">✓</span>
+              <span class="comp-list__text">Consistent: elk prospect dezelfde aanpak</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ OPRICHTER ═══════════════════ -->
+  <section class="section section--bg founder" aria-labelledby="founder-heading" data-motion="left">
+    <div class="container">
+      <div class="founder__inner">
+        <div class="founder__avatar" data-photo-placeholder="true" aria-hidden="true">J</div>
+        <div>
+          <span class="founder__label">OVER DE OPRICHTER</span>
+          <span class="founder__name" id="founder-heading">Joshua Manusama</span>
+          <span class="founder__title">Oprichter van NĀRO</span>
+          <p class="founder__quote">
+            "Ik bouw NĀRO omdat ik zag hoeveel omzet installateurs laten liggen — niet door slechte offertes, maar door het gebrek aan opvolging. NĀRO Close is de oplossing die ik zelf zou willen als ik hun positie had."
+          </p>
+          <span class="founder__location">FOUNDER — NĀRO · NEDERLAND</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FAQ ═══════════════════ -->
+  <section class="section section--bg faq" id="faq" aria-labelledby="faq-heading" data-motion="up">
+    <div class="container">
+      <div class="section__intro">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-heading section__heading" id="faq-heading">
+          Alles wat je wil weten.
+        </h2>
+      </div>
+      <div class="faq__list">
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">
+            Hoe werkt de koppeling met mijn e-mail?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a">
+            <p>Jij voegt één e-mailadres toe als BCC bij je offerte. NĀRO pikt dit op en start automatisch de opvolging. Geen integratie, geen technische installatie.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">
+            Ziet de klant dat het automatisch gaat?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a">
+            <p>Nee. De follow-ups komen vanuit jouw eigen naam en e-mailadres. De klant ziet precies hetzelfde als wanneer jij zelf zou opvolgen.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">
+            Wat als de prospect al eerder reageert?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a">
+            <p>NĀRO stopt direct. Er wordt nooit een follow-up gestuurd na een reactie. Altijd respectvol, nooit opdringerig.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">
+            Hoeveel offertes heb ik nodig?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a">
+            <p>Minimaal 20 per maand om merkbaar verschil te zien. Heb je minder? Neem contact op — we kijken samen wat haalbaar is.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">
+            Wat kost het?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a">
+            <p>De pilot kost €300 per maand. Geen setup kosten, geen verplichting na 3 maanden. Je betaalt alleen voor resultaat dat je kunt meten.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ EARLY ADOPTERS ═══════════════════ -->
+  <section class="section early" aria-labelledby="early-heading" data-motion="up">
+    <div class="container">
+      <div class="early__content">
+        <span class="section-label">EARLY ADOPTERS</span>
+        <h2 class="section-heading section__heading" id="early-heading">
+          De eerste installateurs starten in mei.
+        </h2>
+        <p class="early__sub">
+          Pilotresultaten volgen. Wil jij er vroeg bij zijn?
+        </p>
+        <div>
+          <a class="btn btn--primary-lg" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer">
+            Boek je plek →
+          </a>
+        </div>
+        <span class="early__commitment">Geen verplichtingen — gesprek duurt 15 minuten</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CTA FINAL ═══════════════════ -->
+  <section class="section cta-final" id="contact" aria-labelledby="cta-heading" data-motion="up">
+    <div class="container">
+      <span class="section-label">KLAAR OM TE STARTEN?</span>
+      <h2 class="section-heading cta-final__heading" id="cta-heading">
+        Nog 3 pilotplekken beschikbaar in mei.
+      </h2>
+      <p class="cta-final__sub">
+        Geen setup kosten. Geen contract. Geen gedoe. Wel meer omzet uit offertes die je al verstuurt.
+      </p>
+      <span class="cta-final__risk">
+        De pilot loopt 3 maanden — daarna stop je of ga je door. Jij beslist.
+      </span>
+      <div>
+        <a class="btn--cta" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer">
+          Boek je gratis 15-minuten check →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__main">
+      <div class="footer__brand-col">
+        <a href="/" class="footer__logo">NĀRO</a>
+        <p class="footer__tagline">Jouw partner in meer omzet.</p>
+      </div>
+      <div class="footer__nav-col">
+        <span class="footer__col-label">Product</span>
+        <a href="#hoe-het-werkt">Hoe het werkt</a>
+        <a href="/prijzen/">Prijzen</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer__nav-col">
+        <span class="footer__col-label">Bedrijf</span>
+        <a href="#contact">Over NĀRO</a>
+        <a href="mailto:contact@gonaro.ai">Contact</a>
+      </div>
+      <div class="footer__nav-col">
+        <span class="footer__col-label">Juridisch</span>
+        <a href="/privacy/">Privacy</a>
+        <a href="/algemene-voorwaarden/">Voorwaarden</a>
+      </div>
+      <div class="footer__nav-col">
+        <span class="footer__col-label">Socials</span>
+        <a href="https://wa.me/31681040019" target="_blank" rel="noopener" class="footer__social-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:contact@gonaro.ai" class="footer__social-link" style="display:none">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.linkedin.com/in/joshua-manusama-999147183/" target="_blank" rel="noopener" class="footer__social-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:contact@gonaro.ai" class="footer__social-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          Email
+        </a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 NĀRO. All Rights Reserved.</span>
+      <span>KvK [nummer]</span>
+      <a href="mailto:contact@gonaro.ai">contact@gonaro.ai</a>
+    </div>
+  </footer>
+
+  <div class="wordmark-footer">
+    <span>NĀRO</span>
+  </div>
+
+  <!-- ═══════════════════ STICKY MOBILE CTA ═══════════════════ -->
+  <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+    <a class="sticky-cta__btn" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer">
+      Boek je gratis 15-minuten check →
+    </a>
+  </div>
+
+  <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+  <script>
+    // Nav scroll border
+    window.addEventListener('scroll', function() {
+      var nav = document.getElementById('main-nav');
+      if (window.scrollY > 80) {
+        nav.classList.add('nav--scrolled');
+      } else {
+        nav.classList.remove('nav--scrolled');
+      }
+    }, { passive: true });
+
+    // Email tabs
+    document.querySelectorAll('.email-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var target = tab.dataset.tab;
+        document.querySelectorAll('.email-tab').forEach(function(t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.email-panel').forEach(function(p) {
+          p.classList.remove('active');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        var panel = document.getElementById('panel-' + target);
+        if (panel) panel.classList.add('active');
+      });
+    });
+
+    // Sticky CTA
+    (function() {
+      var stickyCta = document.getElementById('sticky-cta');
+      var finalCta = document.querySelector('.cta-final');
+      if (!stickyCta || !finalCta) return;
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            stickyCta.classList.add('hidden');
+            stickyCta.setAttribute('aria-hidden', 'true');
+          } else {
+            stickyCta.classList.remove('hidden');
+            stickyCta.setAttribute('aria-hidden', 'false');
+          }
+        });
+      }, { threshold: 0.1 });
+      obs.observe(finalCta);
+    })();
+
+    // FAQ accordion
+    document.querySelectorAll('.faq__q').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.faq__item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq__item.open').forEach(function(i) {
+          i.classList.remove('open');
+          i.querySelector('.faq__q').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+  <script src="/assets/js/motion-animations.js"></script>
+</body>
+</html>
