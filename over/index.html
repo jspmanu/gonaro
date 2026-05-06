@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NĀRO — Over ons</title>
+  <title>NĀRO: Over ons</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%23F3EEE7'/><rect x='6' y='10' width='20' height='3' rx='1' fill='%230E7C66'/><circle cx='24' cy='22' r='3.5' fill='%230E7C66'/></svg>">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,400&f[]=general-sans@500,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -495,9 +495,9 @@
 <body>
 
   <!-- Nav -->
-  <div class="nav-wrapper">
-    <nav class="nav" aria-label="Hoofdnavigatie">
-      <a class="nav__logo" href="/" aria-label="NĀRO — terug naar home">
+  <nav class="nav" id="main-nav" role="navigation" aria-label="Hoofdnavigatie">
+    <div class="container">
+      <a class="nav__logo" href="/" aria-label="NARO - naar de homepage">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="18.20 -11.20 737.13 235.10" height="22" aria-hidden="true">
           <g fill="#0A0A0A" fill-rule="evenodd">
             <path d="M54.08 220L18.20 220L18.20 32.80L54.08 32.80L135.46 157.60L135.46 32.80L171.34 32.80L171.34 220L135.46 220L54.08 95.20L54.08 220Z"/>
@@ -511,53 +511,49 @@
       </a>
       <ul class="nav__links">
         <li><a href="/#hoe-het-werkt">Hoe het werkt</a></li>
-        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/#waarom">Voordelen</a></li>
+        <li><a href="/over/" class="active" aria-current="page">Over NARO</a></li>
         <li><a href="/prijzen/">Prijzen</a></li>
-        <li><a class="active" href="/over/">Over NĀRO</a></li>
-        <li>
-          <a class="nav__cta" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer">
-            Boek een gratis check →
-          </a>
-        </li>
+        <li><a href="/#faq">FAQ</a></li>
       </ul>
-      <a class="nav__cta" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" style="display:none;" id="mobile-cta">
-        Boek een gratis check →
+      <a class="btn btn--primary" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer">
+        Boek een gratis check
       </a>
-    </nav>
-  </div>
+    </div>
+  </nav>
 
   <main>
 
-    <!-- ═══════════ Section 1 — Hero ═══════════ -->
+    <!-- Section: Hero -->
     <section class="hero-about" aria-labelledby="hero-heading">
       <div class="hero-about__inner">
-        <span class="section-label section-label--accent">— OVER NĀRO</span>
+        <span class="section-label section-label--accent">OVER NĀRO</span>
         <h1 class="hero-about__heading" id="hero-heading">Vakmannen verdienen meer dan ze binnenhalen.</h1>
         <p class="hero-about__sub">
-          Te veel goede offertes belanden in een inbox en worden nooit opgevolgd. Niet omdat ondernemers het niet willen — maar omdat de dag al vol zit voordat ze eraan toekomen. NĀRO lost dat op.
+          Te veel goede offertes belanden in een inbox en worden nooit opgevolgd. Niet omdat ondernemers het niet willen, maar omdat de dag al vol zit voordat ze eraan toekomen. NĀRO lost dat op.
         </p>
       </div>
     </section>
 
-    <!-- ═══════════ Section 2 — Founder ═══════════ -->
+    <!-- Section: Founder -->
     <section class="section founder" aria-labelledby="founder-heading">
       <div class="container">
         <div class="founder__grid">
           <div class="founder__text">
-            <span class="section-label section-label--accent">— DE FOUNDER</span>
+            <span class="section-label section-label--accent">DE FOUNDER</span>
             <h2 class="founder__heading" id="founder-heading">Joshua Manusama</h2>
             <p class="founder__subtitle">Founder · Rotterdam</p>
             <div class="founder__body">
               <p>Joshua Manusama is founder van NĀRO en werkzaam als Commercial Director.</p>
-              <p>In die rol zag hij één patroon dat keer op keer terugkwam: bedrijven die uitstekend werk leveren maar structureel omzet laten liggen doordat offertes niet worden opgevolgd. Niet door onwil — maar door gebrek aan tijd en systeem.</p>
-              <p>Tientallen offertes per maand verstuurd. Een deel gewonnen. De rest bleef liggen — op dag 3, dag 7, dag 14 — zonder opvolging, zonder reactie, zonder opdracht.</p>
+              <p>In die rol zag hij één patroon dat keer op keer terugkwam: bedrijven die uitstekend werk leveren maar structureel omzet laten liggen doordat offertes niet worden opgevolgd. Niet door onwil, maar door gebrek aan tijd en systeem.</p>
+              <p>Tientallen offertes per maand verstuurd. Een deel gewonnen. De rest bleef liggen: op dag 3, dag 7 en dag 14, zonder opvolging, zonder reactie, zonder opdracht.</p>
               <p>Hij besloot het probleem op te lossen. NĀRO automatiseert offerte-opvolging voor technische dienstverleners. Volledig vanuit het eigen e-mailadres van de klant, zonder extra tools of training.</p>
               <p>Hij is bekend om zijn directe aanpak: geen dashboards, geen gedoe, gewoon resultaat.</p>
-              <p>Joshua studeerde International Business en bouwde daarna zijn carrière op in de commerciële sector. De afgelopen jaren verdiepte hij zich intensief in AI en automatisering — niet als technisch hobbyist, maar vanuit één vraag: welke problemen kan dit écht oplossen voor ondernemers die geen tijd hebben voor technologie?</p>
+              <p>Joshua studeerde International Business en bouwde daarna zijn carrière op in de commerciële sector. De afgelopen jaren verdiepte hij zich intensief in AI en automatisering, niet als technisch hobbyist, maar vanuit één vraag: welke problemen kan dit écht oplossen voor ondernemers die geen tijd hebben voor technologie?</p>
               <p>NĀRO is het antwoord.</p>
             </div>
           </div>
-          <div class="founder__photo" aria-label="Portretfoto van Joshua Manusama — volgt nog">
+          <div class="founder__photo" aria-label="Portretfoto van Joshua Manusama">
             <div class="founder__photo-inner">
               <span class="founder__photo-label">Portret</span>
               <span class="founder__photo-text">Foto volgt</span>
@@ -567,18 +563,18 @@
       </div>
     </section>
 
-    <!-- ═══════════ Section 3 — Values (dark) ═══════════ -->
+    <!-- Section: Values (dark) -->
     <section class="section values" aria-labelledby="values-heading">
       <div class="container">
         <div class="values__head">
-          <span class="section-label section-label--light">— WAT WIJ GELOVEN</span>
+          <span class="section-label section-label--light">WAT WIJ GELOVEN</span>
           <h2 class="values__heading" id="values-heading">Principes waar NĀRO op gebouwd is</h2>
         </div>
         <div class="values__grid">
           <article class="value-card">
             <span class="value-card__num">01</span>
             <h3 class="value-card__title">Vakmannen eerst</h3>
-            <p class="value-card__text">Jij bent goed in je vak. Wij zijn goed in opvolging. Dat is de deal — geen tools die je moet leren, geen dashboards die je moet bijhouden.</p>
+            <p class="value-card__text">Jij bent goed in je vak. Wij zijn goed in opvolging. Dat is de deal: geen tools die je moet leren, geen dashboards die je moet bijhouden.</p>
           </article>
           <article class="value-card">
             <span class="value-card__num">02</span>
@@ -588,16 +584,16 @@
           <article class="value-card">
             <span class="value-card__num">03</span>
             <h3 class="value-card__title">Jouw naam, niet de onze</h3>
-            <p class="value-card__text">Elke follow-up gaat vanuit jouw e-mailadres. De klant ziet jou — niet een systeem. Vertrouwen blijft persoonlijk.</p>
+            <p class="value-card__text">Elke follow-up gaat vanuit jouw e-mailadres. De klant ziet jou, niet een systeem. Vertrouwen blijft persoonlijk.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ Section 4 — CTA ═══════════ -->
+    <!-- Section: CTA -->
     <section class="section cta-final" aria-labelledby="cta-heading">
       <div class="container">
-        <span class="section-label">— KENNISMAKEN</span>
+        <span class="section-label">KENNISMAKEN</span>
         <h2 class="cta-final__heading" id="cta-heading">Benieuwd wat NĀRO voor jouw bedrijf kan doen?</h2>
         <p class="cta-final__sub">Plan een gratis 15-minuten check. Geen verplichtingen.</p>
         <a class="cta-final__btn" href="https://calendly.com/joshua-gonaro/30min" target="_blank" rel="noopener noreferrer">
@@ -612,7 +608,7 @@
   <footer class="footer" role="contentinfo">
     <div class="footer__main">
       <div class="footer__brand-col">
-        <a href="/" class="footer__logo" aria-label="NĀRO — naar de homepage">
+        <a href="/" class="footer__logo" aria-label="NARO - naar de homepage">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="18.20 -11.20 737.13 235.10" height="22" aria-hidden="true">
             <g fill="#0A0A0A" fill-rule="evenodd">
               <path d="M54.08 220L18.20 220L18.20 32.80L54.08 32.80L135.46 157.60L135.46 32.80L171.34 32.80L171.34 220L135.46 220L54.08 95.20L54.08 220Z"/>

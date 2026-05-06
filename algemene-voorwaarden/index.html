@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NĀRO — Meer omzet uit offertes</title>
+  <title>NĀRO: Meer omzet uit offertes</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%23F3EEE7'/><rect x='6' y='10' width='20' height='3' rx='1' fill='%230E7C66'/><circle cx='24' cy='22' r='3.5' fill='%230E7C66'/></svg>">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -359,8 +359,9 @@
 
   <!-- Nav -->
   <div class="nav-wrapper">
-    <nav class="nav" aria-label="Hoofdnavigatie">
-      <a class="nav__logo" href="/" aria-label="NĀRO — terug naar home">
+  <nav class="nav" id="main-nav" role="navigation" aria-label="Hoofdnavigatie">
+    <div class="container">
+      <a class="nav__logo" href="/" aria-label="NARO - naar de homepage">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="18.20 -11.20 737.13 235.10" height="22" aria-hidden="true">
           <g fill="#0A0A0A" fill-rule="evenodd">
             <path d="M54.08 220L18.20 220L18.20 32.80L54.08 32.80L135.46 157.60L135.46 32.80L171.34 32.80L171.34 220L135.46 220L54.08 95.20L54.08 220Z"/>
@@ -374,23 +375,17 @@
       </a>
       <ul class="nav__links">
         <li><a href="/#hoe-het-werkt">Hoe het werkt</a></li>
-        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/#waarom">Voordelen</a></li>
+        <li><a href="/over/">Over NARO</a></li>
         <li><a href="/prijzen/">Prijzen</a></li>
-        <li><a href="/over/">Over NĀRO</a></li>
-        <li>
-          <a class="nav__cta" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer">
-            Boek een gratis check →
-          </a>
-        </li>
+        <li><a href="/#faq">FAQ</a></li>
       </ul>
-      <!-- Mobile CTA only -->
-      <a class="nav__cta" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" style="display:none;" id="mobile-cta">
-        Boek een gratis check →
+      <a class="btn btn--primary" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer">
+        Boek een gratis check
       </a>
-    </nav>
-  </div>
+    </div>
+  </nav>
 
-  <!-- Legal Content -->
   <main>
     <div class="legal-wrapper">
       <p class="legal-label">Algemene Voorwaarden</p>
@@ -399,7 +394,7 @@
 
       <!-- Artikel 1 -->
       <div class="legal-section">
-        <h2 class="legal-h2">Artikel 1 — Definities</h2>
+        <h2 class="legal-h2">Artikel 1: Definities</h2>
         <div class="legal-articles">
           <p class="legal-article"><strong>1.1</strong> NĀRO: eenmanszaak, gevestigd in Nederland (KvK-nummer volgt na registratie), te bereiken via <a href="mailto:contact@gonaro.ai" style="color:var(--color-accent);text-decoration:underline;text-decoration-color:rgba(14,124,102,0.4);text-underline-offset:3px;">contact@gonaro.ai</a>.</p>
           <p class="legal-article"><strong>1.2</strong> Klant: het bedrijf of de ondernemer die een overeenkomst sluit met NĀRO voor het gebruik van de dienst.</p>
@@ -409,7 +404,7 @@
 
       <!-- Artikel 2 -->
       <div class="legal-section">
-        <h2 class="legal-h2">Artikel 2 — Toepasselijkheid</h2>
+        <h2 class="legal-h2">Artikel 2: Toepasselijkheid</h2>
         <div class="legal-articles">
           <p class="legal-article"><strong>2.1</strong> Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, offertes en overeenkomsten tussen NĀRO en de Klant.</p>
           <p class="legal-article"><strong>2.2</strong> Afwijkingen zijn uitsluitend geldig indien schriftelijk overeengekomen.</p>
@@ -418,7 +413,7 @@
 
       <!-- Artikel 3 -->
       <div class="legal-section">
-        <h2 class="legal-h2">Artikel 3 — Pilotperiode en looptijd</h2>
+        <h2 class="legal-h2">Artikel 3: Pilotperiode en looptijd</h2>
         <div class="legal-articles">
           <p class="legal-article"><strong>3.1</strong> De Dienst wordt aanvankelijk aangeboden als een pilotperiode van 3 maanden.</p>
           <p class="legal-article"><strong>3.2</strong> Na afloop van de pilotperiode wordt de overeenkomst maandelijks verlengd, tenzij de Klant de overeenkomst opzegt met een opzegtermijn van 1 maand.</p>
@@ -428,7 +423,7 @@
 
       <!-- Artikel 4 -->
       <div class="legal-section">
-        <h2 class="legal-h2">Artikel 4 — Vergoeding en betaling</h2>
+        <h2 class="legal-h2">Artikel 4: Vergoeding en betaling</h2>
         <div class="legal-articles">
           <p class="legal-article"><strong>4.1</strong> De vergoeding voor de Dienst is zoals overeengekomen in de offerte of op de prijspagina.</p>
           <p class="legal-article"><strong>4.2</strong> Facturatie geschiedt maandelijks vooruit. Betaaltermijn: 14 dagen na factuurdatum.</p>
@@ -437,7 +432,7 @@
 
       <!-- Artikel 5 -->
       <div class="legal-section">
-        <h2 class="legal-h2">Artikel 5 — Aansprakelijkheid</h2>
+        <h2 class="legal-h2">Artikel 5: Aansprakelijkheid</h2>
         <div class="legal-articles">
           <p class="legal-article"><strong>5.1</strong> De aansprakelijkheid van NĀRO is in alle gevallen beperkt tot het bedrag van één maandtarief.</p>
           <p class="legal-article"><strong>5.2</strong> NĀRO is niet aansprakelijk voor indirecte schade, gederfde winst of gevolgschade.</p>
@@ -447,7 +442,7 @@
 
       <!-- Artikel 6 -->
       <div class="legal-section">
-        <h2 class="legal-h2">Artikel 6 — Overmacht</h2>
+        <h2 class="legal-h2">Artikel 6: Overmacht</h2>
         <div class="legal-articles">
           <p class="legal-article"><strong>6.1</strong> NĀRO is niet gehouden tot nakoming van enige verplichting indien dit wordt verhinderd door overmacht, waaronder begrepen: storingen bij derden, internetuitval, overheidsmaatregelen.</p>
           <p class="legal-article"><strong>6.2</strong> Bij overmacht langer dan 30 dagen heeft de Klant het recht de overeenkomst te ontbinden zonder kosten.</p>
@@ -456,7 +451,7 @@
 
       <!-- Artikel 7 -->
       <div class="legal-section">
-        <h2 class="legal-h2">Artikel 7 — Intellectueel eigendom</h2>
+        <h2 class="legal-h2">Artikel 7: Intellectueel eigendom</h2>
         <div class="legal-articles">
           <p class="legal-article"><strong>7.1</strong> Alle intellectuele eigendomsrechten op de Dienst, software en documentatie berusten bij NĀRO.</p>
           <p class="legal-article"><strong>7.2</strong> De Klant verkrijgt uitsluitend een niet-exclusief gebruiksrecht voor de duur van de overeenkomst.</p>
@@ -465,7 +460,7 @@
 
       <!-- Artikel 8 -->
       <div class="legal-section">
-        <h2 class="legal-h2">Artikel 8 — Verplichtingen Klant</h2>
+        <h2 class="legal-h2">Artikel 8: Verplichtingen Klant</h2>
         <div class="legal-articles">
           <p class="legal-article"><strong>8.1</strong> De Klant is verantwoordelijk voor de juistheid en rechtmatigheid van de aangeleverde e-mailadressen.</p>
           <p class="legal-article"><strong>8.2</strong> De Klant garandeert dat de prospects waarvoor NĀRO de dienst uitvoert, op rechtmatige wijze zijn benaderd.</p>
@@ -475,7 +470,7 @@
 
       <!-- Artikel 9 -->
       <div class="legal-section">
-        <h2 class="legal-h2">Artikel 9 — Geheimhouding</h2>
+        <h2 class="legal-h2">Artikel 9: Geheimhouding</h2>
         <div class="legal-articles">
           <p class="legal-article"><strong>9.1</strong> Partijen verplichten zich tot geheimhouding van vertrouwelijke informatie die zij in het kader van de overeenkomst ontvangen.</p>
         </div>
@@ -483,7 +478,7 @@
 
       <!-- Artikel 10 -->
       <div class="legal-section">
-        <h2 class="legal-h2">Artikel 10 — Toepasselijk recht en geschillen</h2>
+        <h2 class="legal-h2">Artikel 10: Toepasselijk recht en geschillen</h2>
         <div class="legal-articles">
           <p class="legal-article"><strong>10.1</strong> Op deze voorwaarden is uitsluitend Nederlands recht van toepassing.</p>
           <p class="legal-article"><strong>10.2</strong> Geschillen worden voorgelegd aan de bevoegde rechter te Rotterdam.</p>
@@ -496,7 +491,7 @@
   <footer class="footer" role="contentinfo">
     <div class="footer__main">
       <div class="footer__brand-col">
-        <a href="/" class="footer__logo" aria-label="NĀRO — naar de homepage">
+        <a href="/" class="footer__logo" aria-label="NARO - naar de homepage">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="18.20 -11.20 737.13 235.10" height="22" aria-hidden="true">
             <g fill="#0A0A0A" fill-rule="evenodd">
               <path d="M54.08 220L18.20 220L18.20 32.80L54.08 32.80L135.46 157.60L135.46 32.80L171.34 32.80L171.34 220L135.46 220L54.08 95.20L54.08 220Z"/>
