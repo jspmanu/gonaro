@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NĀRO — Meer omzet uit offertes</title>
+  <title>NĀRO — Over ons</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230A0A0A'/><text x='7' y='23' font-family='Arial Black,Arial' font-weight='900' font-size='19' fill='white'>N</text><circle cx='27' cy='25' r='4' fill='%230E7C66'/></svg>">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,400&f[]=general-sans@500,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     /* ─── Design Tokens ─── */
     :root {
@@ -26,6 +26,7 @@
       --text-2xl:  1.5rem;
       --text-3xl:  1.875rem;
       --text-4xl:  2.25rem;
+      --text-5xl:  3rem;
 
       --space-1:  8px;
       --space-2:  16px;
@@ -57,16 +58,15 @@
       text-decoration: none;
     }
 
+    img, svg { display: block; max-width: 100%; height: auto; }
+
     /* ─── Nav ─── */
-    .nav-wrapper {
+    .nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--color-background);
-    }
-
-    .nav {
       height: var(--nav-h);
+      background: var(--color-background);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -75,15 +75,20 @@
       margin: 0 auto;
     }
 
+    .nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-background);
+    }
+
     .nav__logo {
       display: flex;
       align-items: center;
       flex-shrink: 0;
     }
 
-    .nav__logo svg {
-      display: block;
-    }
+    .nav__logo svg { display: block; }
 
     .nav__links {
       display: flex;
@@ -101,9 +106,8 @@
       transition: color 200ms ease-out;
     }
 
-    .nav__links a:hover {
-      color: var(--color-foreground);
-    }
+    .nav__links a:hover { color: var(--color-foreground); }
+    .nav__links a.active { color: var(--color-foreground); }
 
     .nav__links a:focus-visible {
       outline: 2px solid var(--color-accent);
@@ -129,113 +133,238 @@
       color: var(--color-accent) !important;
     }
 
-    .nav__cta:active {
-      opacity: 0.8;
-    }
+    .nav__cta:active { opacity: 0.8; }
 
-    /* ─── Legal Content ─── */
-    .legal-wrapper {
-      max-width: 720px;
+    /* ─── Section base ─── */
+    .section {
+      padding: var(--space-12) 0;
+    }
+    .container {
+      max-width: var(--max-w);
       margin: 0 auto;
-      padding: 120px var(--space-4) var(--space-12);
+      padding: 0 var(--space-4);
     }
-
-    .legal-label {
+    .section-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: var(--text-xs);
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       color: var(--color-neutral);
       margin-bottom: var(--space-3);
+      display: block;
     }
+    .section-label--accent { color: var(--color-accent); }
+    .section-label--light { color: rgba(255,255,255,0.55); }
 
-    .legal-h1 {
+    .section-heading {
       font-family: 'Satoshi', sans-serif;
       font-weight: 700;
-      font-size: 2rem;
+      font-size: var(--text-4xl);
       letter-spacing: -0.03em;
-      line-height: 1.2;
+      line-height: 1.15;
       color: var(--color-foreground);
-      margin-bottom: var(--space-6);
+    }
+    .section-heading--light { color: #F5F5F3; }
+
+    /* ─── Hero ─── */
+    .hero-about {
+      padding: 120px var(--space-4) var(--space-12);
+      text-align: center;
+    }
+    .hero-about__inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-about__heading {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--color-foreground);
+      margin-bottom: var(--space-4);
+    }
+    .hero-about__sub {
+      font-size: var(--text-lg);
+      line-height: 1.7;
+      color: var(--color-neutral);
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .legal-updated {
+    /* ─── Founder section (two-col) ─── */
+    .founder {
+      background: var(--color-background);
+      border-top: 1px solid var(--color-line);
+    }
+    .founder__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+    .founder__heading {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-4xl);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--color-foreground);
+      margin-bottom: var(--space-2);
+    }
+    .founder__subtitle {
       font-family: 'JetBrains Mono', monospace;
       font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-accent);
+      margin-bottom: var(--space-6);
+    }
+    .founder__body {
+      font-size: var(--text-base);
+      line-height: 1.7;
       color: var(--color-neutral);
+    }
+    .founder__body p + p { margin-top: var(--space-3); }
+    .founder__photo {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--color-accent);
+      box-shadow:
+        0 10px 30px -12px rgba(14,124,102,0.35),
+        0 4px 12px -6px rgba(10,10,10,0.18);
+    }
+    .founder__photo-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      color: #F5F5F3;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.10), transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(0,0,0,0.18), transparent 50%);
+    }
+    .founder__photo-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(245,245,243,0.70);
+    }
+    .founder__photo-text {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-3xl);
+      letter-spacing: -0.02em;
+      color: #F5F5F3;
+    }
+
+    /* ─── Values (dark three-col) ─── */
+    .values {
+      background: var(--color-foreground);
+      color: #F5F5F3;
+    }
+    .values__head {
+      max-width: 720px;
       margin-bottom: var(--space-8);
     }
-
-    .legal-section {
-      border-top: 1px solid var(--color-line);
-      margin: var(--space-8) 0;
-      padding-top: var(--space-6);
+    .values__heading {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-4xl);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: #F5F5F3;
     }
-
-    .legal-section:first-of-type {
-      border-top: none;
-      margin-top: 0;
-      padding-top: 0;
+    .values__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
     }
-
-    .legal-h2 {
+    .value-card {
+      background: rgba(245,245,243,0.04);
+      border: 1px solid rgba(245,245,243,0.10);
+      border-radius: 12px;
+      padding: var(--space-6);
+      transition: border-color 200ms ease-out, transform 200ms ease-out;
+    }
+    .value-card:hover {
+      border-color: rgba(14,124,102,0.55);
+      transform: translateY(-2px);
+    }
+    .value-card__num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      color: var(--color-accent);
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+    .value-card__title {
       font-family: 'Satoshi', sans-serif;
       font-weight: 700;
       font-size: var(--text-xl);
-      letter-spacing: -0.02em;
-      color: var(--color-foreground);
+      letter-spacing: -0.01em;
+      color: #F5F5F3;
       margin-bottom: var(--space-3);
     }
-
-    .legal-body {
-      font-family: 'Inter', sans-serif;
-      font-size: var(--text-base);
+    .value-card__text {
+      font-size: var(--text-sm);
       line-height: 1.7;
-      color: var(--color-neutral);
+      color: rgba(245,245,243,0.65);
     }
 
-    .legal-body a {
-      color: var(--color-accent);
-      text-decoration: underline;
-      text-decoration-color: rgba(14,124,102,0.4);
-      text-underline-offset: 3px;
-      transition: color 200ms ease-out, text-decoration-color 200ms ease-out;
+    /* ─── CTA (teal) ─── */
+    .cta-final {
+      background: var(--color-accent);
+      color: #F5F5F3;
+      text-align: center;
     }
-
-    .legal-body a:hover {
-      color: var(--color-hover);
-      text-decoration-color: var(--color-hover);
+    .cta-final .container { max-width: 760px; }
+    .cta-final .section-label { color: rgba(255,255,255,0.7); margin-bottom: var(--space-4); }
+    .cta-final__heading {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, var(--text-5xl));
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: #F5F5F3;
+      margin-bottom: var(--space-3);
     }
-
-    .legal-body a:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 2px;
-      border-radius: 2px;
+    .cta-final__sub {
+      font-size: var(--text-lg);
+      line-height: 1.6;
+      color: rgba(245,245,243,0.85);
+      margin-bottom: var(--space-6);
     }
-
-    /* Sub-articles within a section */
-    .legal-articles {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-    }
-
-    .legal-article {
-      font-family: 'Inter', sans-serif;
-      font-size: var(--text-base);
-      line-height: 1.7;
-      color: var(--color-neutral);
-    }
-
-    .legal-article strong {
+    .cta-final__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-family: 'JetBrains Mono', monospace;
       font-size: var(--text-xs);
-      font-weight: 400;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.14em;
+      background: #F5F5F3;
       color: var(--color-foreground);
-      display: inline-block;
-      margin-right: 6px;
+      padding: 16px 28px;
+      border-radius: 8px;
+      transition: transform 200ms ease-out, box-shadow 200ms ease-out, background 200ms ease-out;
+      box-shadow: 0 6px 20px -8px rgba(0,0,0,0.4);
+    }
+    .cta-final__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -10px rgba(0,0,0,0.45);
+      background: #FFFFFF;
+    }
+    .cta-final__btn:focus-visible {
+      outline: 2px solid #F5F5F3;
+      outline-offset: 4px;
     }
 
     /* ─── FOOTER ─────────────────────────────────────────────── */
@@ -337,21 +466,29 @@
       white-space: nowrap;
     }
 
-    @media (max-width: 1024px) {
-      .footer__main { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+    /* ─── REDUCED MOTION ─── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        transform: none !important;
+      }
     }
 
-    /* ─── Mobile ─── */
-    @media (max-width: 768px) {
-      .nav__links {
-        display: none;
-      }
-
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
       .footer__main { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+      .values__grid { grid-template-columns: 1fr; }
+      .founder__grid { gap: var(--space-8); }
+    }
 
-      .legal-h1 {
-        font-size: var(--text-3xl);
-      }
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+      .section { padding: var(--space-8) 0; }
+      .hero-about { padding: 80px var(--space-4) var(--space-8); }
+      .founder__grid { grid-template-columns: 1fr; }
+      .founder__photo { max-width: 360px; margin: 0 auto; width: 100%; }
+      .footer__main { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
     }
   </style>
 </head>
@@ -376,120 +513,96 @@
         <li><a href="/#hoe-het-werkt">Hoe het werkt</a></li>
         <li><a href="/#faq">FAQ</a></li>
         <li><a href="/prijzen/">Prijzen</a></li>
-        <li><a href="/over/">Over NĀRO</a></li>
+        <li><a class="active" href="/over/">Over NĀRO</a></li>
         <li>
           <a class="nav__cta" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer">
             Boek een gratis check →
           </a>
         </li>
       </ul>
-      <!-- Mobile CTA only -->
       <a class="nav__cta" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" style="display:none;" id="mobile-cta">
         Boek een gratis check →
       </a>
     </nav>
   </div>
 
-  <!-- Legal Content -->
   <main>
-    <div class="legal-wrapper">
-      <p class="legal-label">Algemene Voorwaarden</p>
-      <h1 class="legal-h1">Onze voorwaarden, helder en eerlijk.</h1>
-      <p class="legal-updated">Laatst bijgewerkt: mei 2025</p>
 
-      <!-- Artikel 1 -->
-      <div class="legal-section">
-        <h2 class="legal-h2">Artikel 1 — Definities</h2>
-        <div class="legal-articles">
-          <p class="legal-article"><strong>1.1</strong> NĀRO: eenmanszaak, gevestigd in Nederland (KvK-nummer volgt na registratie), te bereiken via <a href="mailto:contact@gonaro.ai" style="color:var(--color-accent);text-decoration:underline;text-decoration-color:rgba(14,124,102,0.4);text-underline-offset:3px;">contact@gonaro.ai</a>.</p>
-          <p class="legal-article"><strong>1.2</strong> Klant: het bedrijf of de ondernemer die een overeenkomst sluit met NĀRO voor het gebruik van de dienst.</p>
-          <p class="legal-article"><strong>1.3</strong> Dienst: het maandelijks abonnement op het NĀRO Close opvolgautomatiseringssysteem.</p>
+    <!-- ═══════════ Section 1 — Hero ═══════════ -->
+    <section class="hero-about" aria-labelledby="hero-heading">
+      <div class="hero-about__inner">
+        <span class="section-label section-label--accent">— OVER NĀRO</span>
+        <h1 class="hero-about__heading" id="hero-heading">Vakmannen verdienen meer dan ze binnenhalen.</h1>
+        <p class="hero-about__sub">
+          Te veel goede offertes belanden in een inbox en worden nooit opgevolgd. Niet omdat ondernemers het niet willen — maar omdat de dag al vol zit voordat ze eraan toekomen. NĀRO lost dat op.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════ Section 2 — Founder ═══════════ -->
+    <section class="section founder" aria-labelledby="founder-heading">
+      <div class="container">
+        <div class="founder__grid">
+          <div class="founder__text">
+            <span class="section-label section-label--accent">— DE FOUNDER</span>
+            <h2 class="founder__heading" id="founder-heading">Joshua Manusama</h2>
+            <p class="founder__subtitle">Founder · Rotterdam</p>
+            <div class="founder__body">
+              <p>Ik ben geen techneut. Ik kom uit de commerciële wereld — opgeleid via het POS-programma van Wolterbeek International, gericht op verkoop, gedrag en resultaat.</p>
+              <p>Wat ik steeds zag: bedrijven die goed werk leveren maar omzet laten liggen omdat de opvolging niet op orde is. Niet bij één bedrijf — bij bijna elk bedrijf. Het patroon was overal hetzelfde.</p>
+              <p>Ik dacht: dit moet geautomatiseerd kunnen. Zonder dat het technisch wordt. Zonder dat je iets hoeft te leren. Gewoon een BCC-adres in je offerte, en het systeem doet de rest.</p>
+              <p>Dat is NĀRO.</p>
+            </div>
+          </div>
+          <div class="founder__photo" aria-label="Portretfoto van Joshua Manusama — volgt nog">
+            <div class="founder__photo-inner">
+              <span class="founder__photo-label">Portret</span>
+              <span class="founder__photo-text">Foto volgt</span>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Artikel 2 -->
-      <div class="legal-section">
-        <h2 class="legal-h2">Artikel 2 — Toepasselijkheid</h2>
-        <div class="legal-articles">
-          <p class="legal-article"><strong>2.1</strong> Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, offertes en overeenkomsten tussen NĀRO en de Klant.</p>
-          <p class="legal-article"><strong>2.2</strong> Afwijkingen zijn uitsluitend geldig indien schriftelijk overeengekomen.</p>
+    <!-- ═══════════ Section 3 — Values (dark) ═══════════ -->
+    <section class="section values" aria-labelledby="values-heading">
+      <div class="container">
+        <div class="values__head">
+          <span class="section-label section-label--light">— WAT WIJ GELOVEN</span>
+          <h2 class="values__heading" id="values-heading">Principes waar NĀRO op gebouwd is</h2>
+        </div>
+        <div class="values__grid">
+          <article class="value-card">
+            <span class="value-card__num">01</span>
+            <h3 class="value-card__title">Vakmannen eerst</h3>
+            <p class="value-card__text">Jij bent goed in je vak. Wij zijn goed in opvolging. Dat is de deal — geen tools die je moet leren, geen dashboards die je moet bijhouden.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-card__num">02</span>
+            <h3 class="value-card__title">Resultaat, geen beloftes</h3>
+            <p class="value-card__text">We meten wat telt: hoeveel offertes zijn opgevolgd, hoeveel reacties zijn binnengekomen, hoeveel opdrachten zijn gesloten. Geen vaag verhaal.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-card__num">03</span>
+            <h3 class="value-card__title">Jouw naam, niet de onze</h3>
+            <p class="value-card__text">Elke follow-up gaat vanuit jouw e-mailadres. De klant ziet jou — niet een systeem. Vertrouwen blijft persoonlijk.</p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <!-- Artikel 3 -->
-      <div class="legal-section">
-        <h2 class="legal-h2">Artikel 3 — Pilotperiode en looptijd</h2>
-        <div class="legal-articles">
-          <p class="legal-article"><strong>3.1</strong> De Dienst wordt aanvankelijk aangeboden als een pilotperiode van 3 maanden.</p>
-          <p class="legal-article"><strong>3.2</strong> Na afloop van de pilotperiode wordt de overeenkomst maandelijks verlengd, tenzij de Klant de overeenkomst opzegt met een opzegtermijn van 1 maand.</p>
-          <p class="legal-article"><strong>3.3</strong> Tijdens de pilotperiode zijn er geen setup kosten verschuldigd.</p>
-        </div>
+    <!-- ═══════════ Section 4 — CTA ═══════════ -->
+    <section class="section cta-final" aria-labelledby="cta-heading">
+      <div class="container">
+        <span class="section-label">— KENNISMAKEN</span>
+        <h2 class="cta-final__heading" id="cta-heading">Benieuwd wat NĀRO voor jouw bedrijf kan doen?</h2>
+        <p class="cta-final__sub">Plan een gratis 15-minuten check. Geen verplichtingen.</p>
+        <a class="cta-final__btn" href="https://calendly.com/joshua-gonaro/30min" target="_blank" rel="noopener noreferrer">
+          Plan een kennismaking →
+        </a>
       </div>
+    </section>
 
-      <!-- Artikel 4 -->
-      <div class="legal-section">
-        <h2 class="legal-h2">Artikel 4 — Vergoeding en betaling</h2>
-        <div class="legal-articles">
-          <p class="legal-article"><strong>4.1</strong> De vergoeding voor de Dienst is zoals overeengekomen in de offerte of op de prijspagina.</p>
-          <p class="legal-article"><strong>4.2</strong> Facturatie geschiedt maandelijks vooruit. Betaaltermijn: 14 dagen na factuurdatum.</p>
-        </div>
-      </div>
-
-      <!-- Artikel 5 -->
-      <div class="legal-section">
-        <h2 class="legal-h2">Artikel 5 — Aansprakelijkheid</h2>
-        <div class="legal-articles">
-          <p class="legal-article"><strong>5.1</strong> De aansprakelijkheid van NĀRO is in alle gevallen beperkt tot het bedrag van één maandtarief.</p>
-          <p class="legal-article"><strong>5.2</strong> NĀRO is niet aansprakelijk voor indirecte schade, gederfde winst of gevolgschade.</p>
-          <p class="legal-article"><strong>5.3</strong> NĀRO garandeert niet dat het gebruik van de Dienst leidt tot hogere offerteconversie.</p>
-        </div>
-      </div>
-
-      <!-- Artikel 6 -->
-      <div class="legal-section">
-        <h2 class="legal-h2">Artikel 6 — Overmacht</h2>
-        <div class="legal-articles">
-          <p class="legal-article"><strong>6.1</strong> NĀRO is niet gehouden tot nakoming van enige verplichting indien dit wordt verhinderd door overmacht, waaronder begrepen: storingen bij derden, internetuitval, overheidsmaatregelen.</p>
-          <p class="legal-article"><strong>6.2</strong> Bij overmacht langer dan 30 dagen heeft de Klant het recht de overeenkomst te ontbinden zonder kosten.</p>
-        </div>
-      </div>
-
-      <!-- Artikel 7 -->
-      <div class="legal-section">
-        <h2 class="legal-h2">Artikel 7 — Intellectueel eigendom</h2>
-        <div class="legal-articles">
-          <p class="legal-article"><strong>7.1</strong> Alle intellectuele eigendomsrechten op de Dienst, software en documentatie berusten bij NĀRO.</p>
-          <p class="legal-article"><strong>7.2</strong> De Klant verkrijgt uitsluitend een niet-exclusief gebruiksrecht voor de duur van de overeenkomst.</p>
-        </div>
-      </div>
-
-      <!-- Artikel 8 -->
-      <div class="legal-section">
-        <h2 class="legal-h2">Artikel 8 — Verplichtingen Klant</h2>
-        <div class="legal-articles">
-          <p class="legal-article"><strong>8.1</strong> De Klant is verantwoordelijk voor de juistheid en rechtmatigheid van de aangeleverde e-mailadressen.</p>
-          <p class="legal-article"><strong>8.2</strong> De Klant garandeert dat de prospects waarvoor NĀRO de dienst uitvoert, op rechtmatige wijze zijn benaderd.</p>
-          <p class="legal-article"><strong>8.3</strong> De Klant vrijwaart NĀRO voor aanspraken van derden die voortvloeien uit het gebruik van onjuiste of onrechtmatig verkregen e-mailadressen.</p>
-        </div>
-      </div>
-
-      <!-- Artikel 9 -->
-      <div class="legal-section">
-        <h2 class="legal-h2">Artikel 9 — Geheimhouding</h2>
-        <div class="legal-articles">
-          <p class="legal-article"><strong>9.1</strong> Partijen verplichten zich tot geheimhouding van vertrouwelijke informatie die zij in het kader van de overeenkomst ontvangen.</p>
-        </div>
-      </div>
-
-      <!-- Artikel 10 -->
-      <div class="legal-section">
-        <h2 class="legal-h2">Artikel 10 — Toepasselijk recht en geschillen</h2>
-        <div class="legal-articles">
-          <p class="legal-article"><strong>10.1</strong> Op deze voorwaarden is uitsluitend Nederlands recht van toepassing.</p>
-          <p class="legal-article"><strong>10.2</strong> Geschillen worden voorgelegd aan de bevoegde rechter te Rotterdam.</p>
-        </div>
-      </div>
-    </div>
   </main>
 
   <!-- ═══════════════════ FOOTER ═══════════════════ -->
@@ -572,6 +685,5 @@
     })();
   </script>
 
-  <script src="/assets/js/motion-animations.js"></script>
 </body>
 </html>

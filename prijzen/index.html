@@ -380,97 +380,104 @@
     .btn--primary-inline:active { transform: translateY(1px); }
     .btn--primary-inline:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 
-    /* ─── FOOTER ─────────────────────────────────────── */
+    /* ─── FOOTER ─────────────────────────────────────────────── */
     .footer {
-      border-top: 1px solid var(--color-line);
-      padding: var(--space-6) 0;
-      background: var(--color-foreground);
+      border-top: 1px solid rgba(10,10,10,0.10);
+      padding: var(--space-12) 0 var(--space-8);
+      background: var(--color-background);
     }
-    .footer__inner {
-      max-width: var(--max-w);
+    .footer__main {
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 var(--space-4);
       display: grid;
-      grid-template-columns: 1fr auto 1fr auto;
-      align-items: center;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: var(--space-8);
+    }
+    .footer__logo {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-2xl);
+      color: var(--color-foreground);
+      text-decoration: none;
+      display: block;
+      margin-bottom: var(--space-3);
+      letter-spacing: -0.02em;
+    }
+    .footer__tagline {
+      font-size: var(--text-sm);
+      color: var(--color-neutral);
+      line-height: 1.6;
+    }
+    .footer__col-label {
+      display: block;
+      font-family: 'General Sans', sans-serif;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-foreground);
+      margin-bottom: var(--space-3);
+    }
+    .footer__nav-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .footer__nav-col a {
+      font-size: var(--text-sm);
+      color: var(--color-neutral);
+      text-decoration: none;
+      transition: color 200ms ease-out;
+    }
+    .footer__nav-col a:hover { color: var(--color-foreground); }
+    .footer__bottom {
+      max-width: 1200px;
+      margin: var(--space-8) auto 0;
+      padding: var(--space-4) var(--space-4) 0;
+      border-top: 1px solid rgba(10,10,10,0.06);
+      display: flex;
       gap: var(--space-4);
-    }
-    .footer__brand { display: flex; flex-direction: column; gap: var(--space-2); }
-    .footer__brand-tagline {
-      font-family: var(--f-mono);
       font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
       color: var(--color-neutral);
-      opacity: 0.6;
-      margin-top: var(--space-1);
-    }
-    .footer__nav {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-2);
-    }
-    .footer__nav a {
-      font-family: var(--f-mono);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--color-neutral);
-      opacity: 0.6;
-      transition: opacity 200ms ease-out, color 200ms ease-out;
-    }
-    .footer__nav a:hover { opacity: 1; color: var(--color-accent); }
-    .footer__nav a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
-    .footer__contact { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-2); }
-    .footer__email {
-      font-family: var(--f-mono);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--color-neutral);
-      opacity: 0.6;
-      transition: opacity 200ms ease-out;
-    }
-    .footer__email:hover { opacity: 1; }
-    .footer__legal {
-      font-family: var(--f-mono);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
+      font-family: 'General Sans', sans-serif;
       letter-spacing: 0.08em;
-      color: var(--color-neutral);
-      opacity: 0.35;
     }
-    .footer__social-col {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: var(--space-2);
-    }
-    .footer__social-col-label {
-      font-family: var(--f-mono);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
+    .footer__bottom a {
       color: var(--color-neutral);
-      opacity: 0.6;
-      margin-bottom: 4px;
+      text-decoration: none;
     }
     .footer__social-link {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-family: var(--f-mono);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      font-size: var(--text-sm);
       color: var(--color-neutral);
-      opacity: 0.6;
       text-decoration: none;
-      transition: opacity 200ms ease-out, color 200ms ease-out;
+      transition: color 200ms ease-out;
     }
-    .footer__social-link:hover { opacity: 1; color: var(--color-accent); }
+    .footer__social-link:hover { color: var(--color-accent); }
     .footer__social-link svg { flex-shrink: 0; }
+
+    /* ─── WORDMARK FOOTER ────────────────────────────────────── */
+    .wordmark-footer {
+      overflow: hidden;
+      line-height: 0.82;
+      padding-top: var(--space-6);
+      user-select: none;
+      pointer-events: none;
+      background: var(--color-background);
+    }
+    .wordmark-footer span {
+      display: block;
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: clamp(140px, 24vw, 360px);
+      color: var(--color-foreground);
+      opacity: 0.055;
+      letter-spacing: -0.04em;
+      text-align: center;
+      white-space: nowrap;
+    }
 
     /* ─── REDUCED MOTION ─────────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
@@ -490,10 +497,7 @@
         margin-left: auto;
         margin-right: auto;
       }
-      .footer__inner { grid-template-columns: 1fr 1fr; text-align: center; }
-      .footer__brand { align-items: center; }
-      .footer__contact { align-items: center; }
-      .footer__social-col { align-items: center; }
+      .footer__main { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
     }
 
     /* ─── RESPONSIVE: MOBILE < 768px ────────────────── */
@@ -562,7 +566,7 @@
       <li><a href="/#hoe-het-werkt">Hoe het werkt</a></li>
       <li><a href="/#faq">FAQ</a></li>
       <li><a href="/prijzen/" class="active" aria-current="page">Prijzen</a></li>
-      <li><a href="/#contact">Over NĀRO</a></li>
+      <li><a href="/over/">Over NĀRO</a></li>
     </ul>
     <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="btn--nav">
       Boek een gratis check &nbsp;&rarr;
@@ -734,13 +738,13 @@
   </section>
 </main>
 
-<!-- FOOTER -->
-<footer class="footer" aria-label="Footer">
-  <div class="footer__inner">
-    <div class="footer__brand">
-      <a href="/" aria-label="NĀRO — terug naar homepage">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="18.20 -11.20 737.13 235.10" height="20" aria-hidden="true" focusable="false">
-          <g fill="#F5F5F3" fill-rule="evenodd">
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__main">
+    <div class="footer__brand-col">
+      <a href="/" class="footer__logo" aria-label="NĀRO — naar de homepage">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="18.20 -11.20 737.13 235.10" height="22" aria-hidden="true">
+          <g fill="#0A0A0A" fill-rule="evenodd">
             <path d="M54.08 220L18.20 220L18.20 32.80L54.08 32.80L135.46 157.60L135.46 32.80L171.34 32.80L171.34 220L135.46 220L54.08 95.20L54.08 220Z"/>
             <path d="M208.65 220L180.44 220L241.28 32.80L280.41 32.80L341.25 220L313.04 220L299.13 177.75L222.30 177.75L208.65 220ZM230.62 152.27L290.81 152.27L260.52 59.97L230.62 152.27Z"/>
             <path d="M385.71 220L350.35 220L350.35 32.80L429.39 32.80Q432.12 32.80 436.74 33.00Q441.35 33.19 444.99 33.84Q461.76 36.44 472.49 44.89Q483.21 53.34 488.28 66.14Q493.35 78.95 493.35 94.68Q493.35 118.21 481.65 134.85Q474.37 145.25 462.15 150.71L495.95 220L455.91 220L425.10 156.56L385.71 156.56L385.71 220ZM385.71 65.82L385.71 123.54L427.83 123.54Q430.56 123.54 433.81 123.28Q437.06 123.02 439.79 122.24Q446.94 120.29 450.84 115.67Q454.74 111.06 456.24 105.41Q457.73 99.75 457.73 94.68Q457.73 89.61 456.24 83.95Q454.74 78.30 450.84 73.69Q446.94 69.07 439.79 67.12Q437.06 66.34 433.81 66.08Q430.56 65.82 427.83 65.82L385.71 65.82Z"/>
@@ -750,21 +754,26 @@
           <circle cx="733.33" cy="198.00" r="22" fill="#0E7C66"/>
         </svg>
       </a>
-      <span class="footer__brand-tagline">Jouw partner in meer omzet.</span>
+      <p class="footer__tagline">Jouw partner in meer omzet.</p>
     </div>
-    <nav class="footer__nav" aria-label="Footer navigatie">
+    <div class="footer__nav-col">
+      <span class="footer__col-label">Product</span>
       <a href="/#hoe-het-werkt">Hoe het werkt</a>
-      <a href="/#faq">FAQ</a>
       <a href="/prijzen/">Prijzen</a>
-      <a href="/privacy/">Privacy</a>
-      <a href="/algemene-voorwaarden/">Algemene voorwaarden</a>
-    </nav>
-    <div class="footer__contact">
-      <a href="mailto:contact@gonaro.ai" class="footer__email">contact@gonaro.ai</a>
-      <span class="footer__legal">&copy; 2026 NĀRO. All Rights Reserved.</span>
+      <a href="/#faq">FAQ</a>
     </div>
-    <div class="footer__social-col">
-      <span class="footer__social-col-label">Socials</span>
+    <div class="footer__nav-col">
+      <span class="footer__col-label">Bedrijf</span>
+      <a href="/over/">Over NĀRO</a>
+      <a href="mailto:contact@gonaro.ai">Contact</a>
+    </div>
+    <div class="footer__nav-col">
+      <span class="footer__col-label">Juridisch</span>
+      <a href="/privacy/">Privacy</a>
+      <a href="/algemene-voorwaarden/">Voorwaarden</a>
+    </div>
+    <div class="footer__nav-col">
+      <span class="footer__col-label">Socials</span>
       <a href="https://wa.me/31681040019" target="_blank" rel="noopener" class="footer__social-link">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp
@@ -783,7 +792,16 @@
       </a>
     </div>
   </div>
+  <div class="footer__bottom">
+    <span>© 2026 NĀRO. All Rights Reserved.</span>
+    <span>KvK [nummer]</span>
+    <a href="mailto:contact@gonaro.ai">contact@gonaro.ai</a>
+  </div>
 </footer>
+
+<div class="wordmark-footer">
+  <span>NĀRO</span>
+</div>
 
 <!-- Sticky mobile CTA -->
 <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
