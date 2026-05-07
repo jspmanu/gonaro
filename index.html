@@ -1153,6 +1153,35 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ─── USER FLOW ──────────────────────────────────── */
+    .userflow { background: var(--color-background); border-top: 1px solid rgba(10,10,10,0.08); }
+    .userflow__intro { max-width: 560px; margin-bottom: 64px; }
+    .userflow__steps { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; }
+    .userflow__steps::before { content: ''; position: absolute; top: 28px; left: calc(12.5% + 28px); right: calc(12.5% + 28px); height: 1px; background: var(--color-accent); opacity: 0.3; }
+    .userflow__step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 24px; }
+    .userflow__num { width: 56px; height: 56px; border-radius: 50%; background: var(--color-background); border: 1px solid var(--color-accent); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: 24px; position: relative; z-index: 1; transition: background 200ms ease-out, color 200ms ease-out; }
+    .userflow__step:hover .userflow__num { background: var(--color-accent); color: #F5F5F3; }
+    .userflow__step-title { font-family: 'Satoshi', sans-serif; font-weight: 700; font-size: 1rem; color: var(--color-foreground); margin-bottom: 8px; }
+    .userflow__step-sub { font-size: 0.875rem; line-height: 1.6; color: var(--color-neutral); }
+    .userflow__step-tag { display: inline-block; margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); background: rgba(14,124,102,0.08); padding: 3px 8px; border-radius: 2px; }
+    @media (max-width: 900px) { .userflow__steps { grid-template-columns: repeat(2, 1fr); gap: 48px; } .userflow__steps::before { display: none; } }
+    @media (max-width: 600px) { .userflow__steps { grid-template-columns: 1fr; } }
+
+    /* ─── CONTACT FOCUS ──────────────────────────────── */
+    .contact-focus { background: var(--color-foreground); color: #F5F5F3; }
+    .contact-focus__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
+    .contact-focus__heading { font-family: 'Satoshi', sans-serif; font-weight: 700; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.03em; line-height: 1.1; color: #F5F5F3; margin-bottom: 24px; }
+    .contact-focus__heading em { font-style: normal; color: var(--color-accent); }
+    .contact-focus__sub { font-size: 1.125rem; line-height: 1.7; color: rgba(245,245,243,0.6); }
+    .contact-focus__right { display: flex; flex-direction: column; gap: 16px; }
+    .contact-focus__card { background: rgba(245,245,243,0.05); border: 1px solid rgba(245,245,243,0.10); border-radius: 4px; padding: 24px; }
+    .contact-focus__card-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); margin-bottom: 8px; display: block; }
+    .contact-focus__card-value { font-family: 'Satoshi', sans-serif; font-weight: 700; font-size: 1.25rem; color: #F5F5F3; }
+    .contact-focus__cta { display: inline-flex; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; background: var(--color-accent); color: #F5F5F3; padding: 18px 32px; border-radius: 4px; transition: background 200ms ease-out; text-decoration: none; }
+    .contact-focus__cta:hover { background: #0A5C4D; }
+    .contact-focus__guarantee { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(245,245,243,0.35); }
+    @media (max-width: 768px) { .contact-focus__inner { grid-template-columns: 1fr; gap: 48px; } }
   </style>
 </head>
 <body>
@@ -1561,6 +1590,44 @@
     </div>
   </section>
 
+  <!-- ═══════════════════ USER FLOW ═══════════════════ -->
+  <section class="section userflow" aria-labelledby="userflow-heading" data-motion="up">
+    <div class="container">
+      <div class="userflow__intro">
+        <span class="section-label">HET PROCES</span>
+        <h2 class="section-heading" id="userflow-heading">
+          Van aanvraag naar automatisch in 4 stappen.
+        </h2>
+      </div>
+      <div class="userflow__steps">
+        <div class="userflow__step">
+          <div class="userflow__num">01</div>
+          <span class="userflow__step-title">Gratis check</span>
+          <p class="userflow__step-sub">15 minuten. Geen verplichtingen. We kijken of NĀRO past bij jouw offerteproces.</p>
+          <span class="userflow__step-tag">15 min</span>
+        </div>
+        <div class="userflow__step">
+          <div class="userflow__num">02</div>
+          <span class="userflow__step-title">Onboarding</span>
+          <p class="userflow__step-sub">We koppelen je Gmail of Outlook. Jij bepaalt de toon. Wij regelen de rest.</p>
+          <span class="userflow__step-tag">Dag 1</span>
+        </div>
+        <div class="userflow__step">
+          <div class="userflow__num">03</div>
+          <span class="userflow__step-title">Systeem live</span>
+          <p class="userflow__step-sub">NĀRO Close staat klaar. Elke offerte die je verstuurt, wordt automatisch opgevolgd.</p>
+          <span class="userflow__step-tag">Dag 2</span>
+        </div>
+        <div class="userflow__step">
+          <div class="userflow__num">04</div>
+          <span class="userflow__step-title">Meer omzet</span>
+          <p class="userflow__step-sub">Minder stilte na offertes. Meer klanten die ja zeggen. Zonder extra werk van jou.</p>
+          <span class="userflow__step-tag">Altijd</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════════ OPRICHTER ═══════════════════ -->
   <section class="section section--bg founder" aria-labelledby="founder-heading" data-motion="left">
     <div class="container">
@@ -1633,6 +1700,33 @@
           <div class="faq__a">
             <p>De pilot kost €300 per maand. Geen setup kosten, geen verplichting na 3 maanden. Je betaalt alleen voor resultaat dat je kunt meten.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CONTACT FOCUS ═══════════════════ -->
+  <section class="section contact-focus" aria-labelledby="contact-focus-heading" data-motion="up">
+    <div class="container">
+      <div class="contact-focus__inner">
+        <div class="contact-focus__left">
+          <span class="section-label" style="color:rgba(245,245,243,0.5)">DIRECT CONTACT</span>
+          <h2 class="contact-focus__heading" id="contact-focus-heading">
+            Eén gesprek.<br><em>Dat is alles.</em>
+          </h2>
+          <p class="contact-focus__sub">Geen salespitch. Geen lange demo. We kijken samen in 15 minuten of NĀRO Close iets voor jou is.</p>
+        </div>
+        <div class="contact-focus__right">
+          <div class="contact-focus__card">
+            <span class="contact-focus__card-label">Bel direct</span>
+            <span class="contact-focus__card-value">Op aanvraag</span>
+          </div>
+          <div class="contact-focus__card">
+            <span class="contact-focus__card-label">Mail ons</span>
+            <span class="contact-focus__card-value"><a href="mailto:joshua@gonaro.ai" style="color:#F5F5F3;text-decoration:none">joshua@gonaro.ai</a></span>
+          </div>
+          <a class="contact-focus__cta" href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer">Boek een gratis check &nbsp;→</a>
+          <p class="contact-focus__guarantee">Geen verplichtingen · Gesprek duurt 15 minuten</p>
         </div>
       </div>
     </div>
