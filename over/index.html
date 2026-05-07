@@ -481,21 +481,21 @@
     }
 
     /* ─── SCROLL ANIMATIONS ──────────────────────────── */
-    [data-motion="up"] {
+    .js-motion [data-motion="up"] {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 700ms ease-out, transform 700ms ease-out;
     }
-    [data-motion="up"].animate-in {
+    .js-motion [data-motion="up"].animate-in {
       opacity: 1;
       transform: translateY(0);
     }
-    [data-stagger-child] {
+    .js-motion [data-stagger-child] {
       opacity: 0;
       transform: translateY(16px);
       transition: opacity 600ms ease-out, transform 600ms ease-out;
     }
-    [data-stagger-child].animate-in {
+    .js-motion [data-stagger-child].animate-in {
       opacity: 1;
       transform: translateY(0);
     }
@@ -698,7 +698,7 @@
     </div>
     <div class="footer__bottom">
       <span>© 2026 NĀRO. All Rights Reserved.</span>
-      <span>KvK [nummer]</span>
+      <span>KvK volgt</span>
       <a href="mailto:contact@gonaro.ai">contact@gonaro.ai</a>
     </div>
   </footer>

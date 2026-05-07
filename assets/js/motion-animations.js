@@ -4,31 +4,47 @@
    - Count-up for [data-count-up]
    - Staggered children for [data-stagger]
    - Nav scroll shadow toggle
+   - JS-gated visibility (no JS = elements stay visible)
+   - 1s safety fallback that reveals anything still hidden
 ─────────────────────────────────────────────────────────── */
+
+/* Mark JS as available immediately so CSS may hide elements safely.
+   CSS hide rules are scoped to `.js-motion ...` so a JS failure leaves
+   content visible. */
+document.documentElement.classList.add('js-motion');
+
 (function () {
   var prefersReduced = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── 1. Scroll fade-up + sections (legacy) ───────────── */
-  var ioOpts = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+  var IO_OPTS = { threshold: 0.05, rootMargin: '0px 0px -50px 0px' };
 
+  /* ── Helpers ─────────────────────────────────────────── */
+  function reveal(el) {
+    el.classList.add('animate-in');
+  }
+
+  function inViewport(el) {
+    var r = el.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var vw = window.innerWidth || document.documentElement.clientWidth;
+    return r.bottom > 0 && r.top < vh && r.right > 0 && r.left < vw;
+  }
+
+  /* ── 1. Scroll fade-up + sections (legacy) ───────────── */
   var fadeObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
-        entry.target.classList.add('animate-in');
+        reveal(entry.target);
         fadeObserver.unobserve(entry.target);
       }
     });
-  }, ioOpts);
+  }, IO_OPTS);
 
-  document.querySelectorAll('[data-motion="up"]').forEach(function (el) {
-    fadeObserver.observe(el);
-  });
-
-  // Keep legacy behavior for sections that don't have data-motion
-  document.querySelectorAll('section:not(.hero):not([data-motion])').forEach(function (el) {
-    fadeObserver.observe(el);
-  });
+  var fadeTargets = [].slice.call(
+    document.querySelectorAll('[data-motion="up"], section:not(.hero):not([data-motion])')
+  );
+  fadeTargets.forEach(function (el) { fadeObserver.observe(el); });
 
   /* ── 2. Staggered children inside [data-stagger] ─────── */
   var stagObserver = new IntersectionObserver(function (entries) {
@@ -38,18 +54,17 @@
       var delay = parseInt(entry.target.dataset.staggerDelay || '200', 10);
       children.forEach(function (child, i) {
         if (prefersReduced) {
-          child.classList.add('animate-in');
+          reveal(child);
         } else {
-          setTimeout(function () { child.classList.add('animate-in'); }, i * delay);
+          setTimeout(function () { reveal(child); }, i * delay);
         }
       });
       stagObserver.unobserve(entry.target);
     });
-  }, ioOpts);
+  }, IO_OPTS);
 
-  document.querySelectorAll('[data-stagger]').forEach(function (el) {
-    stagObserver.observe(el);
-  });
+  var stagTargets = [].slice.call(document.querySelectorAll('[data-stagger]'));
+  stagTargets.forEach(function (el) { stagObserver.observe(el); });
 
   /* ── 3. Count-up numbers ─────────────────────────────── */
   function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
@@ -91,7 +106,48 @@
     countObserver.observe(el);
   });
 
-  /* ── 4. Nav scroll shadow ────────────────────────────── */
+  /* ── 4. Reveal anything already in viewport on load ──── */
+  function revealInViewport() {
+    fadeTargets.forEach(function (el) {
+      if (!el.classList.contains('animate-in') && inViewport(el)) reveal(el);
+    });
+    stagTargets.forEach(function (el) {
+      if (inViewport(el)) {
+        var children = el.querySelectorAll('[data-stagger-child]');
+        var delay = parseInt(el.dataset.staggerDelay || '200', 10);
+        children.forEach(function (child, i) {
+          if (child.classList.contains('animate-in')) return;
+          if (prefersReduced) reveal(child);
+          else setTimeout(function () { reveal(child); }, i * delay);
+        });
+      }
+    });
+    document.querySelectorAll('[data-count-up]').forEach(function (el) {
+      if (!el.dataset._counted && inViewport(el)) {
+        el.dataset._counted = '1';
+        runCountUp(el);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', revealInViewport);
+  } else {
+    revealInViewport();
+  }
+
+  /* ── 5. Safety net: reveal anything still hidden after 1s */
+  setTimeout(function () {
+    document.querySelectorAll('[data-motion="up"]:not(.animate-in), [data-stagger-child]:not(.animate-in)').forEach(reveal);
+    document.querySelectorAll('[data-count-up]').forEach(function (el) {
+      if (!el.dataset._counted) {
+        el.dataset._counted = '1';
+        runCountUp(el);
+      }
+    });
+  }, 1000);
+
+  /* ── 6. Nav scroll shadow ────────────────────────────── */
   var nav = document.getElementById('main-nav');
   if (nav) {
     var onScroll = function () {
