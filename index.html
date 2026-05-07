@@ -21,6 +21,9 @@
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900&f[]=neue-montreal@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
+  <!-- Framer Motion (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.18.0/framer-motion.umd.min.js"></script>
+
   <style>
     /* ─── TOKENS ─────────────────────────────────────────────── */
     :root {
@@ -162,9 +165,12 @@
       display: flex;
       align-items: center;
       border-bottom: 1px solid rgba(10,10,10,0.06);
-      transition: border-color 200ms ease-out;
+      transition: border-color 200ms ease-out, box-shadow 200ms ease-out;
     }
-    .nav--scrolled { border-bottom-color: var(--color-line); }
+    .nav--scrolled {
+      border-bottom-color: var(--color-line);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    }
     .nav .container {
       display: flex;
       align-items: center;
@@ -249,12 +255,43 @@
 
     /* ─── HERO MOCKUP ────────────────────────────────────────── */
     .hero__mockup {
+      position: relative;
       background: var(--color-surface);
       border: 1px solid var(--color-line);
       padding: 20px;
       max-width: 360px;
       border-radius: 2px;
       box-shadow: 0 1px 3px rgba(10,10,10,0.06), 0 4px 16px rgba(10,10,10,0.04);
+    }
+    .hero__mockup::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 2px;
+      padding: 1px;
+      background: linear-gradient(
+        135deg,
+        rgba(14,124,102,0) 0%,
+        rgba(14,124,102,0) 35%,
+        rgba(14,124,102,0.55) 50%,
+        rgba(14,124,102,0) 65%,
+        rgba(14,124,102,0) 100%
+      );
+      background-size: 280% 280%;
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events: none;
+      animation: mockup-shimmer 6s linear infinite;
+    }
+    @keyframes mockup-shimmer {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero__mockup::before { animation: none; }
     }
     .mockup__header {
       font-family: 'JetBrains Mono', monospace;
@@ -641,7 +678,7 @@
       color: var(--color-foreground);
       line-height: 1.7;
       margin-bottom: var(--space-2);
-      border-left: 3px solid var(--color-accent);
+      border-left: 2px solid var(--color-accent);
       padding-left: 20px;
     }
     .founder__location {
@@ -736,7 +773,7 @@
     }
     .cta-final .section-label { color: rgba(255,255,255,0.65); }
     .cta-final__heading {
-      font-size: clamp(36px, 4vw, 56px);
+      font-size: clamp(2rem, 4vw, 3.5rem);
       font-weight: 900;
       letter-spacing: -0.03em;
       max-width: 600px;
@@ -1046,6 +1083,34 @@
       transform: translateY(0);
     }
 
+    [data-motion="up"] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms ease-out, transform 700ms ease-out;
+    }
+    [data-motion="up"].animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    [data-stagger-child] {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 600ms ease-out, transform 600ms ease-out;
+    }
+    [data-stagger-child].animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-motion="up"],
+      [data-stagger-child] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
     /* ─── FEATURE DARK BLOCK ─────────────────────────── */
     .feature-dark {
       background: var(--color-foreground);
@@ -1188,17 +1253,17 @@
   <section class="stats" aria-label="Kerncijfers" data-motion="up">
     <div class="container">
       <div class="stat">
-        <span class="stat__number">1 op 3</span>
+        <span class="stat__number"><span data-count-up="1" data-prefix="" data-suffix="" data-duration="1100">0</span> op <span data-count-up="3" data-duration="1300">0</span></span>
         <span class="stat__label">Prospects reageert op een follow-up</span>
       </div>
       <div class="stats__divider" aria-hidden="true"></div>
       <div class="stat">
-        <span class="stat__number">Dag 3 · 7 · 14</span>
+        <span class="stat__number">Dag <span data-count-up="3" data-duration="900">0</span> · <span data-count-up="7" data-duration="1100">0</span> · <span data-count-up="14" data-duration="1400">0</span></span>
         <span class="stat__label">Automatische opvolging op het juiste moment</span>
       </div>
       <div class="stats__divider" aria-hidden="true"></div>
       <div class="stat">
-        <span class="stat__number">0 min</span>
+        <span class="stat__number"><span data-count-up="0" data-duration="800">0</span> min</span>
         <span class="stat__label">Extra werk voor jou per offerte</span>
       </div>
     </div>
@@ -1449,8 +1514,8 @@
           Handmatig opvolgen vs. NĀRO Close.
         </h2>
       </div>
-      <div class="comparison-grid">
-        <div class="comp-card comp-card--manual">
+      <div class="comparison-grid" data-stagger data-stagger-delay="200">
+        <div class="comp-card comp-card--manual" data-stagger-child>
           <h3 class="comp-card__title">Handmatig</h3>
           <ul class="comp-list">
             <li class="comp-list__item comp-list__item--no">
@@ -1471,7 +1536,7 @@
             </li>
           </ul>
         </div>
-        <div class="comp-card comp-card--accent">
+        <div class="comp-card comp-card--accent" data-stagger-child>
           <h3 class="comp-card__title">NĀRO Close</h3>
           <ul class="comp-list">
             <li class="comp-list__item comp-list__item--yes">
@@ -1689,16 +1754,6 @@
 
   <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
   <script>
-    // Nav scroll border
-    window.addEventListener('scroll', function() {
-      var nav = document.getElementById('main-nav');
-      if (window.scrollY > 80) {
-        nav.classList.add('nav--scrolled');
-      } else {
-        nav.classList.remove('nav--scrolled');
-      }
-    }, { passive: true });
-
     // Email tabs
     document.querySelectorAll('.email-tab').forEach(function(tab) {
       tab.addEventListener('click', function() {

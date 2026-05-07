@@ -23,6 +23,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
+  <!-- Framer Motion (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.18.0/framer-motion.umd.min.js"></script>
+
   <style>
     /* ─── DESIGN TOKENS ─────────────────────────────── */
     :root {
@@ -99,9 +102,12 @@
       height: var(--nav-h);
       background: var(--color-background);
       border-bottom: 1px solid transparent;
-      transition: border-color 200ms ease-out;
+      transition: border-color 200ms ease-out, box-shadow 200ms ease-out;
     }
-    .nav--scrolled { border-bottom-color: var(--color-line); }
+    .nav--scrolled {
+      border-bottom-color: var(--color-line);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    }
     .nav__inner {
       max-width: var(--max-w);
       margin: 0 auto;
@@ -210,7 +216,13 @@
       cursor: pointer;
     }
     .price-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
-    .price-card--featured { border-color: var(--color-accent); }
+    .price-card--featured {
+      border-color: var(--color-accent);
+      box-shadow: 0 8px 32px rgba(14,124,102,0.12);
+    }
+    .price-card--featured:hover {
+      box-shadow: 0 12px 36px rgba(14,124,102,0.16);
+    }
 
     /* ─── STICKY MOBILE CTA ──────────────────────────── */
     .sticky-cta { display: none; }
@@ -479,11 +491,36 @@
       white-space: nowrap;
     }
 
+    /* ─── SCROLL ANIMATIONS ──────────────────────────── */
+    [data-motion="up"] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms ease-out, transform 700ms ease-out;
+    }
+    [data-motion="up"].animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-stagger-child] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms ease-out, transform 600ms ease-out;
+    }
+    [data-stagger-child].animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ─── REDUCED MOTION ─────────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      [data-motion="up"],
+      [data-stagger-child] {
         opacity: 1 !important;
         transform: none !important;
       }
@@ -582,15 +619,15 @@
 
 <!-- PRICING -->
 <main>
-  <section class="pricing" aria-labelledby="pricing-heading">
+  <section class="pricing" aria-labelledby="pricing-heading" data-motion="up">
     <div class="container">
       <span class="pricing__label">TARIEVEN</span>
       <h1 class="pricing__heading" id="pricing-heading">Transparante prijzen.<br>Geen verrassingen.</h1>
 
-      <div class="pricing__grid">
+      <div class="pricing__grid" data-stagger data-stagger-delay="150">
 
         <!-- CARD 1: PILOT (FEATURED) -->
-        <article class="price-card price-card--featured" aria-labelledby="card-pilot-title">
+        <article class="price-card price-card--featured" aria-labelledby="card-pilot-title" data-stagger-child>
           <span class="price-card__badge">MEESTE GEKOZEN OM TE STARTEN</span>
           <h2 class="price-card__title" id="card-pilot-title">Pilot</h2>
           <div class="price-card__price-block">
@@ -643,7 +680,7 @@
         </article>
 
         <!-- CARD 2: FOUNDING -->
-        <article class="price-card" aria-labelledby="card-founding-title">
+        <article class="price-card" aria-labelledby="card-founding-title" data-stagger-child>
           <h2 class="price-card__title" id="card-founding-title">Founding</h2>
           <div class="price-card__price-block">
             <span class="price-card__setup">&euro;1.500</span>
@@ -684,7 +721,7 @@
         </article>
 
         <!-- CARD 3: PARTNER -->
-        <article class="price-card" aria-labelledby="card-partner-title">
+        <article class="price-card" aria-labelledby="card-partner-title" data-stagger-child>
           <h2 class="price-card__title" id="card-partner-title">Partner</h2>
           <div class="price-card__price-block">
             <span class="price-card__setup">&euro;2.500</span>
@@ -812,15 +849,6 @@
 </div>
 
 <script>
-  window.addEventListener('scroll', function() {
-    var nav = document.getElementById('main-nav');
-    if (window.scrollY > 80) {
-      nav.classList.add('nav--scrolled');
-    } else {
-      nav.classList.remove('nav--scrolled');
-    }
-  }, { passive: true });
-
   (function() {
     var stickyCta = document.getElementById('sticky-cta');
     var anchor = document.querySelector('.pricing__under');

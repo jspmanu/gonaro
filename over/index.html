@@ -7,6 +7,9 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%23F3EEE7'/><rect x='6' y='10' width='20' height='3' rx='1' fill='%230E7C66'/><circle cx='24' cy='22' r='3.5' fill='%230E7C66'/></svg>">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,400&f[]=general-sans@500,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Framer Motion (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.18.0/framer-motion.umd.min.js"></script>
   <style>
     /* ─── Design Tokens ─── */
     :root {
@@ -80,6 +83,12 @@
       top: 0;
       z-index: 100;
       background: var(--color-background);
+      transition: box-shadow 200ms ease-out, border-color 200ms ease-out;
+      border-bottom: 1px solid transparent;
+    }
+    .nav-wrapper.nav--scrolled {
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+      border-bottom-color: var(--color-line);
     }
 
     .nav__logo {
@@ -178,7 +187,7 @@
     .hero-about__heading {
       font-family: 'Satoshi', sans-serif;
       font-weight: 700;
-      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-size: clamp(2.5rem, 5vw, 4rem);
       letter-spacing: -0.03em;
       line-height: 1.1;
       color: var(--color-foreground);
@@ -289,13 +298,16 @@
     .value-card {
       background: rgba(245,245,243,0.04);
       border: 1px solid rgba(245,245,243,0.10);
+      border-top: 2px solid var(--color-accent);
       border-radius: 12px;
       padding: var(--space-6);
-      transition: border-color 200ms ease-out, transform 200ms ease-out;
+      transition: border-color 200ms ease-out, transform 200ms ease-out, box-shadow 200ms ease-out;
     }
     .value-card:hover {
       border-color: rgba(14,124,102,0.55);
-      transform: translateY(-2px);
+      border-top-color: var(--color-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px -16px rgba(0,0,0,0.5);
     }
     .value-card__num {
       font-family: 'JetBrains Mono', monospace;
@@ -466,12 +478,36 @@
       white-space: nowrap;
     }
 
+    /* ─── SCROLL ANIMATIONS ──────────────────────────── */
+    [data-motion="up"] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms ease-out, transform 700ms ease-out;
+    }
+    [data-motion="up"].animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-stagger-child] {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 600ms ease-out, transform 600ms ease-out;
+    }
+    [data-stagger-child].animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ─── REDUCED MOTION ─── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
         transform: none !important;
+      }
+      [data-motion="up"],
+      [data-stagger-child] {
+        opacity: 1 !important;
       }
     }
 
@@ -495,7 +531,7 @@
 <body>
 
   <!-- Nav -->
-  <div class="nav-wrapper">
+  <div class="nav-wrapper" id="main-nav">
     <nav class="nav" aria-label="Hoofdnavigatie">
       <a class="nav__logo" href="/" aria-label="NARO - terug naar home">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="18.20 -11.20 737.13 235.10" height="22" aria-hidden="true">
@@ -525,7 +561,7 @@
   <main>
 
     <!-- ═══════════ Section 1: Hero ═══════════ -->
-    <section class="hero-about" aria-labelledby="hero-heading">
+    <section class="hero-about" aria-labelledby="hero-heading" data-motion="up">
       <div class="hero-about__inner">
         <span class="section-label section-label--accent">OVER NĀRO</span>
         <h1 class="hero-about__heading" id="hero-heading">Vakmannen verdienen meer dan ze binnenhalen.</h1>
@@ -536,7 +572,7 @@
     </section>
 
     <!-- ═══════════ Section 2: Founder ═══════════ -->
-    <section class="section founder" aria-labelledby="founder-heading">
+    <section class="section founder" aria-labelledby="founder-heading" data-motion="up">
       <div class="container">
         <div class="founder__grid">
           <div class="founder__text">
@@ -564,7 +600,7 @@
     </section>
 
     <!-- ═══════════ Section 3: Values (dark) ═══════════ -->
-    <section class="section values" aria-labelledby="values-heading">
+    <section class="section values" aria-labelledby="values-heading" data-motion="up">
       <div class="container">
         <div class="values__head">
           <span class="section-label section-label--light">WAT WIJ GELOVEN</span>
@@ -591,7 +627,7 @@
     </section>
 
     <!-- ═══════════ Section 4: CTA ═══════════ -->
-    <section class="section cta-final" aria-labelledby="cta-heading">
+    <section class="section cta-final" aria-labelledby="cta-heading" data-motion="up">
       <div class="container">
         <span class="section-label">KENNISMAKEN</span>
         <h2 class="cta-final__heading" id="cta-heading">Benieuwd wat NĀRO voor jouw bedrijf kan doen?</h2>
@@ -672,6 +708,7 @@
   <script>
     (function () {
       var mobileCta = document.getElementById('mobile-cta');
+      if (!mobileCta) return;
       function checkMobile() {
         if (window.innerWidth <= 768) {
           mobileCta.style.display = 'block';
@@ -683,6 +720,8 @@
       window.addEventListener('resize', checkMobile);
     })();
   </script>
+
+  <script src="/assets/js/motion-animations.js"></script>
 
 </body>
 </html>
