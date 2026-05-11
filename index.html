@@ -12,33 +12,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <style>
-/* ───────────── Tokens ───────────── */
 :root{
-  --bg:        #F5F5F3;
-  --ink:       #0A0A0A;
-  --ink-72:    rgba(10,10,10,.72);
-  --ink-56:    rgba(10,10,10,.56);
-  --ink-40:    rgba(10,10,10,.40);
-  --ink-16:    rgba(10,10,10,.16);
-  --ink-08:    rgba(10,10,10,.08);
-  --teal:      #0E7C66;
-  --neutral:   #94A3B8;
-  --sand:      #F3EEE7;
-  --paper:     #FAFAF8;
-  --line:      rgba(10,10,10,.12);
-  --line-10:   rgba(10,10,10,.10);
-
-  --maxw:      1200px;
-  --pad-x:     32px;
-  --sec-y:     128px;
-
-  --display:   "Satoshi","Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;
-  --body:      "Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;
-  --label:     "General Sans","Inter",ui-sans-serif,system-ui,sans-serif;
-  --mono:      "JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --bg:#F5F5F3; --ink:#0A0A0A;
+  --ink-72:rgba(10,10,10,.72); --ink-56:rgba(10,10,10,.56);
+  --ink-40:rgba(10,10,10,.40); --ink-16:rgba(10,10,10,.16);
+  --ink-08:rgba(10,10,10,.08);
+  --teal:#0E7C66; --neutral:#94A3B8;
+  --sand:#F3EEE7; --paper:#FAFAF8;
+  --line:rgba(10,10,10,.12); --line-10:rgba(10,10,10,.10);
+  --maxw:1200px; --pad-x:32px; --sec-y:128px;
+  --display:"Satoshi","Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --body:"Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --label:"General Sans","Inter",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 
-/* ───────────── Base ───────────── */
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--ink);font-family:var(--body);
   font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
@@ -63,7 +51,7 @@ section.dark{background:var(--ink);color:var(--bg)}
 section.sand{background:var(--sand);border-top:0}
 section.sand + section{border-top:0}
 
-/* ───────────── Nav ───────────── */
+/* Nav */
 .nav{position:fixed;inset:0 0 auto 0;z-index:50;
   background:color-mix(in oklab, var(--bg) 95%, transparent);
   border-bottom:1px solid var(--line)}
@@ -74,7 +62,8 @@ section.sand + section{border-top:0}
   font-family:var(--label);font-size:12px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-56);font-weight:500;
   transition:color .18s ease-out}
-.nav-links a:not(.nav-cta):hover{color:var(--ink)}
+.nav-links a:not(.nav-cta):hover,
+.nav-links a[aria-current="page"]{color:var(--ink)}
 .nav-cta{padding:11px 18px;border:1px solid var(--teal);background:var(--teal);
   color:#fff;border-radius:2px;font-family:var(--label);font-size:12px;
   letter-spacing:.14em;text-transform:uppercase;font-weight:600;
@@ -84,7 +73,7 @@ section.sand + section{border-top:0}
   .nav-links a:not(.nav-cta){display:none}
 }
 
-/* ───────────── Buttons ───────────── */
+/* Buttons */
 .btn{display:inline-flex;align-items:center;gap:10px;
   padding:14px 22px;border:1px solid var(--ink);border-radius:2px;
   font-size:14.5px;font-weight:500;letter-spacing:-.005em;
@@ -93,12 +82,10 @@ section.sand + section{border-top:0}
 .btn:hover .arr{transform:translateX(4px)}
 .btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
 .btn-teal:hover{background:#0a6855;border-color:#0a6855}
-.btn-ghost{background:transparent;color:var(--ink)}
-.btn-ghost:hover{background:var(--ink);color:var(--bg)}
 .btn-outline-teal{background:transparent;color:var(--teal);border-color:var(--teal)}
 .btn-outline-teal:hover{background:var(--teal);color:#fff}
 
-/* ───────────── HERO ───────────── */
+/* HERO */
 .hero{padding-top:calc(64px + 96px);padding-bottom:var(--sec-y);
   min-height:calc(100vh - 64px);display:flex;align-items:center}
 .hero .wrap{position:relative}
@@ -106,10 +93,8 @@ section.sand + section{border-top:0}
 .hero .meta .ln{width:36px;height:1px;background:var(--line)}
 .hero h1{font-size:clamp(48px, 7.2vw, 116px);max-width:14ch;letter-spacing:-.04em}
 .hero h1 .accent{color:var(--teal)}
-.hero .sub{margin-top:40px;font-size:19px;line-height:1.5;color:var(--ink-72);
-  max-width:54ch}
-.hero .cta-row{margin-top:56px;display:flex;align-items:center;gap:24px;
-  flex-wrap:wrap}
+.hero .sub{margin-top:40px;font-size:19px;line-height:1.5;color:var(--ink-72);max-width:54ch}
+.hero .cta-row{margin-top:56px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
 .hero .cta-row .reassure{font-size:13px;color:var(--ink-56);
   font-family:var(--label);letter-spacing:.04em}
 .hero .cta-row .reassure span{color:var(--ink)}
@@ -125,47 +110,40 @@ section.sand + section{border-top:0}
   0%,100%{transform:scaleX(.5);transform-origin:left;opacity:.4}
   50%{transform:scaleX(1);opacity:1}
 }
-
 @media (max-width:760px){
   .hero h1{font-size:clamp(44px,11vw,76px)}
 }
 
-/* ───────────── DARK STATS ───────────── */
+/* DARK STATS */
 .stats{padding:96px 0}
 .stats .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-  border-top:1px solid rgba(255,255,255,.1);
-  border-bottom:1px solid rgba(255,255,255,.1)}
+  border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1)}
 .stat{padding:56px 32px;border-right:1px solid rgba(255,255,255,.1);position:relative}
 .stat:last-child{border-right:none}
 .stat .num{font-family:var(--display);font-weight:700;color:var(--teal);
   font-size:clamp(64px,9vw,140px);line-height:.9;letter-spacing:-.045em;
   font-feature-settings:"ss01","tnum"}
 .stat .num .u{color:rgba(245,245,243,.55);font-size:.36em;letter-spacing:0}
-.stat .lbl{margin-top:24px;font-size:15px;line-height:1.5;
-  color:rgba(245,245,243,.7);max-width:30ch}
+.stat .lbl{margin-top:24px;font-size:15px;line-height:1.5;color:rgba(245,245,243,.7);max-width:30ch}
 .stat .src{position:absolute;top:20px;right:20px;font-family:var(--label);
-  font-size:11px;letter-spacing:.12em;color:rgba(245,245,243,.4);
-  text-transform:uppercase}
-
+  font-size:11px;letter-spacing:.12em;color:rgba(245,245,243,.4);text-transform:uppercase}
 @media (max-width:760px){
   .stats .grid{grid-template-columns:1fr}
   .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
   .stat:last-child{border-bottom:none}
 }
 
-/* ───────────── HOW IT WORKS ───────────── */
+/* HOW */
 .how{padding:var(--sec-y) 0}
-.how-head{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;
-  margin-bottom:96px}
+.how-head{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:96px}
 .how-head .left{display:flex;flex-direction:column;gap:20px}
-.how-head h2{font-family:var(--display);font-weight:700;
-  font-size:clamp(40px,5.2vw,72px);line-height:1;letter-spacing:-.035em;max-width:14ch}
+.how-head h2{font-family:var(--display);font-weight:700;font-size:clamp(40px,5.2vw,72px);
+  line-height:1;letter-spacing:-.035em;max-width:14ch}
 .how-head h2 .accent{color:var(--teal)}
 .how-head .p{color:var(--ink-72);font-size:17px;max-width:42ch;justify-self:end}
 
 .timeline{position:relative;display:flex;flex-direction:column}
-.timeline::before{content:"";position:absolute;left:0;top:24px;bottom:24px;
-  width:1px;background:var(--line)}
+.timeline::before{content:"";position:absolute;left:0;top:24px;bottom:24px;width:1px;background:var(--line)}
 .step{display:grid;grid-template-columns:180px 1fr;gap:48px;
   padding:56px 0 56px 32px;position:relative;align-items:start}
 .step + .step{border-top:1px dashed var(--ink-08)}
@@ -173,41 +151,33 @@ section.sand + section{border-top:0}
   background:var(--bg);border:1.5px solid var(--ink);border-radius:50%}
 .step.active::before{background:var(--teal);border-color:var(--teal)}
 .step .when{display:flex;flex-direction:column;gap:6px}
-.step .when .day{font-family:var(--display);font-weight:700;font-size:36px;
-  letter-spacing:-.025em;line-height:1}
+.step .when .day{font-family:var(--display);font-weight:700;font-size:36px;letter-spacing:-.025em;line-height:1}
 .step .when .when-l{font-family:var(--label);font-size:11px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--neutral);margin-top:6px}
 .step .body{max-width:62ch}
-.step .body h3{font-family:var(--display);font-weight:700;
-  font-size:clamp(22px,2.4vw,30px);line-height:1.18;letter-spacing:-.02em}
+.step .body h3{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.4vw,30px);
+  line-height:1.18;letter-spacing:-.02em}
 .step .body h3 .accent{color:var(--teal)}
-.step .body p{margin-top:14px;font-size:15px;line-height:1.55;color:var(--ink-72);
-  max-width:54ch}
+.step .body p{margin-top:14px;font-size:15px;line-height:1.55;color:var(--ink-72);max-width:54ch}
 
-/* email card embedded in Dag 3 */
-.mail{margin-top:28px;border:1px solid var(--ink);background:var(--paper);
-  max-width:600px}
-.mail-head{display:flex;align-items:center;justify-content:space-between;
-  padding:12px 18px;border-bottom:1px solid var(--line);
-  font-family:var(--label);font-size:11px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--ink-56)}
+.mail{margin-top:28px;border:1px solid var(--ink);background:var(--paper);max-width:600px}
+.mail-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;
+  border-bottom:1px solid var(--line);font-family:var(--label);font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-56)}
 .mail-head .dots{display:flex;gap:6px}
 .mail-head .dots i{width:8px;height:8px;border-radius:50%;background:var(--ink-16);display:block}
-.mail-meta{padding:18px 22px 6px;display:grid;grid-template-columns:64px 1fr;
-  gap:6px 14px;font-size:13.5px;color:var(--ink-72)}
+.mail-meta{padding:18px 22px 6px;display:grid;grid-template-columns:64px 1fr;gap:6px 14px;font-size:13.5px;color:var(--ink-72)}
 .mail-meta dt{color:var(--ink-40);font-family:var(--label);font-size:11px;
   text-transform:uppercase;letter-spacing:.12em;padding-top:2px}
 .mail-meta dd{color:var(--ink)}
 .mail-meta .from-naro{display:inline-flex;align-items:center;gap:8px}
-.mail-meta .from-naro::before{content:"";width:14px;height:14px;
-  background:var(--teal);border-radius:1px;display:inline-block}
-.mail-body{padding:10px 22px 22px;font-size:15px;line-height:1.6;
-  color:var(--ink);font-weight:400}
+.mail-meta .from-naro::before{content:"";width:14px;height:14px;background:var(--teal);border-radius:1px;display:inline-block}
+.mail-body{padding:10px 22px 22px;font-size:15px;line-height:1.6;color:var(--ink)}
 .mail-body p + p{margin-top:12px}
 .mail-body .sig{color:var(--ink-72);font-size:14px}
 
-.how-foot{margin-top:48px;padding-left:32px;font-family:var(--label);
-  font-size:12px;color:var(--ink-56);letter-spacing:.12em;text-transform:uppercase}
+.how-foot{margin-top:48px;padding-left:32px;font-family:var(--label);font-size:12px;
+  color:var(--ink-56);letter-spacing:.12em;text-transform:uppercase}
 .how-foot em{font-style:normal;color:var(--teal)}
 
 @media (max-width:760px){
@@ -217,73 +187,49 @@ section.sand + section{border-top:0}
   .timeline::before{left:0}
 }
 
-/* ───────────── VALUE PROPS ───────────── */
+/* VALUE */
 .value{padding:var(--sec-y) 0}
 .value-head{display:flex;flex-direction:column;gap:16px;margin-bottom:80px}
-.value-head h2{font-family:var(--display);font-weight:700;
-  font-size:clamp(40px,5.2vw,72px);line-height:1;letter-spacing:-.035em;max-width:18ch}
+.value-head h2{font-family:var(--display);font-weight:700;font-size:clamp(40px,5.2vw,72px);
+  line-height:1;letter-spacing:-.035em;max-width:18ch}
 .value-head h2 .accent{color:var(--teal)}
-
 .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:64px 56px}
 .vcell{display:flex;flex-direction:column;gap:18px}
 .vcell .n{font-family:var(--display);font-weight:700;font-size:64px;
-  line-height:.9;letter-spacing:-.04em;color:var(--ink);
-  font-feature-settings:"ss01","tnum"}
+  line-height:.9;letter-spacing:-.04em;color:var(--ink);font-feature-settings:"ss01","tnum"}
 .vcell.is-accent .n{color:var(--teal)}
 .vcell h3{font-family:var(--display);font-weight:700;font-size:22px;
   letter-spacing:-.015em;line-height:1.2;margin-top:6px}
 .vcell p{font-size:15px;line-height:1.55;color:var(--ink-72);max-width:34ch}
-
 @media (max-width:760px){.vgrid{grid-template-columns:1fr;gap:48px}}
 
-/* ───────────── OVER NĀRO ───────────── */
+/* OVER (homepage section) */
 .over{padding:var(--sec-y) 0}
 .over .wrap{display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start}
 .over .label{align-self:start}
-.over h2{font-family:var(--display);font-weight:700;
-  font-size:clamp(40px,5.2vw,72px);line-height:1;letter-spacing:-.035em;
-  max-width:14ch;margin-bottom:32px}
+.over h2{font-family:var(--display);font-weight:700;font-size:clamp(40px,5.2vw,72px);
+  line-height:1;letter-spacing:-.035em;max-width:14ch;margin-bottom:32px}
 .over p{font-size:17px;line-height:1.55;color:var(--ink-72);max-width:54ch}
-@media (max-width:760px){
-  .over .wrap{grid-template-columns:1fr;gap:24px}
-}
+@media (max-width:760px){.over .wrap{grid-template-columns:1fr;gap:24px}}
 
-/* ───────────── TESTIMONIAL (sand) ───────────── */
-.testimonial{padding:calc(var(--sec-y) + 24px) 0;text-align:center;background:var(--sand)}
-.testimonial .rule{width:48px;height:2px;background:var(--teal);margin:0 auto 56px}
-.testimonial blockquote{font-family:var(--display);font-weight:700;
-  font-size:clamp(32px,4.4vw,60px);line-height:1.1;letter-spacing:-.025em;
-  max-width:22ch;margin:0 auto;color:var(--ink)}
-.testimonial blockquote .accent{color:var(--teal)}
-.testimonial .attr{margin-top:56px;display:flex;flex-direction:column;align-items:center;gap:6px}
-.testimonial .attr .name{font-family:var(--display);font-weight:700;font-size:15px}
-.testimonial .attr .role{font-family:var(--label);font-size:11.5px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-56)}
-
-/* ───────────── PRICING ───────────── */
+/* PRICING */
 .pricing{padding:var(--sec-y) 0}
-.pricing-head{display:flex;flex-direction:column;gap:18px;margin-bottom:80px;
-  align-items:flex-start}
-.pricing-head h2{font-family:var(--display);font-weight:700;
-  font-size:clamp(40px,5.2vw,68px);line-height:1;letter-spacing:-.035em;
-  max-width:18ch}
+.pricing-head{display:flex;flex-direction:column;gap:18px;margin-bottom:80px;align-items:flex-start}
+.pricing-head h2{font-family:var(--display);font-weight:700;font-size:clamp(40px,5.2vw,68px);
+  line-height:1;letter-spacing:-.035em;max-width:18ch}
 .pricing-head h2 .accent{color:var(--teal)}
 .pricing-head .sub{color:var(--ink-72);font-size:16px;max-width:42ch}
-
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-  border:1px solid var(--line)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
 .plan{padding:40px 32px 36px;border-right:1px solid var(--line);
   display:flex;flex-direction:column;gap:20px;background:var(--bg)}
 .plan:last-child{border-right:none}
 .plan .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;
-  font-family:var(--label);font-size:11px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--teal);border:1px solid var(--teal);
-  border-radius:2px;align-self:flex-start}
+  font-family:var(--label);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--teal);border:1px solid var(--teal);border-radius:2px;align-self:flex-start}
 .plan .badge .dot{width:6px;height:6px;background:var(--teal);border-radius:50%}
 .plan .badge.neutral{color:var(--neutral);border-color:var(--neutral)}
 .plan .badge.neutral .dot{background:var(--neutral)}
-.plan .name{font-family:var(--display);font-weight:700;font-size:24px;
-  letter-spacing:-.015em}
+.plan .name{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.015em}
 .plan .desc{font-size:14px;color:var(--ink-56);font-family:var(--label);
   letter-spacing:.08em;text-transform:uppercase;margin-top:-12px}
 .plan .price{margin-top:8px;display:flex;flex-direction:column;gap:6px}
@@ -295,36 +241,31 @@ section.sand + section{border-top:0}
   letter-spacing:-.035em;line-height:.95;font-feature-settings:"tnum"}
 .plan .price .v .u{font-family:var(--body);font-size:14px;color:var(--ink-56);
   font-weight:500;letter-spacing:0;margin-left:6px}
-.plan .note{font-size:13px;color:var(--ink-56);max-width:30ch;line-height:1.5;
-  font-style:italic}
+.plan .note{font-size:13px;color:var(--ink-56);max-width:30ch;line-height:1.5;font-style:italic}
 .plan .cta{margin-top:auto;padding-top:24px}
-
 @media (max-width:900px){
   .plans{grid-template-columns:1fr}
   .plan{border-right:none;border-bottom:1px solid var(--line)}
   .plan:last-child{border-bottom:none}
 }
+.pricing-foot{margin-top:40px;text-align:center;font-family:var(--label);font-size:12px;
+  color:var(--ink-56);letter-spacing:.1em;text-transform:uppercase}
 
-.pricing-foot{margin-top:40px;text-align:center;font-family:var(--label);
-  font-size:12px;color:var(--ink-56);letter-spacing:.1em;text-transform:uppercase}
-
-/* ───────────── FAQ ───────────── */
+/* FAQ */
 .faq{padding:var(--sec-y) 0}
 .faq-head{display:flex;flex-direction:column;gap:18px;margin-bottom:64px}
-.faq-head h2{font-family:var(--display);font-weight:700;
-  font-size:clamp(40px,5.2vw,68px);line-height:1;letter-spacing:-.035em;
-  max-width:18ch}
+.faq-head h2{font-family:var(--display);font-weight:700;font-size:clamp(40px,5.2vw,68px);
+  line-height:1;letter-spacing:-.035em;max-width:18ch}
+.faq-head h2 .accent{color:var(--teal)}
 .faq-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .faq-item{padding:32px 0;border-bottom:1px solid var(--line);
   display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start}
 .faq-item .q{font-family:var(--display);font-weight:700;font-size:20px;
   letter-spacing:-.015em;line-height:1.3;max-width:24ch}
 .faq-item .a{font-size:15px;line-height:1.6;color:var(--ink-72);max-width:64ch}
-@media (max-width:760px){
-  .faq-item{grid-template-columns:1fr;gap:14px}
-}
+@media (max-width:760px){.faq-item{grid-template-columns:1fr;gap:14px}}
 
-/* ───────────── CLOSING CTA (dark) ───────────── */
+/* CLOSING */
 .closing{padding:calc(var(--sec-y) + 16px) 0;text-align:center}
 .closing h2{font-family:var(--display);font-weight:700;color:var(--bg);
   font-size:clamp(40px,5.6vw,76px);line-height:1;letter-spacing:-.035em;
@@ -334,13 +275,13 @@ section.sand + section{border-top:0}
 .closing .cta{margin-top:48px}
 .closing .btn-teal{background:var(--teal);color:#fff}
 .closing .meta{margin-top:40px;font-family:var(--label);font-size:11.5px;
-  letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(245,245,243,.4);display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(245,245,243,.4);
+  display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
 .closing .meta .pulse{position:relative;display:inline-flex;align-items:center;gap:10px}
 .closing .meta .pulse::before{content:"";width:7px;height:7px;border-radius:50%;
   background:var(--teal);position:relative}
 
-/* ───────────── FOOTER ───────────── */
+/* FOOTER */
 footer.foot{position:relative;overflow:hidden;padding:96px 0 32px;
   background:var(--bg);border-top:1px solid var(--line-10)}
 footer.foot .wrap{position:relative;z-index:2}
@@ -353,8 +294,7 @@ footer.foot .wrap{position:relative;z-index:2}
 .foot-col h4{font-family:var(--label);font-size:11px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink-56);font-weight:500;margin-bottom:18px}
 .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.foot-col a{font-family:var(--body);font-size:14px;color:var(--ink-56);
-  transition:color .18s ease-out}
+.foot-col a{font-family:var(--body);font-size:14px;color:var(--ink-56);transition:color .18s ease-out}
 .foot-col a:hover{color:var(--ink)}
 .foot-bottom{border-top:1px solid var(--line);padding-top:24px;
   font-family:var(--label);font-size:11px;letter-spacing:.1em;
@@ -370,9 +310,8 @@ footer.foot .wrap{position:relative;z-index:2}
   .foot-cols{grid-template-columns:repeat(2,1fr);gap:32px 24px}
 }
 
-/* ───────────── Scroll fade-up ───────────── */
-.fu{opacity:0;transform:translateY(20px);
-  transition:opacity .55s ease-out, transform .55s ease-out}
+/* Scroll fade-up */
+.fu{opacity:0;transform:translateY(20px);transition:opacity .55s ease-out, transform .55s ease-out}
 .fu.in{opacity:1;transform:none}
 .fu.d1{transition-delay:.06s}
 .fu.d2{transition-delay:.12s}
@@ -385,22 +324,20 @@ footer.foot .wrap{position:relative;z-index:2}
 </head>
 <body>
 
-<!-- ───────── NAV ───────── -->
 <nav class="nav">
   <div class="wrap nav-inner">
-    <a href="#" class="brand" aria-label="NĀRO home">NĀRO</a>
+    <a href="/" class="brand" aria-label="NĀRO home">NĀRO</a>
     <div class="nav-links">
       <a href="#hoe">Hoe het werkt</a>
       <a href="#voordelen">Voordelen</a>
-      <a href="#over">Over NĀRO</a>
+      <a href="/over/">Over NĀRO</a>
       <a href="#prijs">Prijzen</a>
       <a href="#faq">FAQ</a>
-      <a href="#contact" class="nav-cta">Boek je gratis check</a>
+      <a href="https://calendly.com/joshua-gonaro/15min" target="_blank" rel="noopener noreferrer" class="nav-cta">Boek je gratis check</a>
     </div>
   </div>
 </nav>
 
-<!-- ───────── HERO ───────── -->
 <section class="hero" id="close">
   <div class="wrap">
     <div class="meta fu">
@@ -419,7 +356,7 @@ footer.foot .wrap{position:relative;z-index:2}
     </p>
 
     <div class="cta-row fu d3">
-      <a href="#contact" class="btn btn-teal">
+      <a href="https://calendly.com/joshua-gonaro/15min" target="_blank" rel="noopener noreferrer" class="btn btn-teal">
         Boek je gratis check <span class="arr">→</span>
       </a>
       <span class="reassure"><span>Nog 3</span> pilot plekken beschikbaar</span>
@@ -434,7 +371,6 @@ footer.foot .wrap{position:relative;z-index:2}
   </div>
 </section>
 
-<!-- ───────── DARK STATS ───────── -->
 <section class="stats dark">
   <div class="wrap">
     <div class="grid">
@@ -457,7 +393,6 @@ footer.foot .wrap{position:relative;z-index:2}
   </div>
 </section>
 
-<!-- ───────── HOW IT WORKS ───────── -->
 <section class="how" id="hoe">
   <div class="wrap">
     <header class="how-head">
@@ -547,7 +482,6 @@ footer.foot .wrap{position:relative;z-index:2}
   </div>
 </section>
 
-<!-- ───────── VALUE PROPS ───────── -->
 <section class="value" id="voordelen">
   <div class="wrap">
     <header class="value-head">
@@ -573,14 +507,13 @@ footer.foot .wrap{position:relative;z-index:2}
       <article class="vcell fu d2">
         <span class="n tabular">03</span>
         <h3>Meetbaar resultaat</h3>
-        <p>Je ziet precies welke follow-ups zijn verstuurd, geopend en welke
-          offertes alsnog gewonnen zijn. Eén dashboard, drie kolommen, geen ruis.</p>
+        <p>Je ontvangt een maandelijks overzicht van alle verstuurde follow-ups en
+          gewonnen offertes. Inzicht zonder extra tools.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ───────── OVER NĀRO ───────── -->
 <section class="over" id="over">
   <div class="wrap">
     <span class="label fu">Over NĀRO</span>
@@ -592,21 +525,6 @@ footer.foot .wrap{position:relative;z-index:2}
   </div>
 </section>
 
-<!-- ───────── TESTIMONIAL ───────── -->
-<section class="testimonial sand">
-  <div class="wrap">
-    <div class="rule fu" aria-hidden="true"></div>
-    <blockquote class="fu d1">
-      We gingen van 20% naar <span class="accent">61% offerteconversie</span> in zes weken.
-    </blockquote>
-    <div class="attr fu d2">
-      <span class="name">[Naam op aanvraag]</span>
-      <span class="role">Eigenaar, installatiebedrijf Noord-Holland</span>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── PRICING ───────── -->
 <section class="pricing" id="prijs">
   <div class="wrap">
     <header class="pricing-head">
@@ -625,7 +543,7 @@ footer.foot .wrap{position:relative;z-index:2}
           <span class="v tabular">€300<span class="u">/ mnd</span></span>
         </div>
         <p class="note">Voor de eerste klanten die meedoen aan de pilotperiode en feedback geven.</p>
-        <a href="#contact" class="btn btn-teal cta">Claim je pilot plek <span class="arr">→</span></a>
+        <a href="https://calendly.com/joshua-gonaro/15min" target="_blank" rel="noopener noreferrer" class="btn btn-teal cta">Boek je gratis check <span class="arr">→</span></a>
       </article>
 
       <article class="plan fu d1">
@@ -637,7 +555,7 @@ footer.foot .wrap{position:relative;z-index:2}
           <span class="v tabular">€500<span class="u">/ mnd</span></span>
         </div>
         <p class="note">Terugverdiend binnen één extra opdracht.</p>
-        <a href="#contact" class="btn btn-teal cta">Claim je founding plek <span class="arr">→</span></a>
+        <a href="https://calendly.com/joshua-gonaro/15min" target="_blank" rel="noopener noreferrer" class="btn btn-teal cta">Boek je gratis check <span class="arr">→</span></a>
       </article>
 
       <article class="plan fu d2">
@@ -649,7 +567,7 @@ footer.foot .wrap{position:relative;z-index:2}
           <span class="v tabular">€750<span class="u">/ mnd</span></span>
         </div>
         <p class="note">Voor bedrijven die instappen na de pilot- en founding-fase.</p>
-        <a href="#contact" class="btn btn-outline-teal cta">Neem contact op <span class="arr">→</span></a>
+        <a href="https://calendly.com/joshua-gonaro/15min" target="_blank" rel="noopener noreferrer" class="btn btn-outline-teal cta">Boek je gratis check <span class="arr">→</span></a>
       </article>
     </div>
 
@@ -657,7 +575,6 @@ footer.foot .wrap{position:relative;z-index:2}
   </div>
 </section>
 
-<!-- ───────── FAQ ───────── -->
 <section class="faq" id="faq">
   <div class="wrap">
     <header class="faq-head">
@@ -682,14 +599,13 @@ footer.foot .wrap{position:relative;z-index:2}
   </div>
 </section>
 
-<!-- ───────── CLOSING CTA ───────── -->
-<section class="closing dark" id="contact">
+<section class="closing dark">
   <div class="wrap">
     <h2 class="fu">Klaar om meer opdrachten te winnen?</h2>
     <p class="sub fu d1">Nog 3 pilot plekken. Geen setup kosten. Binnen 48 uur live.</p>
     <div class="cta fu d2">
-      <a href="mailto:contact@gonaro.ai?subject=Gratis%20check%20NĀRO%20Close" class="btn btn-teal">
-        Claim je pilot plek <span class="arr">→</span>
+      <a href="https://calendly.com/joshua-gonaro/15min" target="_blank" rel="noopener noreferrer" class="btn btn-teal">
+        Boek je gratis check <span class="arr">→</span>
       </a>
     </div>
     <div class="meta fu d3">
@@ -700,7 +616,6 @@ footer.foot .wrap{position:relative;z-index:2}
   </div>
 </section>
 
-<!-- ───────── FOOTER ───────── -->
 <footer class="foot">
   <div class="foot-watermark" aria-hidden="true">NĀRO</div>
   <div class="wrap">
@@ -713,31 +628,31 @@ footer.foot .wrap{position:relative;z-index:2}
         <div class="foot-col">
           <h4>Product</h4>
           <ul>
-            <li><a href="#hoe">Hoe het werkt</a></li>
-            <li><a href="#prijs">Prijzen</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="/#hoe">Hoe het werkt</a></li>
+            <li><a href="/#prijs">Prijzen</a></li>
+            <li><a href="/#faq">FAQ</a></li>
           </ul>
         </div>
         <div class="foot-col">
           <h4>Bedrijf</h4>
           <ul>
-            <li><a href="#over">Over NĀRO</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/over/">Over NĀRO</a></li>
+            <li><a href="https://calendly.com/joshua-gonaro/15min" target="_blank" rel="noopener noreferrer">Contact</a></li>
           </ul>
         </div>
         <div class="foot-col">
           <h4>Juridisch</h4>
           <ul>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Voorwaarden</a></li>
+            <li><a href="/privacy/">Privacy</a></li>
+            <li><a href="/voorwaarden/">Voorwaarden</a></li>
           </ul>
         </div>
         <div class="foot-col">
           <h4>Socials</h4>
           <ul>
-            <li><a href="#">WhatsApp</a></li>
-            <li><a href="#">LinkedIn</a></li>
-            <li><a href="mailto:contact@gonaro.ai?subject=Gratis%20check%20NĀRO%20Close">Email</a></li>
+            <li><a href="https://wa.me/31681040019" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            <li><a href="https://www.linkedin.com/in/joshua-manusama-999147183/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="mailto:contact@gonaro.ai">Email</a></li>
           </ul>
         </div>
       </div>
