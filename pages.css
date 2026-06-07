@@ -1,0 +1,144 @@
+/* ───────────── NĀRO subpage shared styles ───────────── */
+:root{
+  --bg:#ffffff; --surface:#f5f5f7; --ink:#0A0A0A; --ink-2:#5b5b60; --ink-3:#86868b;
+  --hair:rgba(10,10,10,.12); --hair-2:rgba(10,10,10,.07);
+  --teal:#0E7C66; --teal-ink:#0a6855; --black:#0A0A0A;
+  --on-dark:#f5f5f7; --on-dark-2:rgba(245,245,247,.66); --on-dark-3:rgba(245,245,247,.45);
+  --r:22px; --maxw:1024px; --wide:1240px; --pad-x:24px;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",system-ui,sans-serif;
+  --text:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--text);
+  font-size:17px;line-height:1.55;letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+::selection{background:var(--teal);color:#fff}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad-x);width:100%}
+.wrap-wide{max-width:var(--wide);margin-inline:auto;padding-inline:var(--pad-x);width:100%}
+.accent{color:var(--teal)}
+.t-h1{font-family:var(--display);font-weight:700;line-height:1.06;letter-spacing:-.025em;
+  font-size:clamp(40px,5.4vw,68px)}
+.t-h2{font-family:var(--display);font-weight:700;line-height:1.08;letter-spacing:-.02em;
+  font-size:clamp(28px,3.4vw,42px)}
+.t-h3{font-family:var(--display);font-weight:600;line-height:1.16;letter-spacing:-.016em;
+  font-size:clamp(20px,2vw,26px)}
+.eyebrow{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:-.005em;color:var(--teal)}
+
+/* Nav (matches homepage) */
+.nav{position:fixed;inset:0 0 auto 0;z-index:80;height:52px;
+  background:rgba(245,245,247,.72);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--hair-2)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:52px}
+.nav .brand{display:inline-flex;align-items:center}
+.nav .brand .logo{height:21px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:32px;font-size:13px;color:var(--ink-2);font-weight:400}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a[aria-current="page"]{color:var(--ink);font-weight:500}
+.nav .pill{padding:6px 14px;background:var(--teal);color:#fff;border-radius:980px;
+  font-size:13px;font-weight:500;transition:background .2s ease}
+.nav .pill:hover{background:var(--teal-ink)}
+@media (max-width:720px){.nav-links a:not(.pill){display:none}}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 26px;border-radius:980px;font-size:17px;font-weight:500;letter-spacing:-.01em;
+  transition:background .22s ease,color .22s ease,opacity .22s ease}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:var(--teal-ink)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{opacity:.85}
+.btn-light{background:#fff;color:var(--ink);border:1px solid var(--hair)}
+.btn-light:hover{opacity:.9}
+.lnk{display:inline-flex;align-items:center;gap:5px;color:var(--teal);font-size:17px;font-weight:400}
+.lnk:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* Page header */
+.page-head{padding:140px 0 56px;background:linear-gradient(180deg,#fff 0%,#fbfbfd 60%,var(--surface) 100%)}
+.page-head .eyebrow{display:block;margin-bottom:16px}
+.page-head h1{max-width:18ch}
+.page-head .sub{margin-top:22px;max-width:46ch;font-size:clamp(19px,2vw,23px);
+  color:var(--ink-2);line-height:1.4}
+
+/* Prose */
+.prose{padding:72px 0 96px}
+.prose .col{max-width:68ch}
+.prose h2{margin:56px 0 16px;font-family:var(--display);font-weight:700;
+  font-size:clamp(24px,2.6vw,32px);letter-spacing:-.018em;line-height:1.12}
+.prose h2:first-child{margin-top:0}
+.prose h3{margin:34px 0 10px;font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.012em}
+.prose p{margin:14px 0;color:var(--ink-2);font-size:17px;line-height:1.62}
+.prose p strong{color:var(--ink);font-weight:600}
+.prose ul{margin:14px 0 14px 22px;color:var(--ink-2)}
+.prose li{margin:8px 0;line-height:1.55}
+.prose a{color:var(--teal);text-decoration:underline;text-underline-offset:2px}
+.prose a.btn,.prose a.lnk{text-decoration:none}
+.prose a.btn-teal,.prose a.btn-dark{color:#fff}
+.prose a.btn-light{color:var(--ink)}
+.prose a.lnk{color:var(--teal)}
+.prose .lead{font-size:21px;color:var(--ink);line-height:1.5;font-weight:400}
+.prose .meta{margin-top:8px;font-size:14px;color:var(--ink-3)}
+.cta-row{margin-top:40px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:0;max-width:72ch;margin-top:8px}
+.faq .item{padding:28px 0;border-top:1px solid var(--hair-2)}
+.faq .item:last-child{border-bottom:1px solid var(--hair-2)}
+.faq .q{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.012em}
+.faq .a{margin-top:10px;color:var(--ink-2);font-size:16.5px;line-height:1.55}
+
+/* Footer (matches homepage) */
+footer.foot{position:relative;background:#F5F5F3;color:var(--ink-3);font-size:13px;
+  line-height:1.5;padding:88px 0 32px;overflow:hidden}
+footer.foot .wm{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
+  width:120%;max-width:none;opacity:.06;pointer-events:none;z-index:0}
+footer.foot .wrap-wide{position:relative;z-index:1}
+footer.foot .cols{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px}
+footer.foot .col-brand .brand{display:inline-flex;align-items:center}
+footer.foot .col-brand .brand .logo{height:24px;width:auto;display:block}
+footer.foot .col-brand .tag{margin-top:18px;font-size:15px;color:var(--ink-2);max-width:24ch;line-height:1.4}
+footer.foot .col h4{font-family:var(--display);font-size:11px;font-weight:600;
+  letter-spacing:.10em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px}
+footer.foot .col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+footer.foot .col ul a{font-size:14px;color:var(--ink-2)}
+footer.foot .col ul a:hover{color:var(--ink)}
+footer.foot .divider{height:1px;background:var(--hair-2);width:100%}
+footer.foot .bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;
+  flex-wrap:wrap;padding-top:24px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+@media (max-width:860px){
+  footer.foot .cols{grid-template-columns:1fr 1fr;gap:36px 32px}
+  footer.foot .col-brand{grid-column:span 2}
+}
+@media (max-width:520px){
+  footer.foot .bottom{flex-direction:column;align-items:flex-start;gap:10px}
+}
+
+/* Pricing cards (prijzen page) */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  max-width:var(--wide);margin-inline:auto;padding-inline:var(--pad-x)}
+.plan{background:var(--surface);border-radius:var(--r);padding:40px 34px;
+  display:flex;flex-direction:column;gap:18px;border:1px solid transparent}
+.plan.feat{background:#fff;border-color:var(--teal);box-shadow:0 30px 60px -34px rgba(14,124,102,.5)}
+.plan .badge{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;
+  color:var(--teal);align-self:flex-start}
+.plan .badge .d{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.plan .badge.muted{color:var(--ink-3)}
+.plan .badge.muted .d{background:var(--ink-3)}
+.plan .name{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.016em}
+.plan .for{font-size:14px;color:var(--ink-3);margin-top:-10px}
+.plan .price{margin-top:6px}
+.plan .price .v{font-family:var(--display);font-weight:700;font-size:52px;letter-spacing:-.03em;line-height:1;
+  font-variant-numeric:tabular-nums}
+.plan .price .v .u{font-family:var(--text);font-size:16px;color:var(--ink-2);font-weight:500;letter-spacing:0;margin-left:6px}
+.plan .ob{font-size:14px;color:var(--ink-2)}
+.plan .ob b{color:var(--ink);font-weight:600}
+.plan .note{font-size:14px;color:var(--ink-3);line-height:1.45;max-width:28ch}
+.plan .cta{margin-top:auto;padding-top:20px}
+.plan .btn{width:100%}
+.prose .pricing-foot{text-align:center;margin:44px auto 0;font-size:14px;color:var(--ink-3);
+  max-width:640px;padding-inline:var(--pad-x);line-height:1.5}
+@media (max-width:860px){.plans{grid-template-columns:1fr;max-width:480px}}
