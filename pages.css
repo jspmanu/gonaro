@@ -95,7 +95,7 @@ img,svg{display:block;max-width:100%}
 footer.foot{position:relative;background:#F5F5F3;color:var(--ink-3);font-size:13px;
   line-height:1.5;padding:88px 0 32px;overflow:hidden}
 footer.foot .wm{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
-  width:120%;max-width:none;opacity:.06;pointer-events:none;z-index:0}
+  width:84%;max-width:none;opacity:.06;pointer-events:none;z-index:0}
 footer.foot .wrap-wide{position:relative;z-index:1}
 footer.foot .cols{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px}
 footer.foot .col-brand .brand{display:inline-flex;align-items:center}
