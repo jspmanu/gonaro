@@ -30,6 +30,7 @@
 :root{
   --bg:        #ffffff;
   --surface:   #f5f5f7;   /* Apple signature gray */
+  --sand:      #F3EEE7;   /* NĀRO brand cream */
   --ink:       #0A0A0A;   /* NĀRO brand black */
   --ink-2:     #5b5b60;   /* secondary text */
   --ink-3:     #86868b;   /* tertiary / captions */
@@ -129,6 +130,24 @@ section{position:relative}
 .hero .avail{margin-top:22px;font-size:14px;color:var(--ink-3);letter-spacing:0}
 .hero .avail b{color:var(--teal);font-weight:600}
 
+/* email capture */
+.email-capture{display:flex;gap:10px;justify-content:center;align-items:stretch;
+  flex-wrap:nowrap;max-width:520px;margin:24px auto 0}
+.email-capture input{flex:1 1 auto;min-width:0;border:1px solid var(--hair);
+  border-radius:0;background:#fff;padding:12px 16px;font:inherit;font-size:16px;
+  color:var(--ink);letter-spacing:-.01em;transition:border-color .2s ease, box-shadow .2s ease}
+.email-capture input::placeholder{color:var(--ink-3)}
+.email-capture input:hover{border-color:rgba(10,10,10,.22)}
+.email-capture input:focus-visible{outline:none;border-color:var(--teal);
+  box-shadow:0 0 0 3px rgba(14,124,102,.16)}
+.email-capture .btn{flex:0 0 auto;padding-block:12px}
+.email-note{font-size:13px;color:var(--ink-3);text-align:center;margin-top:8px;
+  letter-spacing:0}
+@media (max-width:560px){
+  .email-capture{flex-direction:column}
+  .email-capture .btn{width:100%}
+}
+
 /* product mock */
 .mock-wrap{margin:72px auto 0;max-width:880px;position:relative}
 .mock{background:#fff;border:1px solid var(--hair-2);border-radius:26px;
@@ -172,6 +191,58 @@ section{position:relative}
   .mock-cols{display:none}
   .mock-row{grid-template-columns:1fr auto;gap:8px}
   .mock-row .amt,.mock-row .day{display:none}
+}
+
+/* ───────────── DEMO (interactive timeline) ───────────── */
+.demo{background:var(--sand);padding:96px 0;overflow:hidden}
+.demo .head{text-align:center;margin-bottom:48px}
+.demo .head .eyebrow{display:block;margin-bottom:12px}
+.demo .head h2{margin:0 auto;max-width:18ch}
+.demo-stage{max-width:680px;margin-inline:auto}
+
+/* offerte-kaart (reuses .mock language) */
+.demo-card{background:#fff;border:1px solid var(--hair-2);border-radius:18px;
+  box-shadow:0 30px 60px -34px rgba(0,0,0,.24), 0 6px 18px -12px rgba(0,0,0,.10);
+  padding:20px 24px;display:flex;align-items:center;gap:16px}
+.demo-card .who{font-family:var(--display);font-weight:600;font-size:16px;
+  letter-spacing:-.012em}
+.demo-card .who small{display:block;font-family:var(--text);font-weight:400;
+  font-size:12.5px;color:var(--ink-3);letter-spacing:0;margin-top:2px}
+.demo-amt{margin-left:auto;font-family:var(--display);font-weight:700;
+  font-variant-numeric:tabular-nums;font-size:20px;letter-spacing:-.02em;
+  color:var(--ink);transition:color .4s ease}
+.demo-amt.won{color:var(--teal)}
+.demo-status.tagp{transition:none}
+
+/* timeline with left rail + dots */
+.demo-tl{position:relative;margin:14px 0 0;padding-left:34px}
+.demo-tl::before{content:"";position:absolute;left:9px;top:14px;bottom:14px;width:2px;
+  background:linear-gradient(180deg,var(--hair) 0%, rgba(10,10,10,.05) 100%)}
+.tl-msg{position:relative;margin-top:14px;opacity:0}
+.tl-msg::before{content:"";position:absolute;left:-29px;top:18px;width:10px;height:10px;
+  border-radius:50%;background:#fff;border:2px solid var(--hair)}
+.tl-msg.show{animation:fadeUp .4s ease-out forwards}
+.tl-msg.show.client::before{border-color:var(--teal);background:var(--teal)}
+.tl-bubble{display:inline-block;max-width:78%;padding:13px 17px;border-radius:16px;
+  font-size:15px;line-height:1.45;letter-spacing:-.01em}
+.tl-msg.naro .tl-bubble{background:#fff;border:1px solid rgba(10,10,10,.08);
+  color:var(--ink);border-bottom-left-radius:5px;
+  box-shadow:0 8px 22px -16px rgba(0,0,0,.30)}
+.tl-msg.client{text-align:right}
+.tl-msg.client::before{left:auto;right:-29px}
+.tl-msg.client .tl-bubble{background:var(--teal);color:#fff;
+  border-bottom-right-radius:5px;box-shadow:0 10px 24px -16px rgba(14,124,102,.6)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+@media (max-width:560px){
+  .demo{padding:72px 0}
+  .demo-card{flex-wrap:wrap;gap:10px}
+  .demo-amt{margin-left:0}
+  .tl-bubble{max-width:84%;font-size:14.5px}
+}
+@media (prefers-reduced-motion: reduce){
+  .tl-msg{opacity:1}
+  .tl-msg.show{animation:none}
 }
 
 /* ───────────── Reveal ───────────── */
@@ -417,12 +488,17 @@ footer.foot .bottom{display:flex;justify-content:space-between;align-items:cente
 <section class="hero" id="top">
   <div class="wrap">
     <span class="eyebrow rv">NĀRO Close</span>
-    <h1 class="t-hero rv d1">Meer opdrachten uit offertes die je <span class="accent">al verstuurde.</span></h1>
-    <p class="sub rv d2">Automatische, persoonlijke opvolging op dag 3, 7 en 14. Jij hoeft niets te doen.</p>
+    <h1 class="t-hero rv d1">Meer opdrachten uit <span class="accent">verstuurde offertes.</span></h1>
+    <p class="sub rv d2">Automatisch opgevolgd, zonder extra werk van jullie team.</p>
     <div class="ctas rv d2">
       <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="btn btn-teal">Boek je gratis check</a>
       <a href="#hoe" class="lnk">Bekijk hoe het werkt <span class="chev">›</span></a>
     </div>
+    <form class="email-capture rv d2" action="https://formspree.io/f/mbdeyvng" method="POST">
+      <input type="email" name="email" placeholder="Zakelijk e-mailadres" required />
+      <button type="submit" class="btn btn-teal">Vraag demo aan</button>
+    </form>
+    <p class="email-note rv d2">Vrijblijvend. We nemen binnen 24 uur contact op.</p>
     <p class="avail rv d3">Nog <b>3 pilotplekken</b> beschikbaar</p>
   </div>
 </footer>
@@ -460,6 +536,36 @@ footer.foot .bottom{display:flex;justify-content:space-between;align-items:cente
         <span class="amt">€ 5.600</span>
         <span class="day">vandaag</span>
         <span class="tagp sent"><span class="d"></span>Verstuurd</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── DEMO (interactive timeline) ───────── -->
+<section class="demo" id="demo">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow rv">In actie</span>
+      <h2 class="t-h3 rv d1">Eén offerte, automatisch tot opdracht.</h2>
+    </div>
+
+    <div class="demo-stage rv d2" role="figure" aria-label="Voorbeeld: automatische offerte-opvolging tot gewonnen opdracht">
+      <div class="demo-card">
+        <span class="who">TechKlimaat Rotterdam<small>Offerte #2026-047</small></span>
+        <span class="demo-amt tabular" id="demoAmt">€ 8.950</span>
+        <span class="tagp sent demo-status" id="demoStatus"><span class="d"></span>Verstuurd</span>
+      </div>
+
+      <div class="demo-tl" id="demoTl">
+        <div class="tl-msg naro" data-step="1">
+          <span class="tl-bubble">Goedemiddag, heeft u de kans gehad onze offerte te bekijken? We helpen u graag verder.</span>
+        </div>
+        <div class="tl-msg naro" data-step="2">
+          <span class="tl-bubble">We willen u graag ontzorgen. Kunnen we een moment inplannen?</span>
+        </div>
+        <div class="tl-msg client" data-step="3">
+          <span class="tl-bubble">Ja, we gaan akkoord. Wanneer kunnen jullie starten?</span>
+        </div>
       </div>
     </div>
   </div>
