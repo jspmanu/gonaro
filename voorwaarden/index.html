@@ -4,7 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://assets.calendly.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://calendly.com; img-src 'self' data:; connect-src 'self';" />
+<!-- Security headers -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none';" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Algemene Voorwaarden · NĀRO</title>
 <meta name="description" content="De algemene voorwaarden die van toepassing zijn op alle diensten van NĀRO, waaronder NĀRO Close." />

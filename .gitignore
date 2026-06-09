@@ -1,6 +1,23 @@
+# Dependencies & build
 node_modules/
-.DS_Store
+package.json
+package-lock.json
+
+# Dev tooling (not for the public site)
+CLAUDE.md
+serve.mjs
+screenshot.mjs
+
+# Screenshots / scratch
 temporary screenshots/
+screenshots/
 screenshot*.png
+
+# Local working copies (never publish)
+gonaro-website-manager/
+gonaro-website-updates/
+
+# OS / editor / local config
+.DS_Store
 .claude/settings.local.json
 *.pdf
