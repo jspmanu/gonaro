@@ -1,4 +1,4 @@
-// NĀRO homepage interactions — extracted to an external file so the strict CSP
+// NĀRO homepage interactions - extracted to an external file so the strict CSP
 // (script-src 'self') can stay in place without 'unsafe-inline'.
 
 // Scroll-reveal for elements with .rv
@@ -20,7 +20,7 @@ if (nav) {
   window.addEventListener('scroll', onScroll, { passive: true });
 }
 
-// "In actie" timeline — self-playing offerte → opvolging → gewonnen, loops every 10s.
+// "In actie" timeline - self-playing offerte → opvolging → gewonnen, loops every 10s.
 const demo = document.querySelector('.demo');
 if (demo) {
   const status = demo.querySelector('#demoStatus');

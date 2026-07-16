@@ -12,10 +12,10 @@ description: NĀRO UI component patterns, section structures, and interaction ru
 
 ## Core Principles
 
-1. **Structure before style** — get the HTML semantic and accessible first
-2. **One motion per section** — maximum one animated element per viewport
-3. **Progressive disclosure** — show less, reveal on interaction
-4. **Mobile-first** — all components are designed for mobile, enhanced for desktop
+1. **Structure before style** - get the HTML semantic and accessible first
+2. **One motion per section** - maximum one animated element per viewport
+3. **Progressive disclosure** - show less, reveal on interaction
+4. **Mobile-first** - all components are designed for mobile, enhanced for desktop
 
 ---
 
@@ -37,7 +37,7 @@ Rules:
 - Links: General Sans uppercase, `--text-sm`, `letter-spacing: 0.12em`
 - CTA link: styled as minimal button with `--color-accent` border
 - Nav is sticky, background `--color-background` at 95% opacity, no shadow
-- No hamburger menus with JS if avoidable — use `<details>` for mobile nav
+- No hamburger menus with JS if avoidable - use `<details>` for mobile nav
 
 ---
 
@@ -56,15 +56,15 @@ Rules:
 - Label: General Sans uppercase, `--color-neutral`, `--text-xs`
 - Heading: Satoshi Bold, `--text-5xl` desktop / `--text-3xl` mobile, max 8 words
 - Sub: Inter Regular, `--text-lg`, `--color-neutral`, max 2 lines
-- Single CTA — never two competing buttons in hero
-- No hero images — type-led, whitespace-led
+- Single CTA - never two competing buttons in hero
+- No hero images - type-led, whitespace-led
 
 ---
 
 ## Button Styles
 
 ```css
-/* Primary — Deep Teal fill */
+/* Primary - Deep Teal fill */
 .btn--primary {
   background: var(--color-accent);
   color: #ffffff;
@@ -82,7 +82,7 @@ Rules:
   background: var(--color-hover);
 }
 
-/* Secondary — outline only */
+/* Secondary - outline only */
 .btn--secondary {
   background: transparent;
   color: var(--color-foreground);
@@ -130,8 +130,8 @@ Rules:
 - Title: Satoshi Bold, `--text-xl`
 - Body: Inter Regular, `--text-base`, `--color-neutral`
 - Grid: 3 columns desktop, 1 column mobile
-- No card borders, no card backgrounds — spacing alone separates items
-- No icons — numbers are the visual anchor
+- No card borders, no card backgrounds - spacing alone separates items
+- No icons - numbers are the visual anchor
 
 ---
 
@@ -151,9 +151,9 @@ Rules:
 
 Rules:
 - Quote text: Satoshi Bold, `--text-2xl`, centered, max 20 words
-- No quotation mark decorations — the `<blockquote>` is semantic enough
+- No quotation mark decorations - the `<blockquote>` is semantic enough
 - Source: General Sans uppercase, `--text-xs`, `--color-neutral`
-- One quote per section — never a carousel
+- One quote per section - never a carousel
 
 ---
 
@@ -168,7 +168,7 @@ Rules:
 ```
 
 Rules:
-- Background: `--color-foreground` (dark section, white text) — the one moment of contrast
+- Background: `--color-foreground` (dark section, white text) - the one moment of contrast
 - Heading: Satoshi Bold, `--text-4xl`, color `#ffffff`
 - Sub: Inter Regular, `--color-neutral`
 - Single CTA only
@@ -190,11 +190,11 @@ Rules:
 ```
 
 Rules:
-- Minimal — brand name, essential links, legal line only
+- Minimal - brand name, essential links, legal line only
 - No social icons unless explicitly requested
 - Font: General Sans uppercase, `--text-xs`
 - Border-top: `1px solid var(--color-foreground)` at 10% opacity
-- No footer background color — inherits page background
+- No footer background color - inherits page background
 
 ---
 
@@ -202,7 +202,7 @@ Rules:
 
 When animation is needed:
 ```css
-/* Standard entrance — fade up */
+/* Standard entrance - fade up */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -216,7 +216,7 @@ Rules:
 - Duration: 300–400ms maximum
 - Easing: always `ease-out`
 - Trigger: IntersectionObserver, not scroll events
-- One animated element per section — never animate entire grids at once
+- One animated element per section - never animate entire grids at once
 - No parallax, no scroll-jacking, no transform-heavy effects
 
 ---
@@ -225,25 +225,25 @@ Rules:
 
 ```
 /
-  index.html          — homepage
+  index.html          - homepage
   /close/
-    index.html        — NĀRO Close product page
+    index.html        - NĀRO Close product page
   /about/
     index.html
   /contact/
     index.html
   /assets/
     /css/
-      tokens.css      — CSS custom properties only
-      base.css        — reset + typography
-      components.css  — all component styles
+      tokens.css      - CSS custom properties only
+      base.css        - reset + typography
+      components.css  - all component styles
     /js/
-      main.js         — minimal JS only
-    /fonts/           — self-hosted fonts
+      main.js         - minimal JS only
+    /fonts/           - self-hosted fonts
 ```
 
 Rules:
-- No build tools required — plain HTML/CSS/JS only
+- No build tools required - plain HTML/CSS/JS only
 - CSS split into tokens → base → components (import order matters)
 - Fonts self-hosted for performance and privacy
 - No external CSS frameworks (no Bootstrap, no Tailwind CDN)
