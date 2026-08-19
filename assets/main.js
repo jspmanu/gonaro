@@ -20,7 +20,7 @@ if (nav) {
   window.addEventListener('scroll', onScroll, { passive: true });
 }
 
-// "In actie" timeline - self-playing offerte → opvolging → gewonnen, loops every 10s.
+// "In action" timeline - self-playing quote → follow-up → won, loops every 10s.
 const demo = document.querySelector('.demo');
 if (demo) {
   const status = demo.querySelector('#demoStatus');
@@ -36,7 +36,7 @@ if (demo) {
   const showFinalState = () => {
     msgs.forEach((m) => m.classList.add('show'));
     amt.classList.add('won');
-    setStatus('won', 'Gewonnen');
+    setStatus('won', 'Won');
   };
 
   if (reduce.matches) {
@@ -51,15 +51,15 @@ if (demo) {
       timers = [];
       msgs.forEach((m) => m.classList.remove('show'));
       amt.classList.remove('won');
-      setStatus('sent', 'Verstuurd');
+      setStatus('sent', 'Sent');
     };
 
     const play = () => {
-      reset();                                                   // t=0  Verstuurd
-      at(2000, () => { msgs[0].classList.add('show'); setStatus('follow', 'Opvolging dag 3'); });
-      at(4000, () => { msgs[1].classList.add('show'); setStatus('follow', 'Opvolging dag 7'); });
+      reset();                                                   // t=0  Sent
+      at(2000, () => { msgs[0].classList.add('show'); setStatus('follow', 'Day 3 follow-up'); });
+      at(4000, () => { msgs[1].classList.add('show'); setStatus('follow', 'Day 7 follow-up'); });
       at(6000, () => { msgs[2].classList.add('show'); });
-      at(7500, () => { setStatus('won', 'Gewonnen'); amt.classList.add('won'); });
+      at(7500, () => { setStatus('won', 'Won'); amt.classList.add('won'); });
       at(9500, play);                                            // loop ~10s
     };
 

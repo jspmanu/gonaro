@@ -84,12 +84,26 @@ img,svg{display:block;max-width:100%}
 .prose .meta{margin-top:8px;font-size:14px;color:var(--ink-3)}
 .cta-row{margin-top:40px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
 
-/* FAQ */
+/* FAQ (accordion, native details/summary, no JS) */
 .faq{display:flex;flex-direction:column;gap:0;max-width:72ch;margin-top:8px}
 .faq .item{padding:28px 0;border-top:1px solid var(--hair-2)}
 .faq .item:last-child{border-bottom:1px solid var(--hair-2)}
 .faq .q{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.012em}
 .faq .a{margin-top:10px;color:var(--ink-2);font-size:16.5px;line-height:1.55}
+
+.faq summary.q{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;
+  cursor:pointer;list-style:none;color:var(--ink)}
+.faq summary.q::-webkit-details-marker{display:none}
+.faq summary.q::marker{content:""}
+.faq summary.q::after{content:"";flex:0 0 auto;width:9px;height:9px;margin-top:7px;
+  border-right:1.5px solid var(--ink-3);border-bottom:1.5px solid var(--ink-3);
+  transform:rotate(45deg);transform-origin:center;
+  transition:transform 200ms ease-out}
+.faq details[open] > summary.q::after{transform:rotate(-135deg)}
+.faq summary.q:hover{color:var(--teal)}
+.faq summary.q:hover::after{border-color:var(--teal)}
+.faq summary.q:focus-visible{outline:2px solid var(--teal);outline-offset:4px;border-radius:2px}
+.faq summary.q:active{opacity:.7}
 
 /* Footer (matches homepage) */
 footer.foot{position:relative;background:#F5F5F3;color:var(--ink-3);font-size:13px;
@@ -117,7 +131,7 @@ footer.foot .bottom{display:flex;justify-content:space-between;align-items:cente
   footer.foot .bottom{flex-direction:column;align-items:flex-start;gap:10px}
 }
 
-/* Pricing cards (prijzen page) */
+/* Plan cards (plans page) */
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
   max-width:var(--wide);margin-inline:auto;padding-inline:var(--pad-x)}
 .plan{background:var(--surface);border-radius:var(--r);padding:40px 34px;
@@ -130,13 +144,7 @@ footer.foot .bottom{display:flex;justify-content:space-between;align-items:cente
 .plan .badge.muted .d{background:var(--ink-3)}
 .plan .name{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.016em}
 .plan .for{font-size:14px;color:var(--ink-3);margin-top:-10px}
-.plan .price{margin-top:6px}
-.plan .price .v{font-family:var(--display);font-weight:700;font-size:52px;letter-spacing:-.03em;line-height:1;
-  font-variant-numeric:tabular-nums}
-.plan .price .v .u{font-family:var(--text);font-size:16px;color:var(--ink-2);font-weight:500;letter-spacing:0;margin-left:6px}
-.plan .ob{font-size:14px;color:var(--ink-2)}
-.plan .ob b{color:var(--ink);font-weight:600}
-.plan .note{font-size:14px;color:var(--ink-3);line-height:1.45;max-width:28ch}
+.plan .note{font-size:15px;color:var(--ink-2);line-height:1.5;max-width:30ch;margin-top:6px}
 .plan .cta{margin-top:auto;padding-top:20px}
 .plan .btn{width:100%}
 .prose .pricing-foot{text-align:center;margin:44px auto 0;font-size:14px;color:var(--ink-3);

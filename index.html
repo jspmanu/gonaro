@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -10,22 +10,23 @@
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://embed.typeform.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.typeform.com; connect-src 'self' https://*.typeform.com; frame-src https://form.typeform.com https://*.typeform.com; form-action 'self'; base-uri 'self'; object-src 'none';" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<title>NĀRO - Meer omzet uit verstuurde offertes.</title>
-<meta name="description" content="1 op de 3 prospects reageert wél op een follow-up. NĀRO Close doet dat automatisch, vanuit jouw naam. Nul extra werk." />
+<title>NĀRO - AI Follow-up Agent</title>
+<meta name="description" content="1 in 3 prospects does reply to a follow-up. NĀRO Close does it automatically, from your own inbox. Zero extra effort." />
+<link rel="canonical" href="https://gonaro.ai/" />
 
 <link rel="icon" type="image/svg+xml" href="/naro-mark-enso-on-black-tile.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="/naro-mark-enso-on-black-tile-32.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/naro-mark-enso-on-black-tile-512.png" />
 
 <!-- OG / Social -->
-<meta property="og:title" content="NĀRO: Meer omzet uit offertes die je al verstuurt" />
-<meta property="og:description" content="1 op de 3 prospects reageert wél op een follow-up. NĀRO Close doet dat automatisch, vanuit jouw naam." />
+<meta property="og:title" content="NĀRO - AI Follow-up Agent" />
+<meta property="og:description" content="1 in 3 prospects does reply to a follow-up. NĀRO Close does it automatically, from your own inbox. Zero extra effort." />
 <meta property="og:url" content="https://gonaro.ai" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://gonaro.ai/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="NĀRO: Meer omzet uit offertes die je al verstuurt" />
-<meta name="twitter:description" content="Automatische offerte-opvolging vanuit jouw naam. Nul extra werk." />
+<meta name="twitter:title" content="NĀRO - AI Follow-up Agent" />
+<meta name="twitter:description" content="Automatic quote follow-up from your own inbox. Zero extra effort." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -206,7 +207,7 @@ section{position:relative}
 .demo .head h2{margin:0 auto;max-width:18ch}
 .demo-stage{max-width:680px;margin-inline:auto}
 
-/* offerte-kaart (reuses .mock language) */
+/* quote card (reuses .mock language) */
 .demo-card{background:#fff;border:1px solid var(--hair-2);border-radius:18px;
   box-shadow:0 30px 60px -34px rgba(0,0,0,.24), 0 6px 18px -12px rgba(0,0,0,.10);
   padding:20px 24px;display:flex;align-items:center;gap:16px}
@@ -412,14 +413,7 @@ section{position:relative}
 .plan .name{font-family:var(--display);font-weight:600;font-size:26px;
   letter-spacing:-.016em}
 .plan .for{font-size:14px;color:var(--ink-3);margin-top:-10px}
-.plan .price{margin-top:6px}
-.plan .price .v{font-family:var(--display);font-weight:700;font-size:52px;
-  letter-spacing:-.03em;line-height:1}
-.plan .price .v .u{font-family:var(--text);font-size:16px;color:var(--ink-2);
-  font-weight:500;letter-spacing:0;margin-left:6px}
-.plan .ob{font-size:14px;color:var(--ink-2)}
-.plan .ob b{color:var(--ink);font-weight:600}
-.plan .note{font-size:14px;color:var(--ink-3);line-height:1.45;max-width:28ch}
+.plan .note{font-size:15px;color:var(--ink-2);line-height:1.5;max-width:30ch;margin-top:6px}
 .plan .cta{margin-top:auto;padding-top:20px}
 .plan .btn{width:100%}
 .pricing .foot{text-align:center;margin:44px auto 0;font-size:14px;color:var(--ink-3);
@@ -481,11 +475,11 @@ footer.foot .bottom{display:flex;justify-content:space-between;align-items:cente
   <div class="wrap-wide nav-inner">
     <a href="#top" class="brand" aria-label="NĀRO"><img class="logo" src="/naro-logo.svg" alt="NĀRO" /></a>
     <div class="nav-links">
-      <a href="#hoe">Hoe het werkt</a>
-      <a href="#functies">Functies</a>
-      <a href="/prijzen/">Prijzen</a>
-      <a href="/over/">Over</a>
-      <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="pill">Boek je gratis check</a>
+      <a href="#hoe">How it works</a>
+      <a href="#functies">Features</a>
+      <a href="/plans/">Plans</a>
+      <a href="/over/">About</a>
+      <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="pill">Get a Demo</a>
     </div>
   </div>
 </nav>
@@ -494,51 +488,50 @@ footer.foot .bottom{display:flex;justify-content:space-between;align-items:cente
 <section class="hero" id="top">
   <div class="wrap">
     <span class="eyebrow rv">NĀRO Close</span>
-    <h1 class="t-hero rv d1">Meer opdrachten uit <span class="accent">verstuurde offertes.</span></h1>
-    <p class="sub rv d2">Automatisch opgevolgd, zonder extra werk van jullie team.</p>
+    <h1 class="t-hero rv d1">More jobs from <span class="accent">quotes you've already sent.</span></h1>
+    <p class="sub rv d2">Automatically followed up, with zero extra work from your team.</p>
     <div class="ctas rv d2">
-      <a href="#hoe" class="lnk">Bekijk hoe het werkt <span class="chev">›</span></a>
+      <a href="#hoe" class="lnk">See how it works <span class="chev">›</span></a>
     </div>
     <div class="email-capture rv d2">
-      <a href="https://form.typeform.com/to/hyxsE8FT" target="_blank" rel="noopener" class="btn btn-teal">Vraag demo aan</a>
+      <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="btn btn-teal">Get a Demo</a>
     </div>
-    <p class="avail rv d3">Nog <b>3 pilotplekken</b> beschikbaar</p>
+    <p class="avail rv d3"><b>3 pilot spots</b> remaining</p>
   </div>
-</footer>
 
   <div class="wrap mock-wrap rv d2">
-    <div class="mock" role="figure" aria-label="NĀRO Close overzicht">
+    <div class="mock" role="figure" aria-label="NĀRO Close overview">
       <div class="mock-top">
         <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="title">NĀRO Close</span>
         <span class="live"><span class="d" aria-hidden="true"></span>Live</span>
       </div>
       <div class="mock-cols" aria-hidden="true">
-        <span>Klant</span><span>Bedrag</span><span>Verstuurd</span><span>Status</span>
+        <span>Client</span><span>Amount</span><span>Sent</span><span>Status</span>
       </div>
       <div class="mock-row">
-        <span class="who">KlimaatNL B.V.<small>Mark V.</small></span>
+        <span class="who">Climate Systems Ltd.<small>Mark V.</small></span>
         <span class="amt">€ 12.400</span>
-        <span class="day">14 dagen geleden</span>
-        <span class="tagp won"><span class="d"></span>Gewonnen</span>
+        <span class="day">14 days ago</span>
+        <span class="tagp won"><span class="d"></span>Won</span>
       </div>
       <div class="mock-row">
-        <span class="who">TechKlimaat Rotterdam<small>Sandra B.</small></span>
+        <span class="who">TechClimate Group<small>Sandra B.</small></span>
         <span class="amt">€ 8.950</span>
-        <span class="day">7 dagen geleden</span>
-        <span class="tagp follow"><span class="d"></span>Opvolging dag 7</span>
+        <span class="day">7 days ago</span>
+        <span class="tagp follow"><span class="d"></span>Day 7 follow-up</span>
       </div>
       <div class="mock-row">
-        <span class="who">Installatiebedrijf Noord<small>Peter M.</small></span>
+        <span class="who">Northern Installations<small>Peter M.</small></span>
         <span class="amt">€ 21.200</span>
-        <span class="day">3 dagen geleden</span>
-        <span class="tagp follow"><span class="d"></span>Opvolging dag 3</span>
+        <span class="day">3 days ago</span>
+        <span class="tagp follow"><span class="d"></span>Day 3 follow-up</span>
       </div>
       <div class="mock-row">
-        <span class="who">Verwarming Direct B.V.<small>Lisa J.</small></span>
+        <span class="who">Heating Direct Ltd.<small>Lisa J.</small></span>
         <span class="amt">€ 5.600</span>
-        <span class="day">vandaag</span>
-        <span class="tagp sent"><span class="d"></span>Verstuurd</span>
+        <span class="day">today</span>
+        <span class="tagp sent"><span class="d"></span>Sent</span>
       </div>
     </div>
   </div>
@@ -548,26 +541,26 @@ footer.foot .bottom{display:flex;justify-content:space-between;align-items:cente
 <section class="demo" id="demo">
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow rv">In actie</span>
-      <h2 class="t-h3 rv d1">Eén offerte, automatisch tot opdracht.</h2>
+      <span class="eyebrow rv">In action</span>
+      <h2 class="t-h3 rv d1">One quote, automatically turned into a job.</h2>
     </div>
 
-    <div class="demo-stage rv d2" role="figure" aria-label="Voorbeeld: automatische offerte-opvolging tot gewonnen opdracht">
+    <div class="demo-stage rv d2" role="figure" aria-label="Example: automatic quote follow-up through to a job won">
       <div class="demo-card">
-        <span class="who">TechKlimaat Rotterdam<small>Offerte #2026-047</small></span>
+        <span class="who">TechClimate Group<small>Quote #2026-047</small></span>
         <span class="demo-amt tabular" id="demoAmt">€ 8.950</span>
-        <span class="tagp sent demo-status" id="demoStatus"><span class="d"></span>Verstuurd</span>
+        <span class="tagp sent demo-status" id="demoStatus"><span class="d"></span>Sent</span>
       </div>
 
       <div class="demo-tl" id="demoTl">
         <div class="tl-msg naro" data-step="1">
-          <span class="tl-bubble">Goedemiddag, heeft u de kans gehad onze offerte te bekijken? We helpen u graag verder.</span>
+          <span class="tl-bubble">Good afternoon, have you had a chance to look over our quote? Happy to help if you have any questions.</span>
         </div>
         <div class="tl-msg naro" data-step="2">
-          <span class="tl-bubble">We willen u graag ontzorgen. Kunnen we een moment inplannen?</span>
+          <span class="tl-bubble">We'd love to help you get started. Can we schedule a moment?</span>
         </div>
         <div class="tl-msg client" data-step="3">
-          <span class="tl-bubble">Ja, we gaan akkoord. Wanneer kunnen jullie starten?</span>
+          <span class="tl-bubble">Yes, we're in. When can you start?</span>
         </div>
       </div>
     </div>
@@ -576,19 +569,19 @@ footer.foot .bottom{display:flex;justify-content:space-between;align-items:cente
 
 <!-- ───────── STATS ───────── -->
 <section class="stats">
-  <p class="lead rv">Dezelfde offertes. <span>Aanzienlijk meer opdrachten.</span></p>
+  <p class="lead rv">Same quotes. <span>Significantly more jobs won.</span></p>
   <div class="grid">
     <div class="stat rv">
       <div class="n tabular">61<span class="u">%</span></div>
-      <p class="l">gemiddelde offerteconversie na zes weken</p>
+      <p class="l">average quote conversion after six weeks</p>
     </div>
     <div class="stat rv d1">
       <div class="n tabular">3<span class="u">×</span></div>
-      <p class="l">meer gewonnen opdrachten uit dezelfde verstuurde offertes</p>
+      <p class="l">more jobs won from the same quotes sent</p>
     </div>
     <div class="stat rv d2">
-      <div class="n tabular">24<span class="u">u</span></div>
-      <p class="l">van akkoord tot de eerste opvolging automatisch verstuurd</p>
+      <div class="n tabular">24<span class="u">h</span></div>
+      <p class="l">from approval to the first automatic follow-up</p>
     </div>
   </div>
 </section>
@@ -596,52 +589,52 @@ footer.foot .bottom{display:flex;justify-content:space-between;align-items:cente
 <!-- ───────── BENTO FEATURES ───────── -->
 <section class="bento" id="functies">
   <div class="wrap head">
-    <span class="eyebrow rv">Functies</span>
-    <h2 class="t-h2 rv d1">Alles wat je nodig hebt. <br />Niets wat je niet nodig hebt.</h2>
+    <span class="eyebrow rv">Features</span>
+    <h2 class="t-h2 rv d1">Everything you need. <br />Nothing you don't.</h2>
   </div>
 
   <div class="grid-b">
     <article class="tile dark t-a rv">
-      <h3>Volledig automatisch</h3>
-      <p>Eén keer ingericht, daarna stil aan het werk. Van offerte verstuurd tot opvolging verzonden, zonder dat jij iets hoeft te doen.</p>
+      <h3>Fully automatic</h3>
+      <p>Set up once, then it quietly does the work. From quote sent to follow-up delivered, without you lifting a finger.</p>
       <div class="stackmail" aria-hidden="true">
-        <div class="m m1"><b>Opvolging dag 3</b><span>verzonden</span></div>
-        <div class="m m2"><b>Opvolging dag 7</b><span>verzonden</span></div>
-        <div class="m m3"><b>Opvolging dag 14</b><span>verzonden</span></div>
+        <div class="m m1"><b>Day 3 follow-up</b><span>sent</span></div>
+        <div class="m m2"><b>Day 7 follow-up</b><span>sent</span></div>
+        <div class="m m3"><b>Day 14 follow-up</b><span>sent</span></div>
       </div>
     </article>
 
     <article class="tile light t-b rv d1">
-      <h3>Op de juiste momenten</h3>
-      <p>Dag 3, 7 en 14. Precies wanneer mensen historisch het vaakst reageren.</p>
-      <span class="cap">Drie momenten per offerte</span>
+      <h3>At the right moments</h3>
+      <p>Day 3, 7, and 14. Exactly when people historically respond most.</p>
+      <span class="cap">Three touchpoints per quote</span>
     </article>
 
     <article class="tile teal t-c rv d2">
-      <h3>In jouw toon</h3>
-      <p>Geen templategevoel.</p>
-      <span class="cap">Jouw naam, jouw adres</span>
+      <h3>In your voice</h3>
+      <p>Never feels templated.</p>
+      <span class="cap">Your name, your inbox</span>
     </article>
 
     <article class="tile white t-d rv d1">
       <div class="big tabular">3<span class="u">×</span></div>
-      <p style="margin-top:14px">meer reacties dan handmatig opvolgen</p>
+      <p style="margin-top:14px">more replies than manual follow-up</p>
     </article>
 
     <article class="tile light t-e rv d2">
-      <h3>Stopt automatisch bij een reactie</h3>
-      <p>Reageert je klant alsnog op een eerdere mail of belt hij op? NĀRO Close pauzeert direct. Geen ongemakkelijke dubbelingen.</p>
-      <span class="cap">Slim en voorzichtig</span>
+      <h3>Stops automatically on reply</h3>
+      <p>If your client replies to an earlier email or calls instead, NĀRO Close pauses immediately. No awkward duplicate messages.</p>
+      <span class="cap">Smart and careful</span>
     </article>
 
     <article class="tile white t-c rv">
-      <div class="big tabular" style="color:var(--teal)">24<span class="u" style="color:var(--ink-3)">u</span></div>
-      <p style="margin-top:14px">van akkoord tot live</p>
+      <div class="big tabular" style="color:var(--teal)">24<span class="u" style="color:var(--ink-3)">h</span></div>
+      <p style="margin-top:14px">from approval to live</p>
     </article>
 
     <article class="tile dark t-d rv d1">
-      <h3>Eén helder overzicht</h3>
-      <p>Verstuurd, opgevolgd, gewonnen.</p>
+      <h3>One clear overview</h3>
+      <p>Sent, followed up, won.</p>
     </article>
   </div>
 </section>
@@ -650,53 +643,53 @@ footer.foot .bottom{display:flex;justify-content:space-between;align-items:cente
 <section class="how" id="hoe">
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow rv">Zo werkt het</span>
-      <h2 class="t-h2 rv d1">Van offerte naar opdracht, zonder dat je er naar om hoeft te kijken.</h2>
+      <span class="eyebrow rv">How it works</span>
+      <h2 class="t-h2 rv d1">From quote to job won, without you having to check in.</h2>
     </div>
 
     <div class="steps">
       <article class="step rv">
-        <div class="day">Dag 0<small>Verstuurd</small></div>
+        <div class="day">Day 0<small>Sent</small></div>
         <div class="b">
-          <h3>Jij verstuurt de offerte aan Mark V.</h3>
-          <p>Eén klik vanuit je eigen offertesysteem. NĀRO Close registreert automatisch het bedrag, de ontvanger, het onderwerp en de datum.</p>
+          <h3>You send the quote to Mark V.</h3>
+          <p>One click from your own quoting system. NĀRO Close automatically logs the amount, recipient, subject, and date.</p>
         </div>
       </article>
 
       <article class="step rv">
-        <div class="day">Dag 3<small>Eerste opvolging</small></div>
+        <div class="day">Day 3<small>First follow-up</small></div>
         <div class="b">
-          <h3>NĀRO Close stuurt automatisch een persoonlijke opvolging.</h3>
-          <p>Geschreven in jouw toon, vanuit jouw adres, met de naam en de details van Mark.</p>
-          <div class="mailcard" role="figure" aria-label="Voorbeeld opvolgmail">
+          <h3>NĀRO Close automatically sends a personal follow-up.</h3>
+          <p>Written in your voice, from your own inbox, with Mark's name and details.</p>
+          <div class="mailcard" role="figure" aria-label="Example follow-up email">
             <div class="mc-top">
-              <span>Verstuurd · 09:03</span>
-              <span class="from">jij@jouwbedrijf.nl</span>
+              <span>Sent · 09:03</span>
+              <span class="from">you@yourcompany.com</span>
             </div>
-            <div class="mc-meta">Aan mark.v@techklimaatrotterdam.nl
-Offerte #2026-047, even een korte vraag</div>
+            <div class="mc-meta">To mark.v@techclimategroup.com
+Quote #2026-047, quick question</div>
             <div class="mc-body">
-              <p>Beste Mark,</p>
-              <p>Even een korte vraag over de offerte die ik vorige week stuurde. Hebt u de kans gehad om ernaar te kijken? Ik help u graag verder.</p>
-              <p class="sig">Met vriendelijke groet,<br />[Naam], [Bedrijfsnaam]</p>
+              <p>Hi Mark,</p>
+              <p>Just a quick question about the quote I sent last week. Have you had a chance to look it over? Happy to help if you have any questions.</p>
+              <p class="sig">Best regards,<br />[Name], [Company]</p>
             </div>
           </div>
         </div>
       </article>
 
       <article class="step rv">
-        <div class="day">Dag 7<small>Tweede opvolging</small></div>
+        <div class="day">Day 7<small>Second follow-up</small></div>
         <div class="b">
-          <h3>Geen reactie? De tweede opvolging gaat automatisch uit.</h3>
-          <p>Andere invalshoek, dezelfde persoonlijke toon. Geen kopieerwerk, geen herhaling. Het klinkt als een collega die er net even achteraan belt.</p>
+          <h3>No reply? The second follow-up goes out automatically.</h3>
+          <p>A different angle, the same personal tone. No copy-paste, no repetition. It reads like a colleague just checking in.</p>
         </div>
       </article>
 
       <article class="step rv">
-        <div class="day">Dag 14<small>Laatste poging</small></div>
+        <div class="day">Day 14<small>Final attempt</small></div>
         <div class="b">
-          <h3>Drie momenten. <span class="accent">Nul handmatig werk van jou.</span></h3>
-          <p>Reageert Mark daarna alsnog op een van de eerdere mails? NĀRO Close stopt automatisch. Geen ongemakkelijke dubbelingen.</p>
+          <h3>Three touchpoints. <span class="accent">Zero manual work from you.</span></h3>
+          <p>If Mark replies to any of the earlier emails after this, NĀRO Close stops automatically. No awkward duplicate messages.</p>
         </div>
       </article>
     </div>
@@ -706,11 +699,11 @@ Offerte #2026-047, even een korte vraag</div>
 <!-- ───────── TESTIMONIAL ───────── -->
 <section class="quote">
   <div class="wrap">
-    <blockquote class="rv">We gingen van 20% naar <span class="accent">61% offerteconversie</span> in zes weken.</blockquote>
+    <blockquote class="rv">We went from 20% to <span class="accent">61% quote conversion</span> in six weeks.</blockquote>
     <div class="attr rv d1">
-      <span class="name">Commercieel directeur</span>
-      <span class="src">Illustratief resultaat op basis van pilotdata</span>
-      <span class="role">Installatiebedrijf, 10-50 medewerkers</span>
+      <span class="name">Commercial Director</span>
+      <span class="src">Illustrative result based on pilot data</span>
+      <span class="role">Installation company, 10-50 employees</span>
     </div>
   </div>
 </section>
@@ -718,61 +711,52 @@ Offerte #2026-047, even een korte vraag</div>
 <!-- ───────── PRICING ───────── -->
 <section class="pricing" id="prijs">
   <div class="wrap head">
-    <span class="eyebrow rv">Prijzen</span>
-    <h2 class="t-h2 rv d1">Krijg je in 60 dagen geen enkele reactie op je opvolgmails? Dan draaien we <span class="accent">gratis&nbsp;door</span> tot de eerste reactie binnenkomt.</h2>
-    <p class="sub rv d2" style="font-size:.8rem;opacity:.6;margin-top:6px">* Geldt bij minimaal 5 verstuurde offertes per maand via het systeem.</p>
+    <span class="eyebrow rv">Plans</span>
+    <h2 class="t-h2 rv d1">No response to your follow-up emails within 60 days? We'll continue <span class="accent">at no&nbsp;cost</span> until the first reply comes in.</h2>
+    <p class="sub rv d2" style="font-size:.8rem;opacity:.6;margin-top:6px">* Applies with a minimum of 5 quotes sent per month through the system.</p>
   </div>
 
   <div class="plans">
     <article class="plan rv">
-      <span class="badge"><span class="d"></span>3 plekken beschikbaar</span>
+      <span class="badge"><span class="d"></span>3 spots available</span>
       <div class="name">Pilot</div>
-      <div class="for">Voor vroege adoptors</div>
-      <div class="price"><span class="v tabular">€300<span class="u">/ maand</span></span></div>
-      <div class="ob">Onboarding <b>gratis</b></div>
-      <div class="ob">Looptijd <b>min. 2 maanden</b></div>
-      <p class="note">Voor de eerste klanten die meedoen en feedback geven.</p>
-      <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="btn btn-teal cta">Claim pilotplek</a>
+      <div class="for">For early adopters</div>
+      <p class="note">No setup costs. Minimum 2 months. For the first clients who join in and share feedback.</p>
+      <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="btn btn-teal cta">Get a Demo</a>
     </article>
 
     <article class="plan feat rv d1">
-      <span class="badge"><span class="d"></span>5 plekken beschikbaar</span>
+      <span class="badge"><span class="d"></span>5 spots available</span>
       <div class="name">Founding</div>
-      <div class="for">Voor founding members</div>
-      <div class="price"><span class="v tabular">€500<span class="u">/ maand</span></span></div>
-      <div class="ob">Onboarding <b>€1.500</b></div>
-      <div class="ob">Looptijd <b>min. 3 maanden</b></div>
-      <p class="note">Terugverdiend binnen één extra gewonnen opdracht.</p>
-      <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="btn btn-dark cta">Claim foundingplek</a>
+      <div class="for">For founding members</div>
+      <p class="note">Full onboarding included. Minimum 3 months. Pays for itself within one extra job won.</p>
+      <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="btn btn-dark cta">Get a Demo</a>
     </article>
 
     <article class="plan rv d2">
-      <span class="badge muted"><span class="d"></span>Altijd beschikbaar</span>
+      <span class="badge muted"><span class="d"></span>Always available</span>
       <div class="name">Partner</div>
-      <div class="for">Standaardtarief</div>
-      <div class="price"><span class="v tabular">€750<span class="u">/ maand</span></span></div>
-      <div class="ob">Onboarding <b>€2.500</b></div>
-      <div class="ob">Looptijd <b>min. 3 maanden</b></div>
-      <p class="note">Voor bedrijven die instappen na de pilotfase.</p>
-      <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="btn btn-light cta" style="border:1px solid var(--hair)">Neem contact op</a>
+      <div class="for">Standard rate</div>
+      <p class="note">For companies joining after the pilot phase.</p>
+      <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="btn btn-light cta" style="border:1px solid var(--hair)">Get a Demo</a>
     </article>
   </div>
 
-  <p class="foot rv">Alle tiers krijgen opvolging op dag 3, 7 en 14. Krijgt de Dienst in 60 dagen geen enkele e-mailreactie op je opvolgmails, dan zetten we de dienst kosteloos voort totdat de eerste reactie binnenkomt (max. 60 dagen extra). * Minimaal 5 offertes per maand.</p>
+  <p class="foot rv">All tiers get follow-ups on day 3, 7, and 14. If the Service gets zero email replies to your follow-ups within 60 days, we continue at no cost until the first reply comes in (max. 60 extra days). * Minimum 5 quotes per month.</p>
 </section>
 
 <!-- ───────── CLOSING ───────── -->
 <section class="closing" id="contact">
   <div class="wrap">
     <img class="closing-logo rv" src="/naro-logo-white.svg" alt="NĀRO" />
-    <h2 class="t-h2 rv">Klaar om meer opdrachten te winnen?</h2>
-    <p class="sub rv d1">Nog 3 pilotplekken beschikbaar. Geen setupkosten. Binnen 48 uur live.</p>
+    <h2 class="t-h2 rv">Ready to win more jobs?</h2>
+    <p class="sub rv d1">3 pilot spots remaining. No setup costs. Live within 48 hours.</p>
     <div class="ctas rv d2">
-      <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="btn btn-teal">Boek je gratis check</a>
-      <a href="#top" class="lnk on-dark">Terug naar boven <span class="chev">›</span></a>
+      <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="btn btn-teal">Get a Demo</a>
+      <a href="#top" class="lnk on-dark">Back to top <span class="chev">›</span></a>
     </div>
     <div class="meta rv d3">
-      <span class="live"><span class="d" aria-hidden="true"></span>Live en accepterend</span>
+      <span class="live"><span class="d" aria-hidden="true"></span>Live and accepting new clients</span>
       <span>contact@gonaro.ai</span>
       <span>gonaro.ai</span>
     </div>
@@ -786,28 +770,27 @@ Offerte #2026-047, even een korte vraag</div>
     <div class="cols">
       <div class="col col-brand">
         <span class="brand"><img class="logo" src="/naro-logo.svg" alt="NĀRO" /></span>
-        <p class="tag">AI Partner voor installatiebedrijven.</p>
+        <p class="tag">Automatically turn sent quotes into signed jobs.</p>
       </div>
       <div class="col">
         <h4>Product</h4>
         <ul>
-          <li><a href="#hoe">Hoe het werkt</a></li>
-          <li><a href="/prijzen/">Prijzen</a></li>
-          <li><a href="/prijzen/#faq">FAQ</a></li>
+          <li><a href="#hoe">How it works</a></li>
+          <li><a href="/plans/#faq">FAQ</a></li>
         </ul>
       </div>
       <div class="col">
-        <h4>Bedrijf</h4>
+        <h4>Company</h4>
         <ul>
-          <li><a href="/over/">Over NĀRO</a></li>
+          <li><a href="/over/">About NĀRO</a></li>
           <li><a href="mailto:contact@gonaro.ai">Contact</a></li>
         </ul>
       </div>
       <div class="col">
-        <h4>Juridisch</h4>
+        <h4>Legal</h4>
         <ul>
           <li><a href="/privacy/">Privacy</a></li>
-          <li><a href="/voorwaarden/">Voorwaarden</a></li>
+          <li><a href="/voorwaarden/">Terms</a></li>
         </ul>
       </div>
       <div class="col">
