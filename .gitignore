@@ -21,3 +21,8 @@ gonaro-website-updates/
 .DS_Store
 .claude/settings.local.json
 *.pdf
+
+# Interne tooling-docs (niet publiceren op het marketingdomein)
+naro-brand/
+naro-components/
+website-fronted/

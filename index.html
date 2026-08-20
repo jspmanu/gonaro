@@ -8,7 +8,7 @@
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://embed.typeform.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.typeform.com; connect-src 'self' https://*.typeform.com; frame-src https://form.typeform.com https://*.typeform.com; form-action 'self'; base-uri 'self'; object-src 'none';" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none';" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>NĀRO - AI Follow-up Agent</title>
 <meta name="description" content="1 in 3 prospects does reply to a follow-up. NĀRO Close does it automatically, from your own inbox. Zero extra effort." />
@@ -89,13 +89,12 @@ section{position:relative}
 
 /* ───────────── Nav ───────────── */
 .nav{position:fixed;inset:0 0 auto 0;z-index:100;height:52px;
-  background:transparent;border-bottom:1px solid transparent;
+  background:transparent;border-bottom:1px solid var(--hair-2);
   transition:background .2s ease-out, box-shadow .2s ease-out,
-    -webkit-backdrop-filter .2s ease-out, backdrop-filter .2s ease-out, border-color .2s ease-out}
+    -webkit-backdrop-filter .2s ease-out, backdrop-filter .2s ease-out}
 .nav.scrolled{background:rgba(255,255,255,.95);
   -webkit-backdrop-filter:saturate(180%) blur(8px);
   backdrop-filter:saturate(180%) blur(8px);
-  border-bottom-color:var(--hair-2);
   box-shadow:0 1px 24px -12px rgba(0,0,0,.18)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:52px}
 .nav .brand{display:inline-flex;align-items:center}
@@ -478,7 +477,7 @@ footer.foot .bottom{display:flex;justify-content:space-between;align-items:cente
       <a href="#hoe">How it works</a>
       <a href="#functies">Features</a>
       <a href="/plans/">Plans</a>
-      <a href="/over/">About</a>
+      <a href="/about/">About</a>
       <a href="https://calendly.com/joshua-gonaro" target="_blank" rel="noopener noreferrer" class="pill">Get a Demo</a>
     </div>
   </div>
@@ -782,7 +781,7 @@ Quote #2026-047, quick question</div>
       <div class="col">
         <h4>Company</h4>
         <ul>
-          <li><a href="/over/">About NĀRO</a></li>
+          <li><a href="/about/">About NĀRO</a></li>
           <li><a href="mailto:contact@gonaro.ai">Contact</a></li>
         </ul>
       </div>
@@ -790,7 +789,7 @@ Quote #2026-047, quick question</div>
         <h4>Legal</h4>
         <ul>
           <li><a href="/privacy/">Privacy</a></li>
-          <li><a href="/voorwaarden/">Terms</a></li>
+          <li><a href="/terms/">Terms</a></li>
         </ul>
       </div>
       <div class="col">

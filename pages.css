@@ -63,6 +63,7 @@ img,svg{display:block;max-width:100%}
 .page-head h1{max-width:18ch}
 .page-head .sub{margin-top:22px;max-width:46ch;font-size:clamp(19px,2vw,23px);
   color:var(--ink-2);line-height:1.4}
+.page-head .sub a{color:var(--teal);text-decoration:underline;text-underline-offset:2px}
 
 /* Prose */
 .prose{padding:72px 0 96px}
