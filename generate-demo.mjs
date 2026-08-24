@@ -1,5 +1,6 @@
 // Genereert een gepersonaliseerde demo-pagina vanuit de master template.
 // Gebruik: node generate-demo.mjs "Bedrijfsnaam"
+//          node generate-demo.mjs "Bedrijfsnaam" --slug=k7x2m9   (ververst een bestaande demo)
 import fs from 'fs';
 import path from 'path';
 import { randomInt } from 'node:crypto';
@@ -9,9 +10,12 @@ const root = path.dirname(fileURLToPath(import.meta.url));
 const templatePath = path.join(root, 'demo', '_template', 'index.html');
 const demoDir = path.join(root, 'demo');
 
-const companyName = process.argv[2];
+const args = process.argv.slice(2);
+const companyName = args.find((a) => !a.startsWith('--'));
+const slugFlag = args.find((a) => a.startsWith('--slug='));
+
 if (!companyName || !companyName.trim()) {
-  console.error('Gebruik: node generate-demo.mjs "Bedrijfsnaam"');
+  console.error('Gebruik: node generate-demo.mjs "Bedrijfsnaam" [--slug=bestaandeslug]');
   process.exit(1);
 }
 
@@ -28,22 +32,38 @@ if (!template.includes('[Bedrijfsnaam]')) {
 }
 const html = template.replaceAll('[Bedrijfsnaam]', escaped);
 
-// Niet-raadbare slug (zelfde patroon als k7x2m9); nooit een bestaande map
-// hergebruiken zodat verstuurde lead-links onaantastbaar blijven.
-const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-function makeSlug() {
-  let s = '';
-  for (let i = 0; i < 6; i++) s += chars[randomInt(chars.length)];
-  return s;
-}
 let slug;
-do { slug = makeSlug(); } while (fs.existsSync(path.join(demoDir, slug)));
+let refreshed = false;
 
-const outDir = path.join(demoDir, slug);
-fs.mkdirSync(outDir);
-fs.writeFileSync(path.join(outDir, 'index.html'), html);
+if (slugFlag) {
+  // Opt-in herschrijven van een bestaande demo. Alleen zo kan er ooit iets
+  // overschreven worden; zonder de vlag blijft dat onmogelijk.
+  slug = slugFlag.slice('--slug='.length);
+  if (!/^[a-z0-9]{6}$/.test(slug)) {
+    console.error(`Ongeldige slug: "${slug}". Verwacht 6 tekens uit a-z en 0-9.`);
+    process.exit(1);
+  }
+  if (!fs.existsSync(path.join(demoDir, slug))) {
+    console.error(`demo/${slug}/ bestaat niet. Laat --slug weg om een nieuwe demo te maken.`);
+    process.exit(1);
+  }
+  refreshed = true;
+} else {
+  // Niet-raadbare slug (zelfde patroon als k7x2m9); nooit een bestaande map
+  // hergebruiken zodat verstuurde lead-links onaantastbaar blijven.
+  const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  const makeSlug = () => {
+    let s = '';
+    for (let i = 0; i < 6; i++) s += chars[randomInt(chars.length)];
+    return s;
+  };
+  do { slug = makeSlug(); } while (fs.existsSync(path.join(demoDir, slug)));
+  fs.mkdirSync(path.join(demoDir, slug));
+}
 
-console.log(`Demo gegenereerd voor: ${companyName.trim()}`);
+fs.writeFileSync(path.join(demoDir, slug, 'index.html'), html);
+
+console.log(`Demo ${refreshed ? 'ververst' : 'gegenereerd'} voor: ${companyName.trim()}`);
 console.log(`  Slug:    ${slug}`);
 console.log(`  Bestand: demo/${slug}/index.html`);
 console.log(`  Lokaal:  http://localhost:3000/demo/${slug}/`);
