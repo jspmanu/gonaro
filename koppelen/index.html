@@ -6,164 +6,108 @@
 <!-- De URL van deze pagina draagt de callback-sleutel van een waitpoint. Met
      no-referrer komt die nooit in een Referer-header bij een andere partij. -->
 <meta name="referrer" content="no-referrer" />
-<meta name="robots" content="noindex,nofollow" />
-<title>Outlook koppelen aan NĀRO Close</title>
+<meta name="robots" content="noindex, nofollow" />
+<title>Outlook koppelen · NĀRO Close</title>
 
-<link rel="preconnect" href="https://api.fontshare.com" />
+<link rel="icon" type="image/svg+xml" href="/naro-mark-enso-on-black-tile.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/naro-mark-enso-on-black-tile-32.png" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700&f[]=general-sans@500,600&display=swap" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/pages.css" />
 
 <style>
-:root{
-  --bg:#F5F5F3; --ink:#0A0A0A;
-  --ink-72:rgba(10,10,10,.72); --ink-56:rgba(10,10,10,.56);
-  --ink-08:rgba(10,10,10,.08);
-  --teal:#0E7C66; --teal-hover:#0A5C4D; --neutral:#94A3B8;
-  --paper:#FAFAF8; --line:rgba(10,10,10,.12);
-  --space-1:8px; --space-2:16px; --space-3:24px; --space-4:32px;
-  --space-6:48px; --space-8:64px; --space-12:96px;
-  --maxw:640px; --pad-x:24px;
-  --display:"Satoshi","Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;
-  --body:"Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;
-  --label:"General Sans","Inter",ui-sans-serif,system-ui,sans-serif;
-}
+/* Alleen wat pages.css niet heeft. De rest komt daarvandaan. */
+.connect{max-width:68ch}
+.connect .lead{font-size:19px;color:var(--ink-2);margin-top:20px}
 
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg);color:var(--ink);font-family:var(--body);
-  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility}
-a{color:inherit}
-svg{display:block}
+.mailbox{margin-top:32px;border-left:2px solid var(--teal);padding-left:16px}
+.mailbox .k{display:block;font-size:13px;color:var(--ink-3);margin-bottom:2px}
+.mailbox .v{display:block;font-size:19px;font-weight:500;
+  letter-spacing:-.015em;word-break:break-all}
 
-.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad-x);width:100%}
-
-.top{padding-block:var(--space-4);border-bottom:1px solid var(--line)}
-.brand{font-family:var(--display);font-weight:700;font-size:18px;
-  letter-spacing:.02em;text-decoration:none}
-
-main{padding-block:var(--space-12) var(--space-8)}
-
-.label{font-family:var(--label);font-size:12px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--neutral);font-weight:500;
-  display:block;margin-bottom:var(--space-3)}
-
-h1{font-family:var(--display);font-weight:700;
-  font-size:clamp(30px,5.5vw,44px);line-height:1.1;letter-spacing:-.03em;
-  margin-bottom:var(--space-3)}
-
-.lead{font-size:18px;color:var(--ink-72);margin-bottom:var(--space-6)}
-
-.panel{background:var(--paper);border:1px solid var(--line);
-  padding:var(--space-4);margin-bottom:var(--space-6)}
-.panel h2{font-family:var(--label);font-size:12px;letter-spacing:.12em;
-  text-transform:uppercase;font-weight:600;color:var(--ink-56);
-  margin-bottom:var(--space-3)}
-
-.perms{list-style:none}
-.perms li{padding-block:var(--space-1);padding-left:var(--space-3);
-  position:relative;color:var(--ink-72)}
-.perms li::before{content:"";position:absolute;left:0;top:14px;
-  width:6px;height:6px;background:var(--teal)}
+.perms{margin-top:40px;background:var(--surface);border-radius:var(--r);padding:28px}
+.perms h2{font-family:var(--display);font-weight:600;font-size:15px;
+  letter-spacing:-.005em;color:var(--ink-2);margin-bottom:16px}
+.perms ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.perms li{padding-left:20px;position:relative;color:var(--ink-2);font-size:16px;line-height:1.5}
+.perms li::before{content:"";position:absolute;left:0;top:9px;
+  width:6px;height:6px;border-radius:50%;background:var(--teal)}
 .perms strong{color:var(--ink);font-weight:600}
 
-.mailbox{border-left:2px solid var(--teal);padding-left:var(--space-2);
-  margin-bottom:var(--space-6)}
-.mailbox .mailbox-label{display:block;font-family:var(--label);font-size:11px;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--neutral);
-  font-weight:500;margin-bottom:2px}
-.mailbox .mailbox-address{display:block;font-family:var(--body);font-size:17px;
-  font-weight:500;color:var(--ink);letter-spacing:-.01em;word-break:break-all}
+.go{margin-top:36px}
+.go .btn{cursor:pointer;border:0;font-family:inherit}
+.go .btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.go .btn:active{opacity:.9}
+.after{margin-top:20px;font-size:15px;color:var(--ink-3)}
 
-.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;
-  border:1px solid var(--teal);background:var(--teal);color:#fff;
-  border-radius:2px;font-size:15px;font-weight:500;cursor:pointer;
-  font-family:var(--body);text-decoration:none;
-  transition:background .2s ease-out, border-color .2s ease-out, transform .2s ease-out}
-.btn .arr{display:inline-block;transition:transform .25s ease-out}
-.btn:hover{background:var(--teal-hover);border-color:var(--teal-hover)}
-.btn:hover .arr{transform:translateX(4px)}
-.btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.btn:active{transform:translateY(1px)}
-
-.note{margin-top:var(--space-4);font-size:14px;color:var(--ink-56)}
-
-.warn{border:1px solid var(--line);border-left:2px solid var(--ink);
-  background:var(--paper);padding:var(--space-4)}
-.warn h2{font-family:var(--display);font-weight:700;font-size:20px;
-  letter-spacing:-.02em;margin-bottom:var(--space-2)}
-.warn p{color:var(--ink-72)}
-
-.foot{border-top:1px solid var(--line);padding-block:var(--space-4);
-  font-size:13px;color:var(--neutral)}
+.notice{margin-top:12px;background:var(--surface);border-radius:var(--r);padding:28px;max-width:68ch}
+.notice p{color:var(--ink-2);margin-top:12px}
 
 [hidden]{display:none !important}
-
-@media (max-width:520px){
-  main{padding-block:var(--space-8) var(--space-6)}
-  .panel{padding:var(--space-3)}
-}
+@media (max-width:600px){.perms,.notice{padding:20px}}
 </style>
 </head>
 <body>
 
-<header class="top">
-  <div class="wrap"><a href="/" class="brand">NĀRO</a></div>
+<nav class="nav">
+  <div class="wrap-wide nav-inner">
+    <a href="/" class="brand" aria-label="NĀRO"><img class="logo" src="/naro-logo.svg" alt="NĀRO" /></a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">NĀRO Close</span>
+
+    <div id="ok" hidden>
+      <h1 class="t-h1">Koppel de Outlook-mailbox van <span id="company" class="accent"></span></h1>
+      <div class="connect">
+        <p class="lead">
+          Je logt zo in bij Microsoft, met je eigen account. Daarna kan NĀRO Close
+          offertes uit deze mailbox opvolgen. Je wachtwoord komt bij ons nooit
+          langs, dat blijft bij Microsoft.
+        </p>
+        <div id="expected" class="mailbox" hidden>
+          <span class="k">Log in met</span>
+          <span class="v" id="expected-address"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="broken" hidden>
+      <h1 class="t-h1">Deze link is niet compleet</h1>
+      <div class="notice">
+        <p>
+          Er ontbreken gegevens, waarschijnlijk doordat de link is afgebroken bij
+          het doorsturen, of doordat je browser geen gegevens mag opslaan.
+        </p>
+        <p>Vraag om een nieuwe uitnodiging, dan werkt het wel.</p>
+      </div>
+    </div>
+  </div>
 </header>
 
-<main class="wrap">
+<main id="body" class="wrap" hidden>
+  <section class="perms">
+    <h2>Waar je toestemming voor geeft</h2>
+    <ul>
+      <li><strong>Mail lezen en schrijven.</strong> Nodig om de offerte terug te vinden en de opvolging in dezelfde conversatie te zetten.</li>
+      <li><strong>Mail versturen namens jou.</strong> De opvolging gaat uit vanaf dit adres, niet vanaf een adres van ons.</li>
+      <li><strong>Toegang houden.</strong> Zodat de opvolging blijft lopen zonder dat je elke week opnieuw inlogt.</li>
+      <li><strong>Je e-mailadres zien.</strong> Zodat we kunnen vaststellen welke mailbox er gekoppeld is.</li>
+    </ul>
+  </section>
 
-  <!-- Normale toestand: de link is compleet -->
-  <div id="ok" hidden>
-    <span class="label">NĀRO Close</span>
-    <h1>Koppel de Outlook-mailbox van <span id="company"></span></h1>
-    <p class="lead">
-      Je logt zo in bij Microsoft, met je eigen account. NĀRO Close krijgt
-      daarna toegang tot deze mailbox om offertes op te volgen. Je wachtwoord
-      komt bij ons nooit langs, dat blijft bij Microsoft.
-    </p>
-
-    <div id="expected" class="mailbox" hidden>
-      <span class="mailbox-label">Log in met</span>
-      <span class="mailbox-address" id="expected-address"></span>
-    </div>
-
-    <div class="panel">
-      <h2>Waar je toestemming voor geeft</h2>
-      <ul class="perms">
-        <li><strong>Mail lezen en schrijven.</strong> Nodig om de offerte terug te vinden en een opvolging in dezelfde conversatie te zetten.</li>
-        <li><strong>Mail versturen namens jou.</strong> De opvolging gaat uit vanaf dit adres, niet vanaf een adres van ons.</li>
-        <li><strong>Toegang houden.</strong> Zodat de opvolging blijft lopen zonder dat je elke week opnieuw inlogt.</li>
-        <li><strong>Je e-mailadres zien.</strong> Zodat we kunnen vaststellen welke mailbox er gekoppeld is.</li>
-      </ul>
-    </div>
-
-    <button id="go" class="btn" type="button">
-      Inloggen bij Microsoft <span class="arr">&rarr;</span>
-    </button>
-
-    <p class="note">
+  <div class="go">
+    <button id="go" class="btn btn-teal" type="button">Inloggen bij Microsoft</button>
+    <p class="after">
       NĀRO Close gebruikt deze toegang alleen voor berichten die jij zelf de
       categorie Offerte geeft.
     </p>
   </div>
-
-  <!-- De link mist de gegevens die nodig zijn -->
-  <div id="broken" class="warn" hidden>
-    <h2>Deze link is niet compleet</h2>
-    <p>
-      Er ontbreken gegevens, waarschijnlijk doordat de link ergens is
-      afgebroken bij het doorsturen. Vraag om een nieuwe uitnodiging, dan
-      werkt het wel.
-    </p>
-  </div>
-
 </main>
-
-<footer class="foot">
-  <div class="wrap">NĀRO Close</div>
-</footer>
 
 <script>
 (function () {
@@ -185,10 +129,16 @@ h1{font-family:var(--display);font-weight:700;
   var company = params.get("b");
   var expected = params.get("m");
 
+  function broken() {
+    document.getElementById("ok").hidden = true;
+    document.getElementById("body").hidden = true;
+    document.getElementById("broken").hidden = false;
+  }
+
   // Zonder callback-URL valt er niets te koppelen: de code zou daarna nergens
   // heen kunnen. Dan liever nu een duidelijk scherm dan straks een stille fout.
   if (!callback || callback.indexOf("https://api.trigger.dev/") !== 0) {
-    document.getElementById("broken").hidden = false;
+    broken();
     return;
   }
 
@@ -198,6 +148,7 @@ h1{font-family:var(--display);font-weight:700;
     document.getElementById("expected").hidden = false;
   }
   document.getElementById("ok").hidden = false;
+  document.getElementById("body").hidden = false;
 
   document.getElementById("go").addEventListener("click", function () {
     // state beschermt de terugweg: de vervolgpagina accepteert alleen een
@@ -212,14 +163,13 @@ h1{font-family:var(--display);font-weight:700;
       window.sessionStorage.setItem("naro.callback", callback);
       window.sessionStorage.setItem("naro.state", state);
     } catch (e) {
-      // Privacymodus met geblokkeerde opslag. Doorgaan zou betekenen dat de
-      // vervolgpagina niets terugvindt, dus dat vangen we hier af.
-      document.getElementById("ok").hidden = true;
-      document.getElementById("broken").hidden = false;
+      // Opslag geblokkeerd. Doorgaan zou betekenen dat de vervolgpagina niets
+      // terugvindt, dus dat vangen we hier af in plaats van daar.
+      broken();
       return;
     }
 
-    var url = AUTHORIZE +
+    window.location.href = AUTHORIZE +
       "?client_id=" + encodeURIComponent(CLIENT_ID) +
       "&response_type=code" +
       "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
@@ -227,8 +177,6 @@ h1{font-family:var(--display);font-weight:700;
       "&scope=" + encodeURIComponent(SCOPES) +
       "&state=" + state +
       "&prompt=consent";
-
-    window.location.href = url;
   });
 })();
 </script>
