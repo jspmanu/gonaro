@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- De URL draagt hier een authorization code. Met no-referrer belandt die
+     nooit in een Referer-header bij een andere partij. -->
+<meta name="referrer" content="no-referrer" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Koppeling afronden — NĀRO Close</title>
+
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700&f[]=general-sans@500,600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --bg:#F5F5F3; --ink:#0A0A0A;
+  --ink-72:rgba(10,10,10,.72); --ink-56:rgba(10,10,10,.56);
+  --teal:#0E7C66; --neutral:#94A3B8;
+  --paper:#FAFAF8; --line:rgba(10,10,10,.12);
+  --space-1:8px; --space-2:16px; --space-3:24px; --space-4:32px;
+  --space-6:48px; --space-8:64px; --space-12:96px;
+  --maxw:640px; --pad-x:24px;
+  --display:"Satoshi","Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --body:"Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --label:"General Sans","Inter",ui-sans-serif,system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--body);
+  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility}
+a{color:inherit}
+
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad-x);width:100%}
+
+.top{padding-block:var(--space-4);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-weight:700;font-size:18px;
+  letter-spacing:.02em;text-decoration:none}
+
+main{padding-block:var(--space-12) var(--space-8);min-height:50vh}
+
+.label{font-family:var(--label);font-size:12px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--neutral);font-weight:500;
+  display:block;margin-bottom:var(--space-3)}
+
+h1{font-family:var(--display);font-weight:700;
+  font-size:clamp(28px,5vw,40px);line-height:1.1;letter-spacing:-.03em;
+  margin-bottom:var(--space-3)}
+
+p{color:var(--ink-72);margin-bottom:var(--space-2)}
+p:last-child{margin-bottom:0}
+
+.state{border:1px solid var(--line);background:var(--paper);
+  padding:var(--space-4)}
+.state.good{border-left:2px solid var(--teal)}
+.state.plain{border-left:2px solid var(--ink)}
+
+.steps{list-style:none;margin-top:var(--space-3)}
+.steps li{padding-block:var(--space-1);padding-left:var(--space-3);
+  position:relative;color:var(--ink-72)}
+.steps li::before{content:"";position:absolute;left:0;top:14px;
+  width:6px;height:6px;background:var(--teal)}
+
+.foot{border-top:1px solid var(--line);padding-block:var(--space-4);
+  font-size:13px;color:var(--neutral)}
+
+[hidden]{display:none !important}
+
+@media (max-width:520px){
+  main{padding-block:var(--space-8) var(--space-6)}
+  .state{padding:var(--space-3)}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap"><a href="/" class="brand">NĀRO</a></div>
+</header>
+
+<main class="wrap">
+  <span class="label">NĀRO Close</span>
+  <div id="screen"></div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">NĀRO Close</div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var screens = {
+    busy: {
+      cls: "plain",
+      title: "Een moment",
+      body: "<p>We ronden de koppeling af.</p>"
+    },
+    done: {
+      cls: "good",
+      title: "Gelukt",
+      body:
+        "<p>We ronden de koppeling nu af. Dat duurt hooguit een paar minuten, " +
+        "en je hoeft niets meer te doen. Je kunt dit tabblad sluiten.</p>" +
+        "<ul class=\"steps\">" +
+        "<li>Geef een verstuurde offerte in Outlook de categorie <strong>Offerte</strong>.</li>" +
+        "<li>NĀRO Close pakt hem op en zet de opvolging in dezelfde conversatie.</li>" +
+        "</ul>"
+    },
+    cancelled: {
+      cls: "plain",
+      title: "Afgebroken",
+      body:
+        "<p>Je hebt de koppeling afgebroken, er is niets gewijzigd en er is " +
+        "geen toegang verleend.</p>" +
+        "<p>Open de uitnodigingslink opnieuw als je het alsnog wilt doen.</p>"
+    },
+    admin: {
+      cls: "plain",
+      title: "Je beheerder moet dit eerst goedkeuren",
+      body:
+        "<p>Microsoft laat deze koppeling nog niet toe omdat de beheerder van " +
+        "jullie Microsoft-omgeving er eerst toestemming voor moet geven.</p>" +
+        "<p>Stuur je IT-beheerder dit door: NĀRO Close vraagt om Mail.ReadWrite, " +
+        "Mail.Send, offline_access en email, als gedelegeerde rechten op één " +
+        "mailbox. Zodra dat is goedgekeurd werkt deze link gewoon.</p>"
+    },
+    lost: {
+      cls: "plain",
+      title: "We kunnen deze koppeling niet terugvinden",
+      body:
+        "<p>Deze pagina is geopend in een andere browser of een ander venster " +
+        "dan waar je begon, dus de gegevens van je uitnodiging staan hier niet.</p>" +
+        "<p>Open de uitnodigingslink opnieuw, en houd het bij één browservenster. " +
+        "Er is niets misgegaan en er is niets gewijzigd.</p>"
+    },
+    stale: {
+      cls: "plain",
+      title: "Deze link is niet meer geldig",
+      body:
+        "<p>De uitnodiging is verlopen of al een keer gebruikt. Vraag om een " +
+        "nieuwe, dan kun je het opnieuw proberen.</p>"
+    }
+  };
+
+  function show(name) {
+    var s = screens[name];
+    document.getElementById("screen").innerHTML =
+      '<div class="state ' + s.cls + '"><h1>' + s.title + "</h1>" + s.body + "</div>";
+  }
+
+  show("busy");
+
+  var params = new URLSearchParams(window.location.search);
+  var error = params.get("error");
+  var errorDescription = params.get("error_description") || "";
+  var code = params.get("code");
+  var state = params.get("state");
+
+  var callback = null;
+  var expectedState = null;
+  try {
+    callback = window.sessionStorage.getItem("naro.callback");
+    expectedState = window.sessionStorage.getItem("naro.state");
+  } catch (e) {
+    // Opslag geblokkeerd. Behandeld als "niet terug te vinden", want dat is
+    // vanuit de klant gezien precies wat er aan de hand is.
+  }
+
+  function clear() {
+    try {
+      window.sessionStorage.removeItem("naro.callback");
+      window.sessionStorage.removeItem("naro.state");
+    } catch (e) {}
+  }
+
+  // Microsoft meldt een geweigerde koppeling met een error in de querystring.
+  // De beheerderszaak krijgt een eigen scherm, want daar kan de klant zelf
+  // iets mee: hij weet dan wie hij moet aanspreken.
+  if (error) {
+    var needsAdmin = /admin|consent_required|AADSTS65004|AADSTS90094/i.test(
+      error + " " + errorDescription
+    );
+    clear();
+    show(needsAdmin ? "admin" : "cancelled");
+    return;
+  }
+
+  if (!callback || !expectedState) {
+    show("lost");
+    return;
+  }
+
+  if (!code || state !== expectedState) {
+    clear();
+    show("stale");
+    return;
+  }
+
+  // text/plain is bewust: dat geldt als simpele request, dus de browser stuurt
+  // geen preflight en de callback-URL heeft geen CORS nodig. De body komt bij
+  // Trigger.dev wel als JSON aan, dat is gemeten.
+  //
+  // no-cors betekent dat we het antwoord niet mogen lezen. Dat geeft niet: het
+  // verzoek wordt afgeleverd, en de echte uitslag van de koppeling volgt aan
+  // onze kant, niet op dit scherm.
+  fetch(callback, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain" },
+    body: JSON.stringify({ code: code, state: state })
+  }).then(function () {
+    clear();
+    show("done");
+  }).catch(function () {
+    // Ook hier is het verzoek waarschijnlijk gewoon afgeleverd: bij no-cors
+    // faalt alleen het lezen. Alleen een echte netwerkfout komt hier terecht.
+    clear();
+    show("done");
+  });
+})();
+</script>
+
+</body>
+</html>
