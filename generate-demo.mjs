@@ -7,15 +7,35 @@ import { randomInt } from 'node:crypto';
 import { fileURLToPath } from 'url';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
-const templatePath = path.join(root, 'demo', '_template', 'index.html');
 const demoDir = path.join(root, 'demo');
 
 const args = process.argv.slice(2);
 const companyName = args.find((a) => !a.startsWith('--'));
 const slugFlag = args.find((a) => a.startsWith('--slug='));
+const templateFlag = args.find((a) => a.startsWith('--template='));
 
 if (!companyName || !companyName.trim()) {
-  console.error('Gebruik: node generate-demo.mjs "Bedrijfsnaam" [--slug=bestaandeslug]');
+  console.error('Gebruik: node generate-demo.mjs "Bedrijfsnaam" [--slug=bestaandeslug] [--template=_template]');
+  process.exit(1);
+}
+
+// De scroll-demo is de enige master. Alleen underscore-mappen zijn toegestaan:
+// die publiceert GitHub Pages niet, dus een master kan nooit per ongeluk zelf
+// een live demo worden. De vormcontrole hieronder weigert padtrucs zoals
+// ../etc; de allowlist daarna weigert elke andere naam.
+const ALLOWED_TEMPLATES = ['_template'];
+const templateName = templateFlag ? templateFlag.slice('--template='.length) : '_template';
+if (!/^_[a-z0-9-]+$/.test(templateName)) {
+  console.error(`Ongeldige template: "${templateName}". Verwacht een underscore-map, bijvoorbeeld _template.`);
+  process.exit(1);
+}
+if (!ALLOWED_TEMPLATES.includes(templateName)) {
+  console.error(`Onbekende template: "${templateName}". Toegestaan: ${ALLOWED_TEMPLATES.join(', ')}.`);
+  process.exit(1);
+}
+const templatePath = path.join(demoDir, templateName, 'index.html');
+if (!fs.existsSync(templatePath)) {
+  console.error(`Template niet gevonden: demo/${templateName}/index.html`);
   process.exit(1);
 }
 
@@ -64,6 +84,7 @@ if (slugFlag) {
 fs.writeFileSync(path.join(demoDir, slug, 'index.html'), html);
 
 console.log(`Demo ${refreshed ? 'ververst' : 'gegenereerd'} voor: ${companyName.trim()}`);
+console.log(`  Master:  demo/${templateName}/index.html`);
 console.log(`  Slug:    ${slug}`);
 console.log(`  Bestand: demo/${slug}/index.html`);
 console.log(`  Lokaal:  http://localhost:3000/demo/${slug}/`);
