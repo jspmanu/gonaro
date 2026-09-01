@@ -128,9 +128,11 @@
 
   var callback = null;
   var expectedState = null;
+  var expires = null;
   try {
     callback = window.sessionStorage.getItem("naro.callback");
     expectedState = window.sessionStorage.getItem("naro.state");
+    expires = window.sessionStorage.getItem("naro.expires");
   } catch (e) {
     // Opslag geblokkeerd. Loopt hieronder in "lost", en dat is vanuit de klant
     // gezien ook precies wat er aan de hand is.
@@ -140,7 +142,33 @@
     try {
       window.sessionStorage.removeItem("naro.callback");
       window.sessionStorage.removeItem("naro.state");
+      window.sessionStorage.removeItem("naro.expires");
     } catch (e) {}
+  }
+
+  /**
+   * De huidige tijd volgens onze eigen server, niet volgens de bezoeker.
+   *
+   * Nodig omdat we met no-cors posten en het antwoord van Trigger.dev niet
+   * mogen lezen: zonder deze controle zou een verlopen uitnodiging hier "Gelukt"
+   * tonen terwijl er niets gebeurt. De Date-header van gonaro.ai is
+   * same-origin en dus leesbaar.
+   */
+  function serverNow(done) {
+    var fallback = setTimeout(function () { done(Date.now()); }, 2500);
+    try {
+      fetch(window.location.pathname, { method: "HEAD", cache: "no-store" })
+        .then(function (res) {
+          clearTimeout(fallback);
+          var d = res.headers.get("date");
+          var t = d ? new Date(d).getTime() : NaN;
+          done(isNaN(t) ? Date.now() : t);
+        })
+        .catch(function () { clearTimeout(fallback); done(Date.now()); });
+    } catch (e) {
+      clearTimeout(fallback);
+      done(Date.now());
+    }
   }
 
   // Microsoft meldt een geweigerde koppeling met een error in de querystring.
@@ -166,26 +194,45 @@
     return;
   }
 
+  var deadline = expires ? new Date(expires).getTime() : NaN;
+  if (isNaN(deadline)) {
+    send();
+  } else {
+    serverNow(function (now) {
+      if (now > deadline) {
+        // De uitnodiging is verlopen terwijl deze persoon door de inlog liep.
+        // Posten zou een antwoord opleveren dat we toch niet mogen lezen, dus
+        // dan zouden we hier ten onrechte "Gelukt" tonen.
+        clear();
+        show("stale");
+      } else {
+        send();
+      }
+    });
+  }
+
   // text/plain is bewust: dat geldt als simpele request, dus de browser stuurt
   // geen preflight en de callback-URL heeft geen CORS nodig. De body komt bij
   // Trigger.dev wel als JSON aan, dat is gemeten.
   //
   // no-cors betekent dat we het antwoord niet mogen lezen. Dat geeft niet: het
   // verzoek wordt afgeleverd, en de echte uitslag volgt aan onze kant.
-  fetch(callback, {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "text/plain" },
-    body: JSON.stringify({ code: code, state: state })
-  }).then(function () {
-    clear();
-    show("done");
-  }).catch(function () {
-    // Bij no-cors faalt alleen het lezen, niet het versturen. Alleen een echte
-    // netwerkfout komt hier terecht, en dan is opnieuw openen de remedie.
-    clear();
-    show("done");
-  });
+  function send() {
+    fetch(callback, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify({ code: code, state: state })
+    }).then(function () {
+      clear();
+      show("done");
+    }).catch(function () {
+      // Bij no-cors faalt alleen het lezen, niet het versturen. Alleen een echte
+      // netwerkfout komt hier terecht, en dan is opnieuw openen de remedie.
+      clear();
+      show("done");
+    });
+  }
 })();
 </script>
 

@@ -86,6 +86,18 @@
         <p>Vraag om een nieuwe uitnodiging, dan werkt het wel.</p>
       </div>
     </div>
+
+    <div id="expired" hidden>
+      <h1 class="t-h1">Deze uitnodiging is verlopen</h1>
+      <div class="notice">
+        <p>
+          Een uitnodiging is zeven dagen geldig. Die termijn is voorbij, dus
+          inloggen heeft nu geen zin: de koppeling zou daarna alsnog niet tot
+          stand komen.
+        </p>
+        <p>Vraag om een nieuwe link, dan is het zo geregeld.</p>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -128,27 +140,67 @@
   var callback = params.get("c");
   var company = params.get("b");
   var expected = params.get("m");
+  var expires = params.get("e");
 
-  function broken() {
-    document.getElementById("ok").hidden = true;
-    document.getElementById("body").hidden = true;
-    document.getElementById("broken").hidden = false;
+  function show(id) {
+    ["ok", "broken", "expired"].forEach(function (name) {
+      document.getElementById(name).hidden = name !== id;
+    });
+    document.getElementById("body").hidden = id !== "ok";
+  }
+
+  /**
+   * De huidige tijd volgens onze eigen server, niet volgens de bezoeker.
+   *
+   * Een browserklok die dagen verkeerd staat zou een geldige uitnodiging
+   * weigeren of een verlopen link alsnog doorlaten. De Date-header van
+   * gonaro.ai is same-origin en dus leesbaar. Lukt dat niet, dan is de lokale
+   * klok de terugval: beter een benadering dan geen controle.
+   */
+  function serverNow(done) {
+    var fallback = setTimeout(function () { done(Date.now()); }, 2500);
+    try {
+      fetch(window.location.pathname, { method: "HEAD", cache: "no-store" })
+        .then(function (res) {
+          clearTimeout(fallback);
+          var d = res.headers.get("date");
+          var t = d ? new Date(d).getTime() : NaN;
+          done(isNaN(t) ? Date.now() : t);
+        })
+        .catch(function () { clearTimeout(fallback); done(Date.now()); });
+    } catch (e) {
+      clearTimeout(fallback);
+      done(Date.now());
+    }
   }
 
   // Zonder callback-URL valt er niets te koppelen: de code zou daarna nergens
   // heen kunnen. Dan liever nu een duidelijk scherm dan straks een stille fout.
   if (!callback || callback.indexOf("https://api.trigger.dev/") !== 0) {
-    broken();
+    show("broken");
     return;
   }
 
-  document.getElementById("company").textContent = company || "je bedrijf";
-  if (expected) {
-    document.getElementById("expected-address").textContent = expected;
-    document.getElementById("expected").hidden = false;
+  function render() {
+    document.getElementById("company").textContent = company || "je bedrijf";
+    if (expected) {
+      document.getElementById("expected-address").textContent = expected;
+      document.getElementById("expected").hidden = false;
+    }
+    show("ok");
   }
-  document.getElementById("ok").hidden = false;
-  document.getElementById("body").hidden = false;
+
+  var deadline = expires ? new Date(expires).getTime() : NaN;
+  if (isNaN(deadline)) {
+    // Geen of onleesbare vervaldatum meegekregen. Dan slaan we de controle over
+    // in plaats van iemand onterecht tegen te houden.
+    render();
+  } else {
+    serverNow(function (now) {
+      if (now > deadline) show("expired");
+      else render();
+    });
+  }
 
   document.getElementById("go").addEventListener("click", function () {
     // state beschermt de terugweg: de vervolgpagina accepteert alleen een
@@ -162,10 +214,14 @@
     try {
       window.sessionStorage.setItem("naro.callback", callback);
       window.sessionStorage.setItem("naro.state", state);
+      // Reist mee zodat de afrondpagina dezelfde grens kan hanteren: die krijgt
+      // van Microsoft alleen code, state en error terug, geen eigen parameters.
+      if (expires) window.sessionStorage.setItem("naro.expires", expires);
+      else window.sessionStorage.removeItem("naro.expires");
     } catch (e) {
       // Opslag geblokkeerd. Doorgaan zou betekenen dat de vervolgpagina niets
       // terugvindt, dus dat vangen we hier af in plaats van daar.
-      broken();
+      show("broken");
       return;
     }
 
