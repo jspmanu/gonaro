@@ -225,14 +225,24 @@
       return;
     }
 
+    // Bewust GEEN prompt=consent, en dat moet zo blijven.
+    //
+    // In een tenant waar gebruikerstoestemming uit staat, dwingt die parameter
+    // een gebruikersscherm af dat daar niet mag verschijnen. Microsoft antwoordt
+    // dan met AADSTS90094 voor iedereen die geen beheerder is, ook wanneer de
+    // beheerder de app al tenant-breed heeft goedgekeurd. Precies de situatie
+    // bij onze eerste klant.
+    //
+    // Het refresh token loopt hier geen gevaar: offline_access staat in de
+    // scopes en levert er een bij de eerste toestemming. De herstelflow, waar
+    // de toestemming al bestaat, is een apart geval dat nog bekeken wordt.
     window.location.href = AUTHORIZE +
       "?client_id=" + encodeURIComponent(CLIENT_ID) +
       "&response_type=code" +
       "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
       "&response_mode=query" +
       "&scope=" + encodeURIComponent(SCOPES) +
-      "&state=" + state +
-      "&prompt=consent";
+      "&state=" + state;
   });
 })();
 </script>
